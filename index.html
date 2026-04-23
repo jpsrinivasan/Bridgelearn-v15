@@ -16,9 +16,9 @@
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
   <link rel="icon" type="image/png" href="assets/icons/icon-192.png" />
 
-  <link rel="stylesheet" href="css/themes.css?v=21" />
-  <link rel="stylesheet" href="css/characters.css?v=21" />
-  <link rel="stylesheet" href="css/main.css?v=21" />
+  <link rel="stylesheet" href="css/themes.css?v=23" />
+  <link rel="stylesheet" href="css/characters.css?v=23" />
+  <link rel="stylesheet" href="css/main.css?v=23" />
   <style>
     /* Critical layout fixes */
     #app-shell, .app-shell { width:100%; min-height:100vh; max-width:480px; margin:0 auto; position:relative; background:var(--bg-app); }
@@ -61,49 +61,47 @@
            AUTH: WELCOME
       ═══════════════════════════════════════════ -->
       <div id="screen-welcome" class="screen screen-welcome">
-        <div class="welcome__hero">
-          <div class="welcome__character" aria-hidden="true">🌉</div>
-          <h1 class="welcome__title">BridgeLearn</h1>
-          <p class="welcome__sub">The fun way to learn everything,<br>for ages 3–18</p>
-        </div>
+  <!-- Floating decorative elements -->
+  <div class="welcome-stars"></div>
+  <div class="welcome-floats">
+    <div class="wf wf-1">🚀</div>
+    <div class="wf wf-2">📚</div>
+    <div class="wf wf-3">🌍</div>
+    <div class="wf wf-4">⭐</div>
+    <div class="wf wf-5">🎮</div>
+    <div class="wf wf-6">🔬</div>
+  </div>
 
-        <div class="welcome__features">
-          <div class="feature-pill">📚 1000+ Lessons</div>
-          <div class="feature-pill">🎮 Fun Games</div>
-          <div class="feature-pill">🌍 40+ Languages</div>
-          <div class="feature-pill">🤖 AI Tutor</div>
-        </div>
+  <!-- Logo -->
+  <div class="welcome-logo">
+    <span class="logo-bridge">Bridge</span><span class="logo-learn">Learn</span>
+    <div class="logo-star">⭐</div>
+  </div>
+  <div class="welcome-tagline">Learn • Explore • Grow</div>
+  <div class="welcome-badge">🤖 AI-Powered Learning for a Smarter Tomorrow</div>
 
-        <div class="welcome__actions">
-          <button class="btn btn--primary btn--full" onclick="BLApp.doGoogleLogin()">
-            <span class="btn__icon">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.64 9.205c0-.639-.057-1.252-.164-1.841H9v3.481h4.844a4.14 4.14 0 01-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
-                <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z" fill="#34A853"/>
-                <path d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
-                <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
-              </svg>
-            </span>
-            Continue with Google
-          </button>
+  <!-- Hero character area -->
+  <div class="welcome-hero-area">
+    <div class="welcome-char-main">🧒</div>
+    <div class="welcome-char-left">👧</div>
+    <div class="welcome-char-right">🧑‍💻</div>
+    <div class="welcome-math-tag">MATH<br>2+2=4</div>
+    <div class="welcome-sci-tag">🔬 SCIENCE</div>
+    <div class="welcome-games-tag">🎮 GAMES</div>
+    <div class="welcome-quiz-tag">❓ QUIZ</div>
+    <div class="welcome-robot">🤖</div>
+  </div>
 
-          <button class="btn btn--secondary btn--full" onclick="BL.showScreen('login')">
-            Sign in with Email
-          </button>
-
-          <button class="btn btn--outline btn--full" onclick="BL.showScreen('signup')">
-            Create Free Account
-          </button>
-
-          <button class="btn btn--ghost btn--full" onclick="BLApp.doGuestLogin()">
-            👀 Browse as Guest
-          </button>
-        </div>
-
-        <p class="welcome__terms">
-          By continuing you agree to our <a href="#" onclick="return false;">Terms</a> &amp; <a href="#" onclick="return false;">Privacy Policy</a>
-        </p>
-      </div>
+  <!-- Actions -->
+  <div class="welcome-actions">
+    <button class="btn-start-learning" onclick="BLApp.doGuestLogin()">
+      Start Learning <span>→</span>
+    </button>
+    <button class="btn-have-account" onclick="BL.showScreen('login')">
+      I Already Have an Account
+    </button>
+  </div>
+</div>
 
       <!-- ═══════════════════════════════════════════
            AUTH: LOGIN
@@ -367,166 +365,130 @@
            DASHBOARD
       ═══════════════════════════════════════════ -->
       <div id="screen-dashboard" class="screen screen-dashboard">
-        <div class="dash-topbar">
-          <div class="dash-topbar__left">
-            <div id="dash-greeting" class="dash-greeting">Good morning! 👋</div>
-            <div class="dash-topbar__name-row">
-              <span id="dash-name" class="dash-name">Learner</span>
-              <span id="dash-level" class="level-badge">Level 1</span>
-            </div>
-          </div>
-          <div class="dash-topbar__right">
-            <button class="icon-btn" onclick="BLApp.openSettings()" aria-label="Settings">⚙️</button>
-          </div>
-        </div>
-
-        <!-- Stats Row -->
-        <div class="dash-stats-row">
-          <div class="stat-chip stat-chip--xp">
-            <span class="stat-chip__icon">⚡</span>
-            <span id="dash-xp-text" class="stat-chip__val">0 XP</span>
-          </div>
-          <div class="stat-chip stat-chip--coins">
-            <span class="stat-chip__icon">🪙</span>
-            <span id="dash-coins" class="stat-chip__val">0</span>
-          </div>
-          <div class="stat-chip stat-chip--streak">
-            <span class="stat-chip__icon">🔥</span>
-            <span id="dash-streak" class="stat-chip__val">0</span>
-          </div>
-          <div class="stat-chip stat-chip--badges">
-            <span class="stat-chip__icon">🏅</span>
-            <span id="dash-badges" class="stat-chip__val">0</span>
-          </div>
-        </div>
-
-        <!-- XP Progress Bar -->
-        <div class="dash-xp-section">
-          <div class="dash-xp-bar-wrap">
-            <div id="dash-xp-fill" class="dash-xp-bar" style="width:0%"></div>
-          </div>
-        </div>
-
-        <!-- Daily Goal -->
-        <div class="dash-goal-card">
-          <div class="dash-goal-card__header">
-            <span class="dash-goal-card__label">📅 Daily Goal</span>
-            <span id="dash-goal-text" class="dash-goal-card__val">0 / 3 lessons</span>
-          </div>
-          <div class="dash-goal-bar-wrap">
-            <div id="dash-goal-fill" class="dash-goal-bar" style="width:0%"></div>
-          </div>
-        </div>
-
-        <!-- Character -->
-        <div id="dash-char-container" class="dash-char-container" aria-hidden="true"></div>
-
-        <!-- Continue Learning -->
-        <section class="dash-section">
-          <h2 class="dash-section__title">▶ Continue Learning</h2>
-          <div id="continue-card" class="dash-continue">
-            <div class="continue-placeholder">
-              <span class="continue-placeholder__icon">📚</span>
-              <span>Start your first lesson!</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- Subjects Grid -->
-        <section class="dash-section">
-          <h2 class="dash-section__title">📖 Subjects</h2>
-          <div id="subject-grid" class="subject-grid">
-            <button class="subject-card subject-card--math" onclick="BLApp.openSubject('math')">
-              <span class="subject-card__icon">🔢</span>
-              <span class="subject-card__name">Math</span>
-            </button>
-            <button class="subject-card subject-card--science" onclick="BLApp.openSubject('science')">
-              <span class="subject-card__icon">🔬</span>
-              <span class="subject-card__name">Science</span>
-            </button>
-            <button class="subject-card subject-card--english" onclick="BLApp.openSubject('english')">
-              <span class="subject-card__icon">📝</span>
-              <span class="subject-card__name">English</span>
-            </button>
-            <button class="subject-card subject-card--history" onclick="BLApp.openSubject('history')">
-              <span class="subject-card__icon">🏛️</span>
-              <span class="subject-card__name">History</span>
-            </button>
-            <button class="subject-card subject-card--geography" onclick="BLApp.openSubject('geography')">
-              <span class="subject-card__icon">🗺️</span>
-              <span class="subject-card__name">Geography</span>
-            </button>
-            <button class="subject-card subject-card--coding" onclick="BLApp.openSubject('coding')">
-              <span class="subject-card__icon">💻</span>
-              <span class="subject-card__name">Coding</span>
-            </button>
-            <button class="subject-card subject-card--art" onclick="BLApp.openSubject('art')">
-              <span class="subject-card__icon">🎨</span>
-              <span class="subject-card__name">Art</span>
-            </button>
-            <button class="subject-card subject-card--music" onclick="BLApp.openSubject('music')">
-              <span class="subject-card__icon">🎵</span>
-              <span class="subject-card__name">Music</span>
-            </button>
-            <button class="subject-card subject-card--countries" onclick="BLApp.openCountries()">
-              <span class="subject-card__icon">🌍</span>
-              <span class="subject-card__name">Countries</span>
-            </button>
-            <button class="subject-card subject-card--states" onclick="BLApp.openStates()">
-              <span class="subject-card__icon">🗽</span>
-              <span class="subject-card__name">US States</span>
-            </button>
-            <button class="subject-card subject-card--careers" onclick="BLApp.openCareers()">
-              <span class="subject-card__icon">👩‍💼</span>
-              <span class="subject-card__name">Careers</span>
-            </button>
-            <button class="subject-card subject-card--safety" onclick="BLApp.openSafety()">
-              <span class="subject-card__icon">🛡️</span>
-              <span class="subject-card__name">Safety</span>
-            </button>
-          </div>
-        </section>
-
-        <!-- Quick Access -->
-        <section class="dash-section">
-          <h2 class="dash-section__title">⚡ QUICK ACCESS</h2>
-          <div class="quick-access-row">
-            <button class="qa-btn" onclick="BLApp.openAssignments()">
-              <span class="qa-icon">📋</span><span class="qa-lbl">Assignments</span>
-            </button>
-            <button class="qa-btn" onclick="BLApp.openProgress()">
-              <span class="qa-icon">📈</span><span class="qa-lbl">Progress</span>
-            </button>
-            <button class="qa-btn" onclick="BLApp.openMessages()">
-              <span class="qa-icon">💬</span><span class="qa-lbl">Messages</span>
-            </button>
-            <button class="qa-btn" onclick="BLApp.openParent()">
-              <span class="qa-icon">👨‍👩‍👦</span><span class="qa-lbl">Parent</span>
-            </button>
-          </div>
-        </section>
-
-        <!-- Daily Quests -->
-        <section class="dash-section">
-          <h2 class="dash-section__title">⚔️ Daily Quests</h2>
-          <div id="daily-quests" class="quests-list">
-            <div class="quest-item quest-item--skeleton"></div>
-            <div class="quest-item quest-item--skeleton"></div>
-            <div class="quest-item quest-item--skeleton"></div>
-          </div>
-        </section>
-
-        <!-- Recommended -->
-        <section class="dash-section">
-          <h2 class="dash-section__title">✨ Recommended for You</h2>
-          <div id="recommended-list" class="recommended-list">
-            <div class="rec-item rec-item--skeleton"></div>
-            <div class="rec-item rec-item--skeleton"></div>
-          </div>
-        </section>
-
-        <div class="dash-bottom-spacer"></div>
+  <!-- Top Header Bar -->
+  <div class="dash-header">
+    <button class="dash-menu-btn" onclick="BLApp.openSettings()">☰</button>
+    <div class="dash-logo"><span class="logo-bridge">Bridge</span><span class="logo-learn">Learn</span>⭐</div>
+    <div class="dash-currency">
+      <div class="currency-gem">💎 <span id="dash-gems">0</span></div>
+      <div class="currency-coin">🪙 <span id="dash-coins">0</span></div>
+    </div>
+    <div class="dash-profile-btn" onclick="BLApp.openProfile()">
+      <div id="dash-avatar-img" class="dash-avatar">🧒</div>
+      <div class="dash-profile-info">
+        <div class="dash-hi">Hi, <span id="dash-name">Learner</span>! 👋</div>
+        <div class="dash-level-badge" id="dash-level">Level 1</div>
       </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="dash-hero">
+    <div class="dash-hero-left">
+      <div id="dash-greeting" class="dash-greeting">Good morning!</div>
+      <div class="dash-hero-sub">Ready for another amazing<br>learning adventure?</div>
+      <button class="btn-lets-start" onclick="BLApp.openSubject(BLApp.data.subjects[0]?.id)">Let's Start 🚀</button>
+    </div>
+    <div class="dash-hero-center">
+      <div id="dash-char-container" class="dash-hero-char">🧒‍🚀</div>
+    </div>
+    <div class="dash-hero-right">
+      <div class="dash-goal-card">
+        <div class="goal-circle">
+          <svg viewBox="0 0 56 56" class="goal-svg">
+            <circle cx="28" cy="28" r="24" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="5"/>
+            <circle id="dash-goal-ring" cx="28" cy="28" r="24" fill="none" stroke="#f9a825" stroke-width="5" stroke-linecap="round"
+              stroke-dasharray="150.8" stroke-dashoffset="150.8" transform="rotate(-90 28 28)"/>
+          </svg>
+          <div class="goal-pct" id="dash-goal-pct">0%</div>
+        </div>
+        <div class="goal-label">Today's Goal</div>
+        <div id="dash-goal-text" class="goal-sub">0/3 Lessons</div>
+      </div>
+      <div class="dash-reward-card">
+        <div class="reward-icon">🎁</div>
+        <div class="reward-info">
+          <div class="reward-label">Next Reward</div>
+          <div class="reward-name">Gems Chest</div>
+          <div class="reward-bar"><div id="dash-xp-fill" class="reward-fill"></div></div>
+          <div id="dash-xp-text" class="reward-count">0/500 XP</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Tutor strip -->
+  <div class="dash-tutor-strip" onclick="BLApp.openAITutor()">
+    <div class="tutor-strip-robot">🤖</div>
+    <div class="tutor-strip-text">
+      <div class="tsb">Hi <span id="dash-tutor-name">there</span>! I'm Nova ✨</div>
+      <div class="tss">Let's make learning super fun today!</div>
+    </div>
+    <div class="tutor-strip-speak">🔊</div>
+  </div>
+
+  <!-- Quick Actions Row -->
+  <div class="dash-quick-actions">
+    <button class="qa-action" onclick="BLApp.openSubject(BLApp.data.subjects[0]?.id)"><div class="qa-ico">📚</div><div class="qa-nm">Lessons</div></button>
+    <button class="qa-action" onclick="BLApp.openQuizSelect()"><div class="qa-ico">📋</div><div class="qa-nm">Quiz</div></button>
+    <button class="qa-action" onclick="BLApp.openGames()"><div class="qa-ico">🎮</div><div class="qa-nm">Games</div></button>
+    <button class="qa-action" onclick="BLApp.openAITutor()"><div class="qa-ico">🤖</div><div class="qa-nm">AI Tutor</div></button>
+    <button class="qa-action" onclick="BLApp.openProfile()"><div class="qa-ico">🏆</div><div class="qa-nm">Rewards</div></button>
+    <button class="qa-action" onclick="BLApp.openWorld()"><div class="qa-ico">🌍</div><div class="qa-nm">Explore</div></button>
+    <button class="qa-action" onclick="BLApp.openAssignments()"><div class="qa-ico">📅</div><div class="qa-nm">Events</div></button>
+  </div>
+
+  <!-- Explore Subjects -->
+  <div class="dash-section">
+    <div class="dash-section-header">
+      <h3 class="dash-section-title">Explore Subjects ✨</h3>
+      <button class="dash-view-all" onclick="BL.showScreen('subjects-all')">View All ›</button>
+    </div>
+    <div id="subject-grid" class="subject-grid-new"></div>
+  </div>
+
+  <!-- Stats Row: Streak | Weekly | Badges -->
+  <div class="dash-stats-row">
+    <div class="stat-card stat-streak">
+      <div class="sc-top">🔥 Your Learning Streak</div>
+      <div class="sc-big" id="dash-streak">0</div>
+      <div class="sc-label">Days</div>
+      <div class="sc-sub">Amazing! Keep it up!</div>
+      <div class="streak-cat">🐱</div>
+    </div>
+    <div class="stat-card stat-weekly">
+      <div class="sc-top">Weekly Progress</div>
+      <div id="weekly-chart" class="weekly-mini"></div>
+      <div class="sc-sub-row"><span id="dash-weekly-pct">0%</span> <span class="sc-today">Today</span></div>
+    </div>
+    <div class="stat-card stat-badges">
+      <div class="sc-top">Top Badges <button class="see-all-badges" onclick="BLApp.openProfile()">See All</button></div>
+      <div id="dash-badges-mini" class="badges-mini"></div>
+    </div>
+  </div>
+
+  <!-- Adventure Map + Daily Challenge -->
+  <div class="dash-bottom-cards">
+    <div class="bottom-card adventure-card" onclick="BLApp.openWorld()">
+      <div class="adv-content">
+        <div class="adv-title">Adventure Map</div>
+        <div class="adv-desc">Complete lessons, unlock worlds and become a BridgeLearn Legend! 🏆</div>
+        <button class="adv-btn">Explore Map ›</button>
+      </div>
+      <div class="adv-art">🗺️</div>
+    </div>
+    <div class="bottom-card daily-card" onclick="BLApp.openQuizSelect()">
+      <div class="daily-content">
+        <div class="daily-title">Daily Challenge</div>
+        <div class="daily-desc">Solve 3 quizzes correctly<br>and win 50 gems!</div>
+        <button class="daily-btn">Play Now ›</button>
+      </div>
+      <div class="daily-gem">💎<div class="daily-gem-count">50</div></div>
+    </div>
+  </div>
+
+  <div class="bottom-spacer"></div>
+</div>
 
       <!-- ═══════════════════════════════════════════
            SUBJECT SCREEN
@@ -1314,68 +1276,109 @@
         </div>
       </div>
 
+      <!-- WORLD EXPLORER SCREEN -->
+      <div id="screen-world" class="screen screen-world">
+  <div class="world-header">
+    <button class="btn-back" onclick="BL.goBack()">←</button>
+    <div class="world-header-search">🔍</div>
+    <div class="dash-currency">
+      <div class="currency-gem">💎 <span id="world-gems">0</span></div>
+      <div class="currency-coin">🪙 <span id="world-coins">0</span></div>
+    </div>
+    <div class="world-level">Level <span id="world-level">1</span></div>
+  </div>
+
+  <div class="world-hero">
+    <div class="world-hero-text">
+      <h1 class="world-hero-title">Explore the<br><span class="world-hero-highlight">World!</span></h1>
+      <p class="world-hero-desc">Learn about countries,<br>cultures, languages<br>and so much more!</p>
+    </div>
+    <div class="world-globe-area">
+      <div class="world-globe">🌍</div>
+      <div class="world-robot">🤖<div class="world-robot-bubble">Where do you want to explore today?</div></div>
+    </div>
+    <div class="world-stats">
+      <div class="ws-item"><span class="ws-num">195</span><span class="ws-lab">🌍 Countries</span></div>
+      <div class="ws-item"><span class="ws-num">50+</span><span class="ws-lab">💬 Languages</span></div>
+      <div class="ws-item"><span class="ws-num">100+</span><span class="ws-lab">👥 Cultures</span></div>
+    </div>
+  </div>
+
+  <!-- Countries section -->
+  <div class="world-section">
+    <div class="world-section-header">
+      <h3>Choose a Country 🌐</h3>
+      <button onclick="BLApp.openCountries()">View All ›</button>
+    </div>
+    <div id="world-country-scroll" class="world-country-scroll"></div>
+  </div>
+
+  <!-- Languages section -->
+  <div class="world-section">
+    <div class="world-section-header">
+      <h3>Learn Languages 💬</h3>
+      <button onclick="BLApp.openLanguages()">All Languages ›</button>
+    </div>
+    <div id="world-lang-scroll" class="world-lang-scroll"></div>
+  </div>
+
+  <!-- Fun Fact + Quick Quiz + Stamps row -->
+  <div class="world-bottom-row">
+    <div class="world-fact-card">
+      <div class="wfc-title">💡 Fun Fact</div>
+      <div id="world-fun-fact" class="wfc-text">Did you know? The Great Wall of China is over 13,000 miles long!</div>
+      <button class="wfc-btn" onclick="BLApp.loadNextFunFact()">Amazing! 😮</button>
+    </div>
+    <div class="world-quiz-card" onclick="BLApp.startQuizCategory('geography')">
+      <div class="wqc-title">Quick Country Quiz</div>
+      <div class="wqc-q">Which country is known as the Land of the Rising Sun?</div>
+      <div class="wqc-opts">
+        <div class="wqc-opt">🇨🇳 China</div>
+        <div class="wqc-opt wqc-opt-b">🇯🇵 Japan</div>
+        <div class="wqc-opt">🇰🇷 Korea</div>
+        <div class="wqc-opt">🇹🇭 Thailand</div>
+      </div>
+    </div>
+    <div class="world-stamps-card">
+      <div class="wsc-title">Collect Stamps</div>
+      <div class="wsc-desc">Collect stamps as you explore new countries!</div>
+      <div class="wsc-count" id="world-stamps">0 / 195</div>
+      <div class="wsc-bar"><div class="wsc-fill" id="world-stamps-fill" style="width:0%"></div></div>
+      <div class="wsc-emojis">🗼🗽🕌🎡</div>
+    </div>
+  </div>
+
+  <div class="bottom-spacer"></div>
+</div>
+
     </main>
     <!-- ─── END SCREENS CONTAINER ─── -->
 
     <!-- ═══════════════════════════════════════════
          BOTTOM NAVIGATION
     ═══════════════════════════════════════════ -->
-    <nav id="bottom-nav" class="bottom-nav" role="navigation" aria-label="Main navigation" hidden>
-      <button
-        id="nav-home"
-        class="nav-tab"
-        onclick="BLApp.navTo('home')"
-        aria-label="Home"
-        aria-current="false"
-      >
-        <span class="nav-tab__icon" aria-hidden="true">🏠</span>
-        <span class="nav-tab__label">Home</span>
-      </button>
-
-      <button
-        id="nav-quiz"
-        class="nav-tab"
-        onclick="BLApp.navTo('quiz')"
-        aria-label="Quiz"
-        aria-current="false"
-      >
-        <span class="nav-tab__icon" aria-hidden="true">🧪</span>
-        <span class="nav-tab__label">Quiz</span>
-      </button>
-
-      <button
-        id="nav-games"
-        class="nav-tab"
-        onclick="BLApp.navTo('games')"
-        aria-label="Games"
-        aria-current="false"
-      >
-        <span class="nav-tab__icon" aria-hidden="true">🎮</span>
-        <span class="nav-tab__label">Games</span>
-      </button>
-
-      <button
-        id="nav-lang"
-        class="nav-tab"
-        onclick="BLApp.navTo('lang')"
-        aria-label="Languages"
-        aria-current="false"
-      >
-        <span class="nav-tab__icon" aria-hidden="true">🌍</span>
-        <span class="nav-tab__label">Lang</span>
-      </button>
-
-      <button
-        id="nav-profile"
-        class="nav-tab"
-        onclick="BLApp.navTo('profile')"
-        aria-label="Profile"
-        aria-current="false"
-      >
-        <span class="nav-tab__icon" aria-hidden="true">👤</span>
-        <span class="nav-tab__label">Profile</span>
-      </button>
-    </nav>
+    <nav id="bottom-nav" class="bottom-nav hidden">
+  <button class="nav-tab" id="nav-home" onclick="BLApp.navTo('home')">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    <span>Home</span>
+  </button>
+  <button class="nav-tab" id="nav-quiz" onclick="BLApp.navTo('quiz')">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Quiz</span>
+  </button>
+  <button class="nav-tab nav-tab--center" id="nav-games" onclick="BLApp.navTo('games')">
+    <div class="nav-center-bubble">🎮</div>
+    <span>Games</span>
+  </button>
+  <button class="nav-tab" id="nav-lang" onclick="BLApp.navTo('lang')">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="currentColor" stroke-width="2"/></svg>
+    <span>World</span>
+  </button>
+  <button class="nav-tab" id="nav-profile" onclick="BLApp.navTo('profile')">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
+    <span>Profile</span>
+  </button>
+</nav>
 
   </div>
   <!-- ─── END APP SHELL ─── -->
@@ -1559,18 +1562,18 @@
   <!-- ═══════════════════════════════════════════
        SCRIPTS (ordered)
   ═══════════════════════════════════════════ -->
-  <script src="js/utils.js?v=21"></script>
-  <script src="js/characters.js?v=21"></script>
-  <script src="js/storage.js?v=21"></script>
-  <script src="js/auth.js?v=21"></script>
-  <script src="js/voice.js?v=21"></script>
-  <script src="js/ai.js?v=21"></script>
-  <script src="js/gamification.js?v=21"></script>
-  <script src="js/languages.js?v=21"></script>
-  <script src="js/progression.js?v=21"></script>
-  <script src="js/games.js?v=21"></script>
-  <script src="js/parent.js?v=21"></script>
-  <script src="js/app.js?v=21"></script>
+  <script src="js/utils.js?v=23"></script>
+  <script src="js/characters.js?v=23"></script>
+  <script src="js/storage.js?v=23"></script>
+  <script src="js/auth.js?v=23"></script>
+  <script src="js/voice.js?v=23"></script>
+  <script src="js/ai.js?v=23"></script>
+  <script src="js/gamification.js?v=23"></script>
+  <script src="js/languages.js?v=23"></script>
+  <script src="js/progression.js?v=23"></script>
+  <script src="js/games.js?v=23"></script>
+  <script src="js/parent.js?v=23"></script>
+  <script src="js/app.js?v=23"></script>
 
 </body>
 </html>
