@@ -1,0 +1,789 @@
+{
+  "subjects": [
+    {
+      "id": "math",
+      "name": "Mathematics",
+      "emoji": "🔢",
+      "color": "#6C63FF",
+      "desc": "Numbers, patterns, and problem solving",
+      "ageGroups": ["3-5","6-8","9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "counting",
+          "title": "Counting to 10",
+          "ageGroup": "3-5",
+          "emoji": "🔢",
+          "intro": "Counting is the very first step in mathematics. When we count, we learn how many things are in a group.",
+          "content": "We count by saying numbers in order: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. Each number tells us how many objects there are. Try counting your fingers — you have 10!",
+          "key_facts": ["Numbers go in a special order", "Zero means nothing at all", "Ten is made of one group of ten", "Counting helps us compare groups"],
+          "vocabulary": [{"word":"count","def":"to say numbers in order to find how many"},{"word":"number","def":"a symbol that shows how many"},{"word":"zero","def":"the number that means nothing"}],
+          "fun_activity": "Count all the toys in your room and see which number you reach!"
+        },
+        {
+          "id": "addition",
+          "title": "Addition — Joining Numbers",
+          "ageGroup": "6-8",
+          "emoji": "➕",
+          "intro": "Addition means putting two groups together to find the total. The plus sign (+) shows we are adding.",
+          "content": "When we add, we join groups together. If you have 3 apples and your friend gives you 4 more, you add 3 + 4 = 7. You can count on your fingers or use a number line to help.",
+          "key_facts": ["The + sign means add", "The answer in addition is called the sum", "Adding zero to any number keeps it the same", "You can add in any order: 3+4 = 4+3"],
+          "vocabulary": [{"word":"addition","def":"joining numbers together"},{"word":"sum","def":"the answer when you add"},{"word":"plus","def":"the sign + that means add"}],
+          "fun_activity": "Use small stones to add: put 5 stones in one pile and 3 in another, then count them all together!"
+        },
+        {
+          "id": "subtraction",
+          "title": "Subtraction — Taking Away",
+          "ageGroup": "6-8",
+          "emoji": "➖",
+          "intro": "Subtraction means taking one number away from another. The minus sign (−) shows we are subtracting.",
+          "content": "If you have 8 cookies and eat 3, you subtract: 8 − 3 = 5. Subtraction is the opposite of addition. You can count backwards on a number line to subtract.",
+          "key_facts": ["The − sign means subtract", "The answer is called the difference", "You cannot take more than you have", "Subtracting zero keeps the number the same"],
+          "vocabulary": [{"word":"subtraction","def":"taking one number away from another"},{"word":"difference","def":"the answer when you subtract"},{"word":"minus","def":"the sign − that means take away"}],
+          "fun_activity": "Start with 10 grapes. Eat 4. How many are left? Check by counting!"
+        },
+        {
+          "id": "multiplication",
+          "title": "Multiplication — Equal Groups",
+          "ageGroup": "9-12",
+          "emoji": "✖️",
+          "intro": "Multiplication is a fast way to add equal groups. Instead of adding 4+4+4, we can say 3 × 4 = 12.",
+          "content": "When we multiply, we use equal groups. The times table helps us remember multiplication facts. 3 × 4 means three groups of four. Learning times tables up to 12 makes maths much faster.",
+          "key_facts": ["The × sign means multiply", "The answer is called the product", "Any number times 1 stays the same", "Any number times 0 equals 0", "Multiplication is repeated addition"],
+          "vocabulary": [{"word":"multiplication","def":"repeated addition of equal groups"},{"word":"product","def":"the answer when you multiply"},{"word":"factor","def":"a number being multiplied"}],
+          "fun_activity": "Draw 4 rows of 3 stars. Count all the stars. That's 4 × 3!"
+        },
+        {
+          "id": "division",
+          "title": "Division — Sharing Equally",
+          "ageGroup": "9-12",
+          "emoji": "➗",
+          "intro": "Division means splitting a number into equal groups. It is the opposite of multiplication.",
+          "content": "If you have 12 sweets and want to share them equally among 4 friends, you divide: 12 ÷ 4 = 3. Each friend gets 3 sweets. Division tells us how many are in each group or how many groups we can make.",
+          "key_facts": ["The ÷ sign means divide", "The answer is called the quotient", "You cannot divide by zero", "Division is the inverse of multiplication"],
+          "vocabulary": [{"word":"division","def":"splitting into equal groups"},{"word":"quotient","def":"the answer when you divide"},{"word":"remainder","def":"what is left over after dividing evenly"}],
+          "fun_activity": "Share 20 pencils equally among 5 friends. How many does each get?"
+        },
+        {
+          "id": "fractions",
+          "title": "Fractions — Parts of a Whole",
+          "ageGroup": "9-12",
+          "emoji": "🍕",
+          "intro": "A fraction shows a part of a whole. When you cut a pizza into 4 equal slices and take 1, you have 1/4 of the pizza.",
+          "content": "Fractions have two parts: the numerator (top number) shows how many parts you have, and the denominator (bottom number) shows how many equal parts the whole is divided into. 3/4 means 3 out of 4 equal parts.",
+          "key_facts": ["The top number is the numerator", "The bottom number is the denominator", "1/2 means one out of two equal parts", "Fractions with equal numerator and denominator equal 1 whole"],
+          "vocabulary": [{"word":"fraction","def":"a part of a whole"},{"word":"numerator","def":"the top number in a fraction"},{"word":"denominator","def":"the bottom number in a fraction"}],
+          "fun_activity": "Fold a piece of paper in half, then in half again. You have divided it into 4 equal parts — each part is 1/4!"
+        },
+        {
+          "id": "geometry",
+          "title": "Shapes and Geometry",
+          "ageGroup": "6-8",
+          "emoji": "📐",
+          "intro": "Geometry is the study of shapes, sizes, and positions. Shapes are all around us every day.",
+          "content": "2D shapes are flat: circles, squares, triangles, rectangles. 3D shapes have depth: spheres, cubes, cylinders, pyramids. Every shape has special properties like the number of sides, corners, and faces.",
+          "key_facts": ["A triangle has 3 sides and 3 corners", "A square has 4 equal sides", "A circle has no corners", "3D shapes have faces, edges, and vertices"],
+          "vocabulary": [{"word":"shape","def":"the outline or form of an object"},{"word":"vertex","def":"a corner where edges meet"},{"word":"symmetry","def":"when both halves of a shape are mirror images"}],
+          "fun_activity": "Look around your home. Can you find 5 different shapes?"
+        },
+        {
+          "id": "algebra",
+          "title": "Introduction to Algebra",
+          "ageGroup": "13-15",
+          "emoji": "🔣",
+          "intro": "Algebra uses letters to represent unknown numbers. It helps us solve problems when we don't know all the values.",
+          "content": "In algebra, letters like x and y stand for unknown numbers. An equation like x + 5 = 12 asks: what number plus 5 equals 12? We solve it by doing the same operation to both sides: x = 12 − 5 = 7.",
+          "key_facts": ["Variables are letters that stand for unknown numbers", "Both sides of an equation must stay equal", "Use inverse operations to isolate the variable", "BODMAS/PEMDAS gives the order of operations"],
+          "vocabulary": [{"word":"variable","def":"a letter representing an unknown number"},{"word":"equation","def":"a mathematical statement with an equals sign"},{"word":"expression","def":"numbers and variables combined with operations"}],
+          "fun_activity": "Solve: 3x = 21. What is x? Check by substituting your answer back in!"
+        },
+        {
+          "id": "statistics",
+          "title": "Statistics and Data",
+          "ageGroup": "13-15",
+          "emoji": "📊",
+          "intro": "Statistics is about collecting, organising, and understanding data. It helps us make sense of the world around us.",
+          "content": "We collect data by counting or measuring things. We can display data in bar charts, pie charts, and line graphs. The mean (average), median (middle value), and mode (most common value) help us summarise data.",
+          "key_facts": ["Mean = sum of all values ÷ number of values", "Median is the middle value when data is ordered", "Mode is the most frequently occurring value", "Range = highest value − lowest value"],
+          "vocabulary": [{"word":"mean","def":"the average of a set of numbers"},{"word":"median","def":"the middle value in an ordered set"},{"word":"mode","def":"the most frequently occurring value"}],
+          "fun_activity": "Record the temperature for 7 days and calculate the mean temperature for the week!"
+        },
+        {
+          "id": "number-patterns",
+          "title": "Number Patterns and Sequences",
+          "ageGroup": "9-12",
+          "emoji": "🔄",
+          "intro": "Patterns in numbers follow rules. Finding the rule helps us predict what comes next.",
+          "content": "A sequence is a list of numbers that follow a pattern. 2, 4, 6, 8 — each number increases by 2. The Fibonacci sequence (1, 1, 2, 3, 5, 8…) adds the two previous numbers. Patterns are everywhere in nature and mathematics.",
+          "key_facts": ["Even numbers end in 0, 2, 4, 6, or 8", "Odd numbers end in 1, 3, 5, 7, or 9", "Prime numbers have only 2 factors: 1 and themselves", "Square numbers are made by multiplying a number by itself"],
+          "vocabulary": [{"word":"sequence","def":"numbers arranged in a pattern"},{"word":"pattern","def":"a rule that repeats or grows"},{"word":"prime number","def":"a number with only two factors: 1 and itself"}],
+          "fun_activity": "Continue the pattern: 3, 6, 9, 12, __, __. What is the rule?"
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "name": "Science",
+      "emoji": "🔬",
+      "color": "#00BCD4",
+      "desc": "Explore the natural world and how things work",
+      "ageGroups": ["3-5","6-8","9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "living-things",
+          "title": "Living and Non-Living Things",
+          "ageGroup": "3-5",
+          "emoji": "🌱",
+          "intro": "Everything around us is either living or non-living. Living things grow, breathe, and need food.",
+          "content": "Living things include animals, plants, and people. They all need food, water, air, and space to grow. Non-living things like rocks, water, and chairs do not grow or breathe. Scientists study living things to understand life.",
+          "key_facts": ["Living things grow and change", "Living things need food and water", "Plants are living things too", "Non-living things were never alive"],
+          "vocabulary": [{"word":"living","def":"something that grows, breathes, and needs food"},{"word":"non-living","def":"something that does not grow or breathe"},{"word":"organism","def":"any living thing"}],
+          "fun_activity": "Go outside and find 5 living and 5 non-living things. Make a list!"
+        },
+        {
+          "id": "plants",
+          "title": "How Plants Grow",
+          "ageGroup": "6-8",
+          "emoji": "🌿",
+          "intro": "Plants are amazing living things that make their own food using sunlight. They are the basis of almost all food chains.",
+          "content": "Plants need sunlight, water, air (carbon dioxide), and soil to grow. Through photosynthesis, leaves capture sunlight and make food. Roots absorb water and nutrients. Flowers help plants reproduce by attracting pollinators like bees.",
+          "key_facts": ["Plants make food through photosynthesis", "Roots anchor the plant and absorb water", "Leaves capture sunlight for energy", "Flowers help plants reproduce", "Plants produce oxygen that animals breathe"],
+          "vocabulary": [{"word":"photosynthesis","def":"the process plants use to make food from sunlight"},{"word":"chlorophyll","def":"the green pigment that captures sunlight"},{"word":"pollination","def":"the transfer of pollen to fertilise flowers"}],
+          "fun_activity": "Plant a bean seed in a cup of soil. Water it and watch it sprout over two weeks!"
+        },
+        {
+          "id": "human-body",
+          "title": "The Human Body",
+          "ageGroup": "9-12",
+          "emoji": "🫀",
+          "intro": "The human body is an incredibly complex system with organs and systems all working together to keep us alive.",
+          "content": "Our body has several major systems: the skeletal system gives us shape, the muscular system helps us move, the digestive system processes food, and the circulatory system pumps blood. The brain controls everything through the nervous system.",
+          "key_facts": ["The human body has 206 bones", "The heart beats about 100,000 times a day", "The skin is the body's largest organ", "The brain uses 20% of the body's energy", "Adults have about 5 litres of blood"],
+          "vocabulary": [{"word":"organ","def":"a body part with a specific function"},{"word":"circulatory system","def":"the heart and blood vessels that circulate blood"},{"word":"skeletal system","def":"the framework of bones that supports the body"}],
+          "fun_activity": "Feel your pulse at your wrist. Count the beats for 15 seconds and multiply by 4 to find your heart rate!"
+        },
+        {
+          "id": "matter",
+          "title": "States of Matter",
+          "ageGroup": "9-12",
+          "emoji": "⚗️",
+          "intro": "Matter is everything that has mass and takes up space. It exists in three main states: solid, liquid, and gas.",
+          "content": "Solids have a fixed shape and volume. Liquids have a fixed volume but take the shape of their container. Gases have no fixed shape or volume. Matter can change state when heated or cooled — ice melts into water, water evaporates into steam.",
+          "key_facts": ["All matter is made of tiny particles called atoms", "Solid particles are tightly packed", "Liquid particles flow freely", "Gas particles spread out to fill any container", "Temperature changes can cause state changes"],
+          "vocabulary": [{"word":"matter","def":"anything that has mass and takes up space"},{"word":"atom","def":"the smallest unit of an element"},{"word":"evaporation","def":"when a liquid turns into a gas"}],
+          "fun_activity": "Fill an ice cube tray with water and freeze it. Watch solid, liquid, and gas in action!"
+        },
+        {
+          "id": "space",
+          "title": "Our Solar System",
+          "ageGroup": "9-12",
+          "emoji": "🪐",
+          "intro": "Our solar system has the Sun at its centre, with 8 planets orbiting around it. It is part of the Milky Way galaxy.",
+          "content": "The 8 planets in order from the Sun are: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune. Earth is the only planet known to have life. Jupiter is the largest planet. Saturn has stunning rings made of ice and rock.",
+          "key_facts": ["The Sun is a star — a giant ball of hot gas", "Earth is the third planet from the Sun", "A light year is the distance light travels in one year", "Jupiter has 95 known moons", "It takes Earth 365.25 days to orbit the Sun"],
+          "vocabulary": [{"word":"orbit","def":"the path one object takes around another"},{"word":"planet","def":"a large round object orbiting a star"},{"word":"galaxy","def":"a huge collection of stars, gas, and dust"}],
+          "fun_activity": "Make a model solar system using different-sized balls to represent the planets!"
+        },
+        {
+          "id": "forces",
+          "title": "Forces and Motion",
+          "ageGroup": "9-12",
+          "emoji": "⚡",
+          "intro": "A force is a push or a pull. Forces cause objects to move, stop, or change direction.",
+          "content": "Gravity pulls objects towards Earth. Friction slows things down when surfaces rub together. Magnetism attracts iron objects. Newton's three laws of motion explain how forces and movement work. Forces are measured in Newtons (N).",
+          "key_facts": ["Gravity pulls everything towards Earth", "Friction produces heat", "Equal and opposite forces cancel out", "A larger force causes greater acceleration", "Forces can be balanced or unbalanced"],
+          "vocabulary": [{"word":"force","def":"a push or pull acting on an object"},{"word":"gravity","def":"the force that pulls objects toward each other"},{"word":"friction","def":"the force that opposes motion between surfaces"}],
+          "fun_activity": "Race two toy cars down a ramp — one on carpet, one on a smooth floor. Which goes further and why?"
+        },
+        {
+          "id": "chemistry",
+          "title": "Introduction to Chemistry",
+          "ageGroup": "13-15",
+          "emoji": "🧪",
+          "intro": "Chemistry is the study of matter, its properties, and how it changes. Everything is made of chemical elements.",
+          "content": "The periodic table lists all 118 known elements. Elements combine to form compounds. Chemical reactions create new substances with different properties. Acids and bases are important types of chemical substances we encounter every day.",
+          "key_facts": ["There are 118 known elements in the periodic table", "Water is a compound of hydrogen and oxygen (H₂O)", "Acids have a pH below 7; bases above 7", "Atoms combine by sharing or transferring electrons", "Energy is always conserved in chemical reactions"],
+          "vocabulary": [{"word":"element","def":"a pure substance made of one type of atom"},{"word":"compound","def":"two or more elements chemically joined"},{"word":"reaction","def":"a process where substances are transformed into new ones"}],
+          "fun_activity": "Mix baking soda (base) and vinegar (acid) and observe the chemical reaction!"
+        }
+      ]
+    },
+    {
+      "id": "english",
+      "name": "English",
+      "emoji": "📚",
+      "color": "#FF6B6B",
+      "desc": "Reading, writing, grammar and communication",
+      "ageGroups": ["3-5","6-8","9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "letters",
+          "title": "The Alphabet",
+          "ageGroup": "3-5",
+          "emoji": "🔤",
+          "intro": "The English alphabet has 26 letters. Learning these letters is the first step to reading and writing.",
+          "content": "There are 26 letters: A to Z. Each letter has an uppercase (big) and lowercase (small) form. Letters make sounds and sounds make words. Vowels are A, E, I, O, U — they make open sounds. All other letters are consonants.",
+          "key_facts": ["There are 26 letters in the alphabet", "Vowels are A, E, I, O, U", "Letters make sounds called phonemes", "Capital letters start sentences and names"],
+          "vocabulary": [{"word":"alphabet","def":"all the letters of a language in order"},{"word":"vowel","def":"the letters A, E, I, O, U"},{"word":"consonant","def":"any letter that is not a vowel"}],
+          "fun_activity": "Sing the ABC song and point to each letter as you say it!"
+        },
+        {
+          "id": "phonics",
+          "title": "Phonics — Sound It Out",
+          "ageGroup": "6-8",
+          "emoji": "🔊",
+          "intro": "Phonics teaches us to match sounds to letters. It helps us read and spell new words.",
+          "content": "Every letter or group of letters makes a sound. 'C' makes a hard sound in 'cat' and a soft sound in 'city'. Blends like 'bl', 'tr' combine two sounds. Digraphs like 'sh', 'ch', 'th' make one new sound together.",
+          "key_facts": ["Blending sounds helps us read words", "Silent letters don't make a sound (like 'k' in 'knight')", "Digraphs are two letters making one sound", "Long vowel sounds say the letter name"],
+          "vocabulary": [{"word":"phonics","def":"learning to connect letters to sounds"},{"word":"blend","def":"two consonants sounded together"},{"word":"digraph","def":"two letters that make one sound"}],
+          "fun_activity": "Try sounding out these words: 'ship', 'thin', 'blend'. Can you hear the special sounds?"
+        },
+        {
+          "id": "grammar",
+          "title": "Grammar Basics",
+          "ageGroup": "9-12",
+          "emoji": "✏️",
+          "intro": "Grammar is the set of rules that helps us use language correctly and clearly.",
+          "content": "Every sentence needs a subject (who or what) and a predicate (what they do). Nouns name people, places, and things. Verbs show actions. Adjectives describe nouns. Adverbs modify verbs. Pronouns replace nouns to avoid repetition.",
+          "key_facts": ["A sentence must have a subject and a verb", "Nouns name things; verbs show actions", "Adjectives describe nouns; adverbs describe verbs", "A proper noun names a specific person, place, or thing"],
+          "vocabulary": [{"word":"noun","def":"a word that names a person, place, or thing"},{"word":"verb","def":"a word that shows an action or state"},{"word":"adjective","def":"a word that describes a noun"}],
+          "fun_activity": "Write 5 sentences about your day. Underline the nouns in blue and verbs in red!"
+        },
+        {
+          "id": "creative-writing",
+          "title": "Creative Writing",
+          "ageGroup": "9-12",
+          "emoji": "🖊️",
+          "intro": "Creative writing lets you express your ideas and imagination through stories, poems, and more.",
+          "content": "Good stories have a beginning (introduction), middle (problem/adventure), and end (resolution). Strong writing uses vivid descriptions, interesting characters, and varied sentence lengths. Show, don't tell — instead of saying 'he was scared', describe shaking hands and a pounding heart.",
+          "key_facts": ["Stories need a beginning, middle, and end", "Characters drive the story forward", "Show emotions through actions, not just telling", "Use the five senses to make writing vivid"],
+          "vocabulary": [{"word":"narrative","def":"a story or account of events"},{"word":"protagonist","def":"the main character in a story"},{"word":"climax","def":"the most exciting turning point of a story"}],
+          "fun_activity": "Write a short story (100 words) about discovering a hidden door in your school!"
+        },
+        {
+          "id": "comprehension",
+          "title": "Reading Comprehension",
+          "ageGroup": "9-12",
+          "emoji": "📖",
+          "intro": "Comprehension means understanding what you read. Good readers think actively while reading.",
+          "content": "Before reading, preview the text. While reading, ask questions: What is the main idea? Who are the characters? Why did this happen? After reading, summarise and reflect. Good comprehension skills help with every subject in school.",
+          "key_facts": ["The main idea is the most important point", "Inference means using clues to understand unstated ideas", "Summarising means retelling key points briefly", "Context clues help us understand new vocabulary"],
+          "vocabulary": [{"word":"comprehension","def":"understanding the meaning of what you read"},{"word":"inference","def":"a conclusion drawn from evidence"},{"word":"main idea","def":"the most important point in a text"}],
+          "fun_activity": "Read a short newspaper article and write three questions about it. Give them to a friend to answer!"
+        },
+        {
+          "id": "public-speaking",
+          "title": "Public Speaking",
+          "ageGroup": "13-15",
+          "emoji": "🎤",
+          "intro": "Public speaking is the skill of presenting ideas clearly and confidently to an audience. It is one of the most valuable life skills.",
+          "content": "Great speakers prepare well, maintain eye contact, use clear and varied voice, and organise their message with a strong opening, body, and conclusion. Managing nerves is natural — deep breathing and practice both help tremendously.",
+          "key_facts": ["Eye contact builds connection with your audience", "Pausing for effect is a powerful tool", "Preparation reduces nervousness significantly", "Body language communicates as much as words"],
+          "vocabulary": [{"word":"rhetoric","def":"the art of effective speaking or writing"},{"word":"enunciation","def":"the clear pronunciation of words"},{"word":"poise","def":"calm confidence in bearing and manner"}],
+          "fun_activity": "Prepare a 2-minute speech on your favourite hobby and deliver it to your family!"
+        }
+      ]
+    },
+    {
+      "id": "history",
+      "name": "History",
+      "emoji": "🏛️",
+      "color": "#FF9800",
+      "desc": "Explore the stories of people and events that shaped our world",
+      "ageGroups": ["6-8","9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "ancient-civilizations",
+          "title": "Ancient Civilizations",
+          "ageGroup": "9-12",
+          "emoji": "🏺",
+          "intro": "Ancient civilizations were the first great human societies. They built cities, invented writing, and created laws.",
+          "content": "The earliest civilizations appeared around rivers: Mesopotamia (Tigris & Euphrates), Egypt (Nile), Indus Valley (Indus), and China (Yellow River). They developed writing, mathematics, agriculture, and complex governments that influence us today.",
+          "key_facts": ["Mesopotamia is often called the 'Cradle of Civilization'", "Ancient Egyptians built the pyramids around 2560 BCE", "The Indus Valley had advanced sewage systems", "The ancient Greeks gave us democracy and philosophy"],
+          "vocabulary": [{"word":"civilization","def":"a complex society with cities, government, and culture"},{"word":"archaeology","def":"the study of human history through physical remains"},{"word":"dynasty","def":"a series of rulers from the same family"}],
+          "fun_activity": "Draw a timeline showing the major ancient civilizations and when they thrived!"
+        },
+        {
+          "id": "world-wars",
+          "title": "The World Wars",
+          "ageGroup": "13-15",
+          "emoji": "🕊️",
+          "intro": "The two World Wars were the deadliest conflicts in human history, reshaping nations, borders, and international relations.",
+          "content": "World War I (1914–1918) began after the assassination of Archduke Franz Ferdinand and involved trench warfare across Europe. World War II (1939–1945) began with Germany's invasion of Poland under Hitler. Both wars led to enormous loss of life and significant geopolitical changes.",
+          "key_facts": ["WWI lasted 4 years and killed over 17 million people", "WWII involved 30+ nations and over 70 million deaths", "The Holocaust was the genocide of 6 million Jewish people", "The United Nations was formed after WWII to maintain peace"],
+          "vocabulary": [{"word":"armistice","def":"an agreement to stop fighting"},{"word":"genocide","def":"deliberate killing of a large group of people"},{"word":"treaty","def":"a formal agreement between countries"}],
+          "fun_activity": "Research a person who showed great courage during the World Wars and write a short biography."
+        },
+        {
+          "id": "independence-movements",
+          "title": "Independence Movements",
+          "ageGroup": "13-15",
+          "emoji": "🏳️",
+          "intro": "Many countries gained independence from colonial powers during the 18th, 19th, and 20th centuries through struggle, negotiation, and sacrifice.",
+          "content": "India gained independence from Britain in 1947 through a largely non-violent movement led by Mahatma Gandhi. The American Revolution (1775–1783) created the first modern democracy. African nations gained independence mostly in the 1950s-60s in a period called 'The Wind of Change'.",
+          "key_facts": ["India gained independence on 15 August 1947", "The USA declared independence on 4 July 1776", "Nelson Mandela led South Africa's anti-apartheid struggle", "Over 50 African countries gained independence after 1950"],
+          "vocabulary": [{"word":"independence","def":"freedom from control by another country"},{"word":"colonialism","def":"when one country controls another"},{"word":"non-violent resistance","def":"protesting without using violence"}],
+          "fun_activity": "Pick one independence movement and create a poster showing its key leader and date of independence."
+        }
+      ]
+    },
+    {
+      "id": "geography",
+      "name": "Geography",
+      "emoji": "🌍",
+      "color": "#4CAF50",
+      "desc": "Explore countries, continents, and our amazing planet",
+      "ageGroups": ["6-8","9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "continents",
+          "title": "The 7 Continents",
+          "ageGroup": "6-8",
+          "emoji": "🗺️",
+          "intro": "Earth is divided into seven large land masses called continents. Each continent has unique cultures, animals, and landscapes.",
+          "content": "The seven continents are: Asia (largest), Africa (second largest), North America, South America, Antarctica (coldest), Europe, and Australia/Oceania (smallest). Over half the world's population lives in Asia. Antarctica has no permanent human residents.",
+          "key_facts": ["Asia is the largest continent by area and population", "Africa has the most countries of any continent (54)", "Antarctica is the coldest, windiest, and driest continent", "Australia is the only country that is also a continent"],
+          "vocabulary": [{"word":"continent","def":"one of the seven large land masses on Earth"},{"word":"equator","def":"an imaginary line around the middle of the Earth"},{"word":"hemisphere","def":"half of the Earth, divided by the equator or prime meridian"}],
+          "fun_activity": "Draw a world map from memory and fill in all 7 continents!"
+        },
+        {
+          "id": "climate",
+          "title": "Climate and Weather",
+          "ageGroup": "9-12",
+          "emoji": "🌤️",
+          "intro": "Climate is the long-term pattern of weather in a region. Weather changes daily, but climate changes over many years.",
+          "content": "Earth has different climate zones: tropical (hot and wet near the equator), desert (dry), temperate (mild seasons), and polar (very cold). Climate is affected by latitude, altitude, distance from the sea, and ocean currents. Climate change is causing temperatures to rise globally.",
+          "key_facts": ["The tropics receive the most direct sunlight", "Deserts get less than 250mm of rainfall per year", "Ocean currents moderate coastal climates", "The Arctic is warming three times faster than the global average"],
+          "vocabulary": [{"word":"climate","def":"the long-term average weather pattern of a region"},{"word":"precipitation","def":"any form of water falling from the sky"},{"word":"latitude","def":"the distance north or south of the equator"}],
+          "fun_activity": "Record the temperature and weather each day for two weeks. Can you see a pattern?"
+        },
+        {
+          "id": "countries",
+          "title": "Countries of the World",
+          "ageGroup": "9-12",
+          "emoji": "🌐",
+          "intro": "There are 195 countries in the world, each with its own culture, language, history, and geography.",
+          "content": "Countries are defined areas with their own government, laws, and borders. The world's largest country by area is Russia. The smallest is Vatican City. China and India each have over 1.4 billion people. Understanding different countries builds empathy and global awareness.",
+          "key_facts": ["There are 195 recognised countries in the world", "Russia is the largest country by area", "Vatican City is the smallest country in the world", "The United Nations has 193 member countries"],
+          "vocabulary": [{"word":"sovereign","def":"fully independent and self-governing"},{"word":"border","def":"a line that separates two countries or regions"},{"word":"capital","def":"the city where a country's government is based"}],
+          "fun_activity": "Pick 5 countries you'd like to visit and research one unique fact about each!"
+        }
+      ]
+    },
+    {
+      "id": "coding",
+      "name": "Coding & Technology",
+      "emoji": "💻",
+      "color": "#2196F3",
+      "desc": "Learn programming, algorithms and how technology works",
+      "ageGroups": ["9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "what-is-coding",
+          "title": "What is Coding?",
+          "ageGroup": "9-12",
+          "emoji": "🤖",
+          "intro": "Coding is giving instructions to a computer. Every app, game, and website was built by someone who knew how to code.",
+          "content": "A computer programme is a set of precise instructions. Coding languages like Python, JavaScript, and Scratch let us write these instructions. Computers follow instructions exactly — so we must be very precise. Coding skills are valuable in nearly every career today.",
+          "key_facts": ["There are over 700 programming languages", "The first computer programmer was Ada Lovelace in 1843", "Python is one of the most beginner-friendly languages", "About 26 million people worldwide work as software developers"],
+          "vocabulary": [{"word":"algorithm","def":"a set of step-by-step instructions to solve a problem"},{"word":"code","def":"instructions written in a programming language"},{"word":"debug","def":"to find and fix errors in a programme"}],
+          "fun_activity": "Try Scratch (scratch.mit.edu) and create a simple animation with a moving sprite!"
+        },
+        {
+          "id": "algorithms",
+          "title": "Algorithms",
+          "ageGroup": "9-12",
+          "emoji": "📋",
+          "intro": "An algorithm is a step-by-step set of instructions to solve a problem. We use algorithms every day without realising it.",
+          "content": "Making a sandwich is an algorithm: get bread, add filling, close sandwich, eat. Computer algorithms must be precise with no ambiguity. Algorithms can sort lists, search for data, and solve complex mathematical problems. The best algorithms are fast and efficient.",
+          "key_facts": ["Algorithms must be unambiguous and finite", "Sorting algorithms arrange data in order", "Search algorithms find specific items in data", "Good algorithms save time and computing power"],
+          "vocabulary": [{"word":"algorithm","def":"a precise set of instructions to solve a problem"},{"word":"input","def":"data that goes into an algorithm"},{"word":"output","def":"the result produced by an algorithm"}],
+          "fun_activity": "Write an algorithm (in plain English) for how to brush your teeth. Try to be as precise as possible!"
+        },
+        {
+          "id": "python-intro",
+          "title": "Python Basics",
+          "ageGroup": "13-15",
+          "emoji": "🐍",
+          "intro": "Python is one of the world's most popular programming languages. Its simple, readable syntax makes it perfect for beginners.",
+          "content": "Python code is written in plain English-like instructions. Variables store data, if/else statements make decisions, and loops repeat code. Python is used in web development, data science, artificial intelligence, and automation. 'Hello, World!' is traditionally the first programme you write.",
+          "key_facts": ["Python was created by Guido van Rossum in 1991", "Python uses indentation (spaces) to structure code", "print() displays output on screen", "Python is used by companies like Google, Netflix, and NASA"],
+          "vocabulary": [{"word":"variable","def":"a named container that stores a value"},{"word":"syntax","def":"the rules for writing valid code"},{"word":"loop","def":"code that repeats a block of instructions"}],
+          "fun_activity": "Write: print('Hello, ' + 'World!') in Python and run it. What does it output?"
+        }
+      ]
+    },
+    {
+      "id": "art",
+      "name": "Art & Creativity",
+      "emoji": "🎨",
+      "color": "#E91E63",
+      "desc": "Express yourself through drawing, painting, and design",
+      "ageGroups": ["3-5","6-8","9-12","13-15"],
+      "topics": [
+        {
+          "id": "colors",
+          "title": "Colour Theory",
+          "ageGroup": "6-8",
+          "emoji": "🌈",
+          "intro": "Colours can be mixed to create new colours. Understanding colour helps artists make beautiful and expressive artwork.",
+          "content": "Primary colours (red, blue, yellow) cannot be made by mixing other colours. Mix two primaries to get secondary colours: red + blue = purple, blue + yellow = green, red + yellow = orange. Warm colours (red, orange, yellow) feel energetic; cool colours (blue, green, purple) feel calm.",
+          "key_facts": ["There are 3 primary colours: red, blue, yellow", "Secondary colours are made by mixing two primaries", "Complementary colours are opposite on the colour wheel", "Black absorbs all light; white reflects all light"],
+          "vocabulary": [{"word":"primary colour","def":"red, blue, or yellow — cannot be made by mixing"},{"word":"secondary colour","def":"made by mixing two primary colours"},{"word":"hue","def":"another word for a specific colour"}],
+          "fun_activity": "Use paint or food colouring to mix the three primary colours and see what secondary colours you get!"
+        },
+        {
+          "id": "drawing",
+          "title": "Drawing Fundamentals",
+          "ageGroup": "9-12",
+          "emoji": "✏️",
+          "intro": "Drawing is a skill anyone can learn with practice. Good drawing starts with observing shapes, light, and shadow.",
+          "content": "Everything we see can be broken down into basic shapes: circles, squares, triangles, and cylinders. Shading adds depth — light sources create highlights, and the opposite side is in shadow. Perspective makes objects look 3D by showing how parallel lines meet at a vanishing point.",
+          "key_facts": ["Drawing is 90% observation and 10% technique", "Shading creates the illusion of 3D form", "Perspective shows depth on a flat surface", "Regular practice dramatically improves drawing skills"],
+          "vocabulary": [{"word":"perspective","def":"the technique of showing depth on a flat surface"},{"word":"shading","def":"using dark and light areas to show form"},{"word":"composition","def":"how elements are arranged in an artwork"}],
+          "fun_activity": "Draw a cup on your desk. Try to capture the shading — where is it lightest and darkest?"
+        }
+      ]
+    },
+    {
+      "id": "music",
+      "name": "Music",
+      "emoji": "🎵",
+      "color": "#9C27B0",
+      "desc": "Rhythm, melody, instruments and musical expression",
+      "ageGroups": ["3-5","6-8","9-12","13-15"],
+      "topics": [
+        {
+          "id": "rhythm",
+          "title": "Rhythm and Beat",
+          "ageGroup": "6-8",
+          "emoji": "🥁",
+          "intro": "Rhythm is the pattern of long and short sounds in music. The beat is the steady pulse you feel.",
+          "content": "When you tap your foot to music, you are feeling the beat. Rhythm is how notes are arranged in time. Fast rhythms feel exciting; slow rhythms feel calm or sad. Clapping, stomping, and drumming all create rhythm. Every culture in the world has its own rich rhythmic traditions.",
+          "key_facts": ["The beat is the steady pulse in music", "Tempo means the speed of the beat", "Time signatures show how beats are grouped", "Syncopation places emphasis on unexpected beats"],
+          "vocabulary": [{"word":"beat","def":"the steady pulse underlying music"},{"word":"tempo","def":"the speed of music in beats per minute"},{"word":"rhythm","def":"the pattern of long and short sounds in music"}],
+          "fun_activity": "Clap along to your favourite song. Can you feel the steady beat underneath the melody?"
+        },
+        {
+          "id": "instruments",
+          "title": "Musical Instruments",
+          "ageGroup": "6-8",
+          "emoji": "🎸",
+          "intro": "Musical instruments come in many families, each creating sound in a different way.",
+          "content": "String instruments (violin, guitar) make sound by vibrating strings. Wind instruments (flute, trumpet) use vibrating air. Percussion instruments (drums, xylophone) are struck to make sound. Keyboard instruments (piano, organ) can be strings or electronic. Each family has a unique timbre.",
+          "key_facts": ["There are 4 main instrument families: strings, wind, percussion, keyboard", "The piano has 88 keys", "A violin has 4 strings tuned G, D, A, E", "The human voice is also a musical instrument"],
+          "vocabulary": [{"word":"timbre","def":"the unique tone quality that distinguishes one instrument from another"},{"word":"percussion","def":"instruments played by striking"},{"word":"strings","def":"instruments that make sound by vibrating strings"}],
+          "fun_activity": "Use rubber bands stretched across a box to make a simple string instrument!"
+        }
+      ]
+    },
+    {
+      "id": "civics",
+      "name": "Civics & Society",
+      "emoji": "🏛️",
+      "color": "#FF5722",
+      "desc": "How government, rights, and society work",
+      "ageGroups": ["6-8","9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "democracy",
+          "title": "Democracy and Voting",
+          "ageGroup": "9-12",
+          "emoji": "🗳️",
+          "intro": "Democracy means 'rule by the people'. Citizens elect representatives who make laws on their behalf.",
+          "content": "In a democracy, everyone's vote counts equally. Free and fair elections, freedom of speech, and an independent justice system are the foundations. Democracies can be direct (citizens vote on every issue) or representative (citizens elect people to vote for them). Today over 50% of the world's population lives in a democracy.",
+          "key_facts": ["Democracy comes from the Greek words 'demos' (people) and 'kratos' (power)", "Ancient Athens was the first democracy (around 500 BCE)", "The Universal Declaration of Human Rights was adopted in 1948", "Voting age in most countries is 18"],
+          "vocabulary": [{"word":"democracy","def":"a system where citizens choose their government"},{"word":"election","def":"a formal process of choosing representatives by voting"},{"word":"constitution","def":"the fundamental law of a country"}],
+          "fun_activity": "Hold a class vote on your next activity. Discuss how the process was fair and equal!"
+        },
+        {
+          "id": "rights-duties",
+          "title": "Rights and Responsibilities",
+          "ageGroup": "9-12",
+          "emoji": "⚖️",
+          "intro": "Every citizen has rights that protect them and responsibilities that they must fulfil towards their community.",
+          "content": "Rights include freedom of speech, education, and equal treatment under the law. Responsibilities include obeying laws, paying taxes, and respecting others. Rights and responsibilities are two sides of the same coin — having rights means accepting duties too.",
+          "key_facts": ["Human rights apply to all people regardless of race, gender, or nationality", "Freedom of speech has limits — you cannot incite harm", "Education is a right for all children under the UN Convention on the Rights of the Child", "Responsibilities include jury duty, taxation, and obeying laws"],
+          "vocabulary": [{"word":"rights","def":"entitlements that protect individuals from abuse"},{"word":"responsibility","def":"a duty or obligation to society"},{"word":"civil rights","def":"rights protecting citizens' freedoms from government"}],
+          "fun_activity": "Make a two-column poster: 'My Rights' on one side and 'My Responsibilities' on the other."
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "name": "Health & Wellbeing",
+      "emoji": "🏃",
+      "color": "#F44336",
+      "desc": "Physical and mental health for a happy, active life",
+      "ageGroups": ["3-5","6-8","9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "nutrition",
+          "title": "Healthy Eating",
+          "ageGroup": "6-8",
+          "emoji": "🥦",
+          "intro": "Eating a balanced diet gives your body and brain the energy and nutrients they need to grow and function.",
+          "content": "Our bodies need carbohydrates for energy, protein for growth and repair, fats for brain health, and vitamins and minerals for all our body processes. A balanced plate includes vegetables, fruit, grains, protein foods, and dairy. Drinking water is essential — our bodies are 60% water.",
+          "key_facts": ["Fruits and vegetables should fill half your plate", "Protein builds and repairs muscles", "The brain needs healthy fats to function well", "Processed foods are high in sugar, salt, and unhealthy fats"],
+          "vocabulary": [{"word":"nutrition","def":"the process of providing nutrients for health and growth"},{"word":"protein","def":"a nutrient that builds and repairs body tissue"},{"word":"carbohydrate","def":"a nutrient that provides energy"}],
+          "fun_activity": "Look at your lunch today. Can you name which food groups are on your plate?"
+        },
+        {
+          "id": "mental-health",
+          "title": "Mental Health and Wellbeing",
+          "ageGroup": "13-15",
+          "emoji": "🧠",
+          "intro": "Mental health is just as important as physical health. Understanding your emotions helps you live a happier, more resilient life.",
+          "content": "Mental health includes our emotional, psychological, and social wellbeing. Stress, anxiety, and sadness are normal emotions. Healthy coping strategies include exercise, talking to trusted people, creative activities, and mindfulness. It is important to seek help when you are struggling — mental health conditions are treatable.",
+          "key_facts": ["1 in 5 teenagers experiences a mental health challenge", "Exercise releases endorphins that improve mood", "Sleep is crucial for mental health — teenagers need 8-10 hours", "Talking about feelings reduces stress significantly"],
+          "vocabulary": [{"word":"mental health","def":"our emotional and psychological wellbeing"},{"word":"mindfulness","def":"paying attention to the present moment calmly"},{"word":"resilience","def":"the ability to recover from difficulties"}],
+          "fun_activity": "Try a 5-minute breathing exercise: breathe in for 4 counts, hold for 4, breathe out for 6. How do you feel?"
+        }
+      ]
+    },
+    {
+      "id": "environment",
+      "name": "Environment",
+      "emoji": "♻️",
+      "color": "#66BB6A",
+      "desc": "Ecosystems, climate change, and protecting our planet",
+      "ageGroups": ["6-8","9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "climate-change",
+          "title": "Climate Change",
+          "ageGroup": "9-12",
+          "emoji": "🌡️",
+          "intro": "Climate change refers to long-term shifts in global temperatures and weather patterns, largely caused by human activities since the industrial revolution.",
+          "content": "Burning fossil fuels (coal, oil, gas) releases greenhouse gases like CO₂ into the atmosphere. These gases trap heat, causing global temperatures to rise. Effects include rising sea levels, more extreme weather, melting ice caps, and threats to biodiversity. Switching to renewable energy, reducing consumption, and protecting forests can help.",
+          "key_facts": ["Earth's temperature has risen ~1.1°C since the pre-industrial era", "CO₂ levels are the highest in 800,000 years", "Arctic ice is melting 4 times faster than average", "Renewable energy is now cheaper than fossil fuels in most countries"],
+          "vocabulary": [{"word":"greenhouse gas","def":"a gas that traps heat in the Earth's atmosphere"},{"word":"renewable energy","def":"energy from naturally replenished sources like sun and wind"},{"word":"carbon footprint","def":"the total CO₂ emitted by a person or organisation"}],
+          "fun_activity": "Calculate your carbon footprint using an online calculator and identify one change you can make!"
+        },
+        {
+          "id": "ecosystems",
+          "title": "Ecosystems and Biodiversity",
+          "ageGroup": "9-12",
+          "emoji": "🌿",
+          "intro": "An ecosystem is a community of living organisms interacting with each other and their environment.",
+          "content": "Every ecosystem has producers (plants), consumers (animals), and decomposers (fungi, bacteria). Food chains show how energy flows through an ecosystem. Biodiversity — the variety of life — makes ecosystems more resilient. Human activities like deforestation and pollution are causing species to go extinct at alarming rates.",
+          "key_facts": ["Over 8 million species of life exist on Earth", "Rainforests contain 50% of the world's species but cover only 6% of land", "Bees pollinate 70% of the crops that feed humanity", "One species goes extinct every 20 minutes due to human activity"],
+          "vocabulary": [{"word":"ecosystem","def":"a community of organisms and their environment"},{"word":"biodiversity","def":"the variety of life in an area"},{"word":"food chain","def":"a sequence showing how energy passes between organisms"}],
+          "fun_activity": "Draw a food chain from your local area showing a plant, herbivore, and predator!"
+        }
+      ]
+    },
+    {
+      "id": "ai-basics",
+      "name": "AI & Future Tech",
+      "emoji": "🤖",
+      "color": "#00BCD4",
+      "desc": "Understand artificial intelligence and the future of technology",
+      "ageGroups": ["9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "what-is-ai",
+          "title": "What is Artificial Intelligence?",
+          "ageGroup": "9-12",
+          "emoji": "🤖",
+          "intro": "Artificial Intelligence (AI) is technology that allows computers to perform tasks that normally require human intelligence.",
+          "content": "AI can recognise faces, translate languages, recommend videos, and even drive cars. Machine learning lets computers learn from data rather than being explicitly programmed for every task. AI systems are already part of your daily life — from voice assistants to spam filters.",
+          "key_facts": ["AI was first coined as a term in 1956 by John McCarthy", "Machine learning is a type of AI that learns from data", "Deep learning uses artificial neural networks", "AI is already used in healthcare, education, and transport"],
+          "vocabulary": [{"word":"artificial intelligence","def":"machines that simulate human intelligence"},{"word":"machine learning","def":"AI that improves through experience with data"},{"word":"algorithm","def":"a set of rules a computer follows to solve a problem"}],
+          "fun_activity": "Ask a voice assistant (Siri, Google Assistant, Alexa) five questions and observe what it gets right and wrong!"
+        },
+        {
+          "id": "ai-ethics",
+          "title": "AI Ethics and Responsibility",
+          "ageGroup": "13-15",
+          "emoji": "⚖️",
+          "intro": "As AI becomes more powerful, we must think carefully about how it affects fairness, privacy, and human jobs.",
+          "content": "AI systems can be biased if trained on biased data. Facial recognition systems have shown higher error rates for darker skin tones. AI raises questions about privacy (data collection), autonomy (decisions made by machines), and employment (automation of jobs). Responsible AI requires transparency, fairness, and human oversight.",
+          "key_facts": ["AI bias occurs when training data reflects historical inequalities", "Deepfakes use AI to create realistic fake videos", "The EU has proposed an AI Act to regulate high-risk AI systems", "Explainable AI means being able to understand how a decision was made"],
+          "vocabulary": [{"word":"bias","def":"unfair prejudice in data or decisions"},{"word":"privacy","def":"the right to control your personal information"},{"word":"transparency","def":"being open about how AI systems work and decide"}],
+          "fun_activity": "Research one AI ethics story in the news and write a paragraph on what should be done differently."
+        }
+      ]
+    },
+    {
+      "id": "life-skills",
+      "name": "Life Skills",
+      "emoji": "💡",
+      "color": "#4CAF50",
+      "desc": "Essential skills for success in school and life",
+      "ageGroups": ["9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "time-management",
+          "title": "Time Management",
+          "ageGroup": "9-12",
+          "emoji": "⏰",
+          "intro": "Time management means using your time wisely so you can achieve your goals while also enjoying yourself.",
+          "content": "Good time management starts with making a plan. List tasks, estimate how long each takes, then schedule them. Break big tasks into smaller steps. The Pomodoro technique (25 minutes focused work, 5 minute break) helps maintain concentration. Avoiding procrastination reduces stress enormously.",
+          "key_facts": ["Planning reduces stress and improves performance", "Prioritise tasks by importance and urgency", "The Pomodoro technique uses 25-minute focus blocks", "Multitasking reduces efficiency — focus on one task at a time"],
+          "vocabulary": [{"word":"procrastination","def":"delaying tasks you should do now"},{"word":"prioritise","def":"to rank tasks by importance"},{"word":"productivity","def":"efficiently completing tasks that matter"}],
+          "fun_activity": "Plan tomorrow's tasks using a priority list: must do, should do, could do. Follow your plan and see how it feels!"
+        },
+        {
+          "id": "financial-literacy",
+          "title": "Financial Literacy",
+          "ageGroup": "13-15",
+          "emoji": "💰",
+          "intro": "Understanding money — how to earn, save, budget, and invest — is one of the most important life skills you can develop.",
+          "content": "A budget tracks income and expenses so you spend less than you earn. Saving money regularly builds financial security. Interest is money a bank pays you for saving, or money you pay when borrowing. Understanding compound interest shows why starting to save early is so powerful.",
+          "key_facts": ["Saving 10% of income is a recommended starting point", "Compound interest means earning interest on your interest", "A budget helps you spend with intention", "Credit card debt has high interest rates that grow quickly"],
+          "vocabulary": [{"word":"budget","def":"a plan for how to spend and save money"},{"word":"interest","def":"money paid for the use of borrowed money"},{"word":"compound interest","def":"interest calculated on the initial amount plus accumulated interest"}],
+          "fun_activity": "Set up a simple budget for your pocket money: split it into 'spend now', 'save', and 'give'. Try it for a month!"
+        }
+      ]
+    },
+    {
+      "id": "hindi",
+      "name": "Hindi",
+      "emoji": "🪷",
+      "color": "#FF9800",
+      "desc": "Learn Hindi — the most widely spoken language in India",
+      "ageGroups": ["3-5","6-8","9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "hindi-alphabet",
+          "title": "Hindi Alphabet (Devanagari)",
+          "ageGroup": "6-8",
+          "emoji": "अ",
+          "intro": "Hindi is written in the Devanagari script. It has 46 primary characters — 13 vowels and 33 consonants.",
+          "content": "The Hindi alphabet begins with vowels: अ (a), आ (aa), इ (i), ई (ee), उ (u), ऊ (oo)… Consonants include: क (ka), ख (kha), ग (ga)... Each character represents a syllable, making Hindi a syllabic script. Writing flows from left to right with a horizontal line on top.",
+          "key_facts": ["Hindi has 46 primary characters", "Devanagari script is used for Hindi, Sanskrit, and Marathi", "Hindi is spoken by over 600 million people", "Each consonant inherently contains the vowel 'a'"],
+          "vocabulary": [{"word":"अ (a)","def":"the first vowel in Hindi"},{"word":"नमस्ते","def":"Hello / Greetings (Namaste)"},{"word":"धन्यवाद","def":"Thank you (Dhanyavaad)"}],
+          "fun_activity": "Write the five vowels अ, आ, इ, ई, उ three times each and practise their pronunciation!"
+        },
+        {
+          "id": "hindi-numbers",
+          "title": "Hindi Numbers",
+          "ageGroup": "6-8",
+          "emoji": "🔢",
+          "intro": "Learning numbers in Hindi is important for daily conversation and counting.",
+          "content": "Hindi numbers: एक (1-ek), दो (2-do), तीन (3-teen), चार (4-char), पांच (5-paanch), छह (6-chhah), सात (7-saat), आठ (8-aath), नौ (9-nau), दस (10-das). Hindi numbers have their own numerals too: १ २ ३ ४ ५ ६ ७ ८ ९ १०",
+          "key_facts": ["Hindi has its own numeral system", "Most Indians also use Arabic numerals (1,2,3...)", "Numbers 1-100 mostly follow patterns after 20", "100 in Hindi is सौ (sau)"],
+          "vocabulary": [{"word":"एक (ek)","def":"One"},{"word":"दस (das)","def":"Ten"},{"word":"सौ (sau)","def":"One hundred"}],
+          "fun_activity": "Count from 1 to 10 in Hindi out loud: एक, दो, तीन, चार, पांच, छह, सात, आठ, नौ, दस!"
+        }
+      ]
+    },
+    {
+      "id": "tamil",
+      "name": "Tamil",
+      "emoji": "🌴",
+      "color": "#E91E63",
+      "desc": "Learn Tamil — one of the world's oldest classical languages",
+      "ageGroups": ["3-5","6-8","9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "tamil-alphabet",
+          "title": "Tamil Alphabet",
+          "ageGroup": "6-8",
+          "emoji": "அ",
+          "intro": "Tamil is one of the world's oldest languages with a 2,000-year-old literary tradition. It has a unique alphabet with 12 vowels and 18 consonants.",
+          "content": "Tamil vowels (uyir): அ, ஆ, இ, ஈ, உ, ஊ, எ, ஏ, ஐ, ஒ, ஓ, ஔ. Consonants (mei): க, ங, ச, ஞ, ட, ண, த, ந, ப, ம, ய, ர, ல, வ, ழ, ள, ற, ன. Combined characters are formed by joining vowels and consonants.",
+          "key_facts": ["Tamil is over 2,000 years old", "Tamil has 12 vowels and 18 consonants", "Tamil is spoken by 80+ million people worldwide", "It is the official language of Tamil Nadu (India) and Sri Lanka"],
+          "vocabulary": [{"word":"அ (a)","def":"the first vowel in Tamil"},{"word":"வணக்கம்","def":"Hello (Vanakkam)"},{"word":"நன்றி","def":"Thank you (Nandri)"}],
+          "fun_activity": "Learn to write the Tamil greeting வணக்கம் (Vanakkam). Practise it 5 times!"
+        }
+      ]
+    },
+    {
+      "id": "social-studies",
+      "name": "Social Studies (USA)",
+      "emoji": "🦅",
+      "color": "#3F51B5",
+      "desc": "American history, government, and culture",
+      "ageGroups": ["6-8","9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "us-history",
+          "title": "American History Overview",
+          "ageGroup": "9-12",
+          "emoji": "🇺🇸",
+          "intro": "The United States has a rich history from Native American civilizations through colonial rule, independence, civil war, and becoming a world superpower.",
+          "content": "Native Americans inhabited North America for thousands of years before European exploration. The 13 colonies declared independence from Britain in 1776. The Civil War (1861-65) ended slavery. The 20th century saw the USA become a leading world power through WWI, WWII, and the Cold War.",
+          "key_facts": ["America declared independence on July 4, 1776", "The Civil War lasted from 1861 to 1865", "The USA has had 46 Presidents", "The 13 original colonies became the first states"],
+          "vocabulary": [{"word":"colony","def":"a territory under the control of another country"},{"word":"constitution","def":"the supreme law of the United States"},{"word":"civil rights","def":"rights protecting equal treatment under the law"}],
+          "fun_activity": "Create a timeline of 10 major events in American history from 1776 to today!"
+        },
+        {
+          "id": "us-government",
+          "title": "How the US Government Works",
+          "ageGroup": "9-12",
+          "emoji": "🏛️",
+          "intro": "The US government is divided into three branches that balance and check each other's power.",
+          "content": "The Legislative branch (Congress) makes laws. The Executive branch (President) enforces laws. The Judicial branch (Supreme Court) interprets laws. This separation of powers prevents any one branch from becoming too powerful. The Bill of Rights protects fundamental freedoms.",
+          "key_facts": ["Congress has two houses: Senate and House of Representatives", "The President serves a 4-year term with a maximum of 2 terms", "The Supreme Court has 9 justices", "The First Amendment protects freedom of speech and religion"],
+          "vocabulary": [{"word":"Congress","def":"the legislative body of the US government"},{"word":"veto","def":"the President's power to reject legislation"},{"word":"amendment","def":"a change or addition to the Constitution"}],
+          "fun_activity": "List the three branches of government and one power of each. Then explain why separation of powers matters."
+        }
+      ]
+    },
+    {
+      "id": "indian-studies",
+      "name": "Indian Studies",
+      "emoji": "🕌",
+      "color": "#FF5722",
+      "desc": "Indian history, culture, values and achievements",
+      "ageGroups": ["6-8","9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "indian-history",
+          "title": "Indian History Overview",
+          "ageGroup": "9-12",
+          "emoji": "🏯",
+          "intro": "India has one of the world's oldest continuous civilizations, spanning over 5,000 years from the Indus Valley to today's modern democracy.",
+          "content": "The Indus Valley Civilization (3300–1300 BCE) was one of the world's first urban cultures. The Maurya Empire under Ashoka the Great unified much of the subcontinent. The Mughal Empire brought remarkable art and architecture. India achieved independence from British rule on 15 August 1947.",
+          "key_facts": ["The Indus Valley Civilization existed from ~3300 BCE", "Chess was invented in ancient India", "India became independent on 15 August 1947", "India is the world's largest democracy with 1.4 billion people"],
+          "vocabulary": [{"word":"subcontinent","def":"a large land mass that is part of a continent"},{"word":"empire","def":"a group of countries under one ruler"},{"word":"dynasty","def":"a series of rulers from the same family"}],
+          "fun_activity": "Draw a map of India and mark 5 historically important cities on it!"
+        },
+        {
+          "id": "freedom-movement",
+          "title": "India's Freedom Movement",
+          "ageGroup": "9-12",
+          "emoji": "🏳️",
+          "intro": "India's freedom struggle was one of the most inspiring peaceful independence movements in history, led by Mahatma Gandhi and many others.",
+          "content": "Britain colonised India from 1858. The Indian National Congress was formed in 1885 to demand self-rule. Gandhi's philosophy of Satyagraha (truth-force) and non-violent resistance united millions. Key events include the Non-Cooperation Movement (1920), Salt March (1930), and Quit India Movement (1942).",
+          "key_facts": ["Gandhi led the Salt March in 1930 to protest the salt tax", "The Indian National Congress was founded in 1885", "Bhagat Singh was a revolutionary freedom fighter", "India was partitioned into India and Pakistan in 1947"],
+          "vocabulary": [{"word":"satyagraha","def":"Gandhi's philosophy of non-violent resistance"},{"word":"independence","def":"freedom from foreign control"},{"word":"partition","def":"the division of British India into two countries"}],
+          "fun_activity": "Research one freedom fighter from your state and write 5 key facts about their contribution!"
+        }
+      ]
+    },
+    {
+      "id": "sports-pe",
+      "name": "Sports & PE",
+      "emoji": "⚽",
+      "color": "#009688",
+      "desc": "Fitness, sports, and the science of the body in motion",
+      "ageGroups": ["6-8","9-12","13-15","16-18"],
+      "topics": [
+        {
+          "id": "fitness",
+          "title": "Physical Fitness",
+          "ageGroup": "9-12",
+          "emoji": "💪",
+          "intro": "Physical fitness means your body's ability to perform daily activities with energy and without excessive fatigue.",
+          "content": "Fitness has five components: cardiovascular endurance (heart health), muscular strength, muscular endurance, flexibility, and body composition. Regular exercise — at least 60 minutes of moderate activity per day for children — improves physical health, mental wellbeing, academic performance, and sleep quality.",
+          "key_facts": ["Children should do 60 minutes of physical activity daily", "Cardiovascular exercise strengthens the heart", "Stretching improves flexibility and reduces injury", "Exercise releases endorphins that improve mood"],
+          "vocabulary": [{"word":"endurance","def":"the ability to sustain physical effort over time"},{"word":"flexibility","def":"the range of motion in a joint"},{"word":"cardiovascular","def":"relating to the heart and blood vessels"}],
+          "fun_activity": "Try a 7-minute workout: 30 seconds each of jumping jacks, push-ups, squats, and rest. How do you feel after?"
+        },
+        {
+          "id": "team-sports",
+          "title": "Team Sports and Sportsmanship",
+          "ageGroup": "9-12",
+          "emoji": "🏆",
+          "intro": "Team sports teach us cooperation, communication, strategy, and how to win and lose with grace.",
+          "content": "Popular team sports include football, basketball, cricket, volleyball, and hockey. Every team needs players who cooperate and communicate. Sportsmanship means playing fairly, respecting opponents, following rules, and maintaining dignity in both victory and defeat. Teamwork skills transfer directly to school and work.",
+          "key_facts": ["Cricket is the second most popular sport in the world", "The FIFA World Cup is watched by over 3 billion people", "Team sports improve social skills and mental health", "Fair play is as important as winning in sport"],
+          "vocabulary": [{"word":"sportsmanship","def":"fair, generous behaviour in sport"},{"word":"strategy","def":"a plan for achieving a goal in competition"},{"word":"cooperation","def":"working together towards a shared goal"}],
+          "fun_activity": "Organise a small team game with friends. Afterwards, discuss one thing your team did well and one to improve."
+        }
+      ]
+    }
+  ]
+}

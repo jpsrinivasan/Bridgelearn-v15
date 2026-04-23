@@ -1,0 +1,347 @@
+{
+  "badges": [
+    {
+      "id": "first_lesson",
+      "name": "First Steps",
+      "emoji": "👶",
+      "desc": "Complete your very first lesson",
+      "category": "learning",
+      "rarity": "common",
+      "xpReward": 50
+    },
+    {
+      "id": "lesson_streak_3",
+      "name": "On a Roll",
+      "emoji": "🔥",
+      "desc": "Complete lessons 3 days in a row",
+      "category": "learning",
+      "rarity": "common",
+      "xpReward": 100
+    },
+    {
+      "id": "lesson_streak_7",
+      "name": "Week Streak",
+      "emoji": "📅",
+      "desc": "Complete lessons 7 days in a row",
+      "category": "learning",
+      "rarity": "uncommon",
+      "xpReward": 250
+    },
+    {
+      "id": "speed_learner",
+      "name": "Speed Learner",
+      "emoji": "⚡",
+      "desc": "Complete a lesson in under 5 minutes",
+      "category": "learning",
+      "rarity": "uncommon",
+      "xpReward": 150
+    },
+    {
+      "id": "night_owl",
+      "name": "Night Owl",
+      "emoji": "🦉",
+      "desc": "Complete a lesson after 9 PM",
+      "category": "learning",
+      "rarity": "common",
+      "xpReward": 75
+    },
+    {
+      "id": "early_bird",
+      "name": "Early Bird",
+      "emoji": "🐦",
+      "desc": "Complete a lesson before 7 AM",
+      "category": "learning",
+      "rarity": "common",
+      "xpReward": 75
+    },
+    {
+      "id": "subject_master",
+      "name": "Subject Master",
+      "emoji": "🎓",
+      "desc": "Complete all lessons in a single subject",
+      "category": "learning",
+      "rarity": "rare",
+      "xpReward": 500
+    },
+    {
+      "id": "curious_mind",
+      "name": "Curious Mind",
+      "emoji": "🧠",
+      "desc": "Explore 5 different subjects",
+      "category": "learning",
+      "rarity": "uncommon",
+      "xpReward": 200
+    },
+    {
+      "id": "first_quiz",
+      "name": "Quiz Starter",
+      "emoji": "📝",
+      "desc": "Complete your very first quiz",
+      "category": "quiz",
+      "rarity": "common",
+      "xpReward": 50
+    },
+    {
+      "id": "perfect_score",
+      "name": "Perfect Score",
+      "emoji": "💯",
+      "desc": "Get 100% on any quiz",
+      "category": "quiz",
+      "rarity": "uncommon",
+      "xpReward": 200
+    },
+    {
+      "id": "quiz_champion",
+      "name": "Quiz Champion",
+      "emoji": "🏆",
+      "desc": "Get a perfect score on 5 different quizzes",
+      "category": "quiz",
+      "rarity": "rare",
+      "xpReward": 400
+    },
+    {
+      "id": "comeback_kid",
+      "name": "Comeback Kid",
+      "emoji": "💪",
+      "desc": "Retake a quiz and improve your score",
+      "category": "quiz",
+      "rarity": "common",
+      "xpReward": 100
+    },
+    {
+      "id": "lightning_fast",
+      "name": "Lightning Fast",
+      "emoji": "⚡",
+      "desc": "Answer 10 quiz questions without using any hints",
+      "category": "quiz",
+      "rarity": "uncommon",
+      "xpReward": 175
+    },
+    {
+      "id": "quiz_streak_5",
+      "name": "Quiz Streak",
+      "emoji": "🔥",
+      "desc": "Score above 80% on 5 quizzes in a row",
+      "category": "quiz",
+      "rarity": "rare",
+      "xpReward": 350
+    },
+    {
+      "id": "first_language",
+      "name": "Hello World",
+      "emoji": "👋",
+      "desc": "Complete your first language lesson",
+      "category": "language",
+      "rarity": "common",
+      "xpReward": 75
+    },
+    {
+      "id": "polyglot",
+      "name": "Polyglot",
+      "emoji": "🌍",
+      "desc": "Study 3 or more different languages",
+      "category": "language",
+      "rarity": "rare",
+      "xpReward": 400
+    },
+    {
+      "id": "language_streak",
+      "name": "Language Streak",
+      "emoji": "🔗",
+      "desc": "Practice a language 5 days in a row",
+      "category": "language",
+      "rarity": "uncommon",
+      "xpReward": 200
+    },
+    {
+      "id": "pronunciation_pro",
+      "name": "Pronunciation Pro",
+      "emoji": "🎤",
+      "desc": "Complete 10 speaking exercises",
+      "category": "language",
+      "rarity": "uncommon",
+      "xpReward": 250
+    },
+    {
+      "id": "conversation_king",
+      "name": "Conversation King",
+      "emoji": "👑",
+      "desc": "Complete a full conversation mode session",
+      "category": "language",
+      "rarity": "rare",
+      "xpReward": 300
+    },
+    {
+      "id": "first_game",
+      "name": "Game On!",
+      "emoji": "🎮",
+      "desc": "Play your first educational game",
+      "category": "games",
+      "rarity": "common",
+      "xpReward": 50
+    },
+    {
+      "id": "game_champion",
+      "name": "Game Champion",
+      "emoji": "🥇",
+      "desc": "Win 10 games in a row",
+      "category": "games",
+      "rarity": "rare",
+      "xpReward": 450
+    },
+    {
+      "id": "high_scorer",
+      "name": "High Scorer",
+      "emoji": "🎯",
+      "desc": "Achieve the top score on any game",
+      "category": "games",
+      "rarity": "uncommon",
+      "xpReward": 200
+    },
+    {
+      "id": "game_variety",
+      "name": "Game Explorer",
+      "emoji": "🗺️",
+      "desc": "Play 5 different types of games",
+      "category": "games",
+      "rarity": "uncommon",
+      "xpReward": 175
+    },
+    {
+      "id": "safety_pro",
+      "name": "Safety Pro",
+      "emoji": "🛡️",
+      "desc": "Complete the Internet Safety module",
+      "category": "social",
+      "rarity": "uncommon",
+      "xpReward": 200
+    },
+    {
+      "id": "country_explorer",
+      "name": "Country Explorer",
+      "emoji": "🌐",
+      "desc": "Learn about 10 different countries",
+      "category": "social",
+      "rarity": "uncommon",
+      "xpReward": 250
+    },
+    {
+      "id": "career_seeker",
+      "name": "Career Seeker",
+      "emoji": "💼",
+      "desc": "Explore 5 different career paths",
+      "category": "social",
+      "rarity": "uncommon",
+      "xpReward": 200
+    },
+    {
+      "id": "week_warrior",
+      "name": "Week Warrior",
+      "emoji": "⚔️",
+      "desc": "Complete at least one activity every day for a full week",
+      "category": "special",
+      "rarity": "rare",
+      "xpReward": 500
+    },
+    {
+      "id": "monthly_master",
+      "name": "Monthly Master",
+      "emoji": "🗓️",
+      "desc": "Complete at least one activity every day for a full month",
+      "category": "special",
+      "rarity": "legendary",
+      "xpReward": 1000
+    },
+    {
+      "id": "all_rounder",
+      "name": "All-Rounder",
+      "emoji": "🌟",
+      "desc": "Earn at least one badge in every category",
+      "category": "special",
+      "rarity": "legendary",
+      "xpReward": 750
+    }
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "name": "Seedling",
+      "emoji": "🌱",
+      "minXP": 0,
+      "maxXP": 199,
+      "reward": "Welcome to BridgeLearn!"
+    },
+    {
+      "level": 2,
+      "name": "Sprout",
+      "emoji": "🌿",
+      "minXP": 200,
+      "maxXP": 499,
+      "reward": "You're growing! Unlock the Daily Challenges feature."
+    },
+    {
+      "level": 3,
+      "name": "Explorer",
+      "emoji": "🧭",
+      "minXP": 500,
+      "maxXP": 999,
+      "reward": "Adventure awaits! Unlock the World Map activity."
+    },
+    {
+      "level": 4,
+      "name": "Learner",
+      "emoji": "📖",
+      "minXP": 1000,
+      "maxXP": 1999,
+      "reward": "Knowledge is power! Unlock advanced quiz modes."
+    },
+    {
+      "level": 5,
+      "name": "Scholar",
+      "emoji": "🎓",
+      "minXP": 2000,
+      "maxXP": 3499,
+      "reward": "You're a scholar! Unlock a special avatar frame."
+    },
+    {
+      "level": 6,
+      "name": "Expert",
+      "emoji": "🏅",
+      "minXP": 3500,
+      "maxXP": 5499,
+      "reward": "Expert status achieved! Unlock bonus language packs."
+    },
+    {
+      "level": 7,
+      "name": "Master",
+      "emoji": "🔮",
+      "minXP": 5500,
+      "maxXP": 7999,
+      "reward": "Mastery unlocked! Earn the exclusive Master badge profile border."
+    },
+    {
+      "level": 8,
+      "name": "Champion",
+      "emoji": "🏆",
+      "minXP": 8000,
+      "maxXP": 11999,
+      "reward": "Champion of learning! Unlock a custom animated profile banner."
+    },
+    {
+      "level": 9,
+      "name": "Legend",
+      "emoji": "⭐",
+      "minXP": 12000,
+      "maxXP": 19999,
+      "reward": "You are a legend! Unlock the golden Legend theme and all bonus content."
+    },
+    {
+      "level": 10,
+      "name": "Grand Master",
+      "emoji": "👑",
+      "minXP": 20000,
+      "maxXP": null,
+      "reward": "Grand Master achieved — the highest honor in BridgeLearn! Unlock the exclusive Crown avatar and Grand Master certificate."
+    }
+  ]
+}

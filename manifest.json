@@ -1,0 +1,28 @@
+{
+  "name": "BridgeLearn — AI Learning for Kids",
+  "short_name": "BridgeLearn",
+  "description": "AI-powered education platform for ages 3–18. Learn subjects, languages, and more with your personal AI tutor.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#6c63ff",
+  "theme_color": "#6c63ff",
+  "orientation": "portrait-primary",
+  "categories": ["education", "kids"],
+  "lang": "en",
+  "icons": [
+    { "src": "assets/icons/icon-72.png",   "sizes": "72x72",   "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icons/icon-96.png",   "sizes": "96x96",   "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icons/icon-128.png",  "sizes": "128x128", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icons/icon-144.png",  "sizes": "144x144", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icons/icon-152.png",  "sizes": "152x152", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icons/icon-192.png",  "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icons/icon-384.png",  "sizes": "384x384", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icons/icon-512.png",  "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    { "name": "Continue Learning", "url": "/?screen=dashboard", "description": "Go to your dashboard" },
+    { "name": "Play a Game",       "url": "/?screen=games",     "description": "Jump into games" },
+    { "name": "Language Practice", "url": "/?screen=languages", "description": "Practice a language" }
+  ]
+}

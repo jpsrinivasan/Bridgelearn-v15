@@ -1,0 +1,144 @@
+{
+  "languages": [
+    {
+      "code": "en",
+      "name": "English",
+      "flag": "🇬🇧",
+      "nativeName": "English",
+      "speakers": "1.5 billion",
+      "family": "Indo-European",
+      "script": "Latin",
+      "difficulty": "Easy for native speakers, moderate for others",
+      "funFact": "English has borrowed words from over 350 languages!"
+    },
+    {
+      "code": "es",
+      "name": "Spanish",
+      "flag": "🇪🇸",
+      "nativeName": "Español",
+      "speakers": "600 million",
+      "family": "Indo-European",
+      "script": "Latin",
+      "difficulty": "Relatively easy for English speakers — grammar is consistent and words are often similar",
+      "funFact": "Spanish is the official language of 21 countries across 4 continents!"
+    },
+    {
+      "code": "fr",
+      "name": "French",
+      "flag": "🇫🇷",
+      "nativeName": "Français",
+      "speakers": "300 million",
+      "family": "Indo-European",
+      "script": "Latin",
+      "difficulty": "Moderate — pronunciation can be tricky but grammar patterns are logical",
+      "funFact": "About 30% of English words actually come from French — after the Norman Conquest in 1066!"
+    },
+    {
+      "code": "ja",
+      "name": "Japanese",
+      "flag": "🇯🇵",
+      "nativeName": "日本語",
+      "speakers": "125 million",
+      "family": "Japonic",
+      "script": "Hiragana, Katakana, Kanji",
+      "difficulty": "Challenging — three writing systems and complex grammar, but pronunciation is very regular",
+      "funFact": "Japanese has three completely different writing systems used together in the same sentence!"
+    },
+    {
+      "code": "hi",
+      "name": "Hindi",
+      "flag": "🇮🇳",
+      "nativeName": "हिन्दी",
+      "speakers": "600 million",
+      "family": "Indo-European",
+      "script": "Devanagari",
+      "difficulty": "Moderate — the script takes practice but the phonetic writing system helps",
+      "funFact": "Hindi gave English words like 'jungle', 'shampoo', 'avatar', 'pyjamas', and 'yoga'!"
+    },
+    {
+      "code": "ta",
+      "name": "Tamil",
+      "flag": "🇮🇳",
+      "nativeName": "தமிழ்",
+      "speakers": "80 million",
+      "family": "Dravidian",
+      "script": "Tamil",
+      "difficulty": "Challenging — unique script and complex grammar, but one of the most systematic languages",
+      "funFact": "Tamil is one of the world's longest-surviving classical languages — over 2,000 years old and still widely spoken today!"
+    }
+  ],
+  "modes": [
+    {
+      "id": "daily-conversation",
+      "name": "Daily Chat",
+      "emoji": "☀️",
+      "desc": "Real-life everyday conversations",
+      "duration": "15-20 min"
+    },
+    {
+      "id": "travel-phrases",
+      "name": "Travel Phrases",
+      "emoji": "✈️",
+      "desc": "Essential phrases for exploring new places",
+      "duration": "10-15 min"
+    },
+    {
+      "id": "food-and-dining",
+      "name": "Food & Dining",
+      "emoji": "🍽️",
+      "desc": "Order food and talk about meals",
+      "duration": "10-15 min"
+    },
+    {
+      "id": "school-and-learning",
+      "name": "School & Learning",
+      "emoji": "📚",
+      "desc": "Classroom talk and academic vocabulary",
+      "duration": "15-20 min"
+    },
+    {
+      "id": "family-and-friends",
+      "name": "Family & Friends",
+      "emoji": "👨‍👩‍👧‍👦",
+      "desc": "Talk about people you love",
+      "duration": "10-15 min"
+    },
+    {
+      "id": "sports-and-hobbies",
+      "name": "Sports & Hobbies",
+      "emoji": "⚽",
+      "desc": "Chat about games, sports, and fun activities",
+      "duration": "15-20 min"
+    },
+    {
+      "id": "numbers-and-time",
+      "name": "Numbers & Time",
+      "emoji": "🔢",
+      "desc": "Count, tell time, and talk about dates",
+      "duration": "10-15 min"
+    }
+  ],
+  "levels": [
+    {
+      "id": "Beginner",
+      "name": "Beginner",
+      "emoji": "🌱",
+      "desc": "Simple phrases, common words",
+      "targetVocab": 500
+    },
+    {
+      "id": "Intermediate",
+      "name": "Intermediate",
+      "emoji": "🌿",
+      "desc": "Everyday conversations and sentences",
+      "targetVocab": 2000
+    },
+    {
+      "id": "Advanced",
+      "name": "Advanced",
+      "emoji": "🌳",
+      "desc": "Complex ideas, fluent expression",
+      "targetVocab": 6000
+    }
+  ]
+}

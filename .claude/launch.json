@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bridgelearn-v15",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "5175", "--no-clipboard"],
+      "port": 5175
+    }
+  ]
+}

@@ -1,0 +1,1004 @@
+{
+  "states": [
+    {
+      "id": "alabama",
+      "name": "Alabama",
+      "nickname": "The Heart of Dixie",
+      "capital": "Montgomery",
+      "bird": "Northern Flicker (Yellowhammer)",
+      "flower": "Camellia",
+      "population": "5.1 million",
+      "founded": 1819,
+      "stateCode": "AL",
+      "facts": [
+        "Alabama was a key battleground during the Civil Rights Movement",
+        "The U.S. Space & Rocket Center in Huntsville is the world's largest space museum",
+        "Alabama is the only state with all the natural resources needed to make iron and steel",
+        "The first electric trolley system in the US was built in Montgomery",
+        "Alabama has more species of freshwater fish than any other state"
+      ],
+      "landmarks": ["U.S. Space & Rocket Center", "Civil Rights Memorial", "Gulf State Park"],
+      "region": "South"
+    },
+    {
+      "id": "alaska",
+      "name": "Alaska",
+      "nickname": "The Last Frontier",
+      "capital": "Juneau",
+      "bird": "Willow Ptarmigan",
+      "flower": "Forget-Me-Not",
+      "population": "733,000",
+      "founded": 1959,
+      "stateCode": "AK",
+      "facts": [
+        "Alaska is the largest state in the US — bigger than Texas, California, and Montana combined",
+        "Alaska has more coastline than all other US states combined",
+        "Denali in Alaska is the highest peak in North America at 20,310 feet",
+        "Alaska has more active glaciers than the rest of the inhabited world combined",
+        "In some parts of Alaska, the sun doesn't set for over 70 consecutive days in summer"
+      ],
+      "landmarks": ["Denali National Park", "Kenai Fjords", "Glacier Bay", "Northern Lights"],
+      "region": "West"
+    },
+    {
+      "id": "arizona",
+      "name": "Arizona",
+      "nickname": "The Grand Canyon State",
+      "capital": "Phoenix",
+      "bird": "Cactus Wren",
+      "flower": "Saguaro Cactus Blossom",
+      "population": "7.4 million",
+      "founded": 1912,
+      "stateCode": "AZ",
+      "facts": [
+        "The Grand Canyon is one of the Seven Natural Wonders of the World",
+        "Arizona is the only state in the contiguous US that doesn't observe Daylight Saving Time",
+        "The saguaro cactus, found only in Arizona and Mexico, can live for over 150 years",
+        "Arizona is the copper-producing capital of the US",
+        "Meteor Crater in Arizona is the best-preserved meteorite impact site on Earth"
+      ],
+      "landmarks": ["Grand Canyon", "Sedona Red Rocks", "Monument Valley", "Saguaro National Park"],
+      "region": "West"
+    },
+    {
+      "id": "arkansas",
+      "name": "Arkansas",
+      "nickname": "The Natural State",
+      "capital": "Little Rock",
+      "bird": "Mockingbird",
+      "flower": "Apple Blossom",
+      "population": "3.1 million",
+      "founded": 1836,
+      "stateCode": "AR",
+      "facts": [
+        "The only diamond-producing mine in North America open to the public is in Arkansas",
+        "Walmart, the world's largest retailer, was founded in Rogers, Arkansas",
+        "Arkansas has 52 state parks — more per square mile than any other state",
+        "Hot Springs, Arkansas became the first federally protected land area in US history in 1832",
+        "Arkansas is the leading producer of rice in the United States"
+      ],
+      "landmarks": ["Crater of Diamonds State Park", "Hot Springs National Park", "Buffalo National River"],
+      "region": "South"
+    },
+    {
+      "id": "california",
+      "name": "California",
+      "nickname": "The Golden State",
+      "capital": "Sacramento",
+      "bird": "California Quail",
+      "flower": "California Poppy",
+      "population": "39.5 million",
+      "founded": 1850,
+      "stateCode": "CA",
+      "facts": [
+        "Home to Silicon Valley, the tech capital of the world",
+        "Has the largest economy of any US state",
+        "Death Valley is the hottest place in North America",
+        "Home to the world's tallest trees — the Coast Redwoods",
+        "California produces over 80% of the world's almonds"
+      ],
+      "landmarks": ["Golden Gate Bridge", "Yosemite National Park", "Disneyland", "Hollywood Sign"],
+      "region": "West"
+    },
+    {
+      "id": "colorado",
+      "name": "Colorado",
+      "nickname": "The Centennial State",
+      "capital": "Denver",
+      "bird": "Lark Bunting",
+      "flower": "Rocky Mountain Columbine",
+      "population": "5.8 million",
+      "founded": 1876,
+      "stateCode": "CO",
+      "facts": [
+        "Colorado has the highest mean elevation of any US state",
+        "Colorado was the first state to legalize recreational marijuana use",
+        "Denver is called the 'Mile High City' because it sits exactly one mile above sea level",
+        "Colorado is home to the headwaters of the Colorado, Rio Grande, and Arkansas rivers",
+        "Colorado has more fourteeners (peaks over 14,000 ft) than any other state — 58 in total"
+      ],
+      "landmarks": ["Rocky Mountain National Park", "Mesa Verde", "Garden of the Gods", "Pikes Peak"],
+      "region": "West"
+    },
+    {
+      "id": "connecticut",
+      "name": "Connecticut",
+      "nickname": "The Constitution State",
+      "capital": "Hartford",
+      "bird": "American Robin",
+      "flower": "Mountain Laurel",
+      "population": "3.6 million",
+      "founded": 1788,
+      "stateCode": "CT",
+      "facts": [
+        "Connecticut's Fundamental Orders of 1639 is considered the world's first written constitution",
+        "Yale University, one of the world's top universities, is in New Haven, Connecticut",
+        "Connecticut is the third smallest state but one of the wealthiest per capita",
+        "The first speed limit law in the US was enacted in Connecticut in 1901",
+        "The hamburger is said to have been invented in New Haven, Connecticut"
+      ],
+      "landmarks": ["Yale University", "Mystic Seaport", "Mark Twain House", "Gillette Castle"],
+      "region": "Northeast"
+    },
+    {
+      "id": "delaware",
+      "name": "Delaware",
+      "nickname": "The First State",
+      "capital": "Dover",
+      "bird": "Blue Hen Chicken",
+      "flower": "Peach Blossom",
+      "population": "990,000",
+      "founded": 1787,
+      "stateCode": "DE",
+      "facts": [
+        "Delaware was the first state to ratify the US Constitution on December 7, 1787",
+        "Delaware is the second smallest state in the US",
+        "More than half of all Fortune 500 companies are incorporated in Delaware",
+        "Delaware is the only state without a national park",
+        "The DuPont company, a global chemical giant, was founded in Wilmington, Delaware"
+      ],
+      "landmarks": ["First State National Historical Park", "Bombay Hook National Wildlife Refuge", "Rehoboth Beach"],
+      "region": "Northeast"
+    },
+    {
+      "id": "florida",
+      "name": "Florida",
+      "nickname": "The Sunshine State",
+      "capital": "Tallahassee",
+      "bird": "Northern Mockingbird",
+      "flower": "Orange Blossom",
+      "population": "22.6 million",
+      "founded": 1845,
+      "stateCode": "FL",
+      "facts": [
+        "Florida has more theme parks than any other state, including Walt Disney World",
+        "Florida is the flattest state in the US",
+        "The Everglades is the largest subtropical wilderness in the US",
+        "Florida produces over 70% of all oranges grown in the US",
+        "Florida has the longest coastline of the contiguous 48 states"
+      ],
+      "landmarks": ["Walt Disney World", "Everglades National Park", "Kennedy Space Center", "South Beach Miami"],
+      "region": "South"
+    },
+    {
+      "id": "georgia",
+      "name": "Georgia",
+      "nickname": "The Peach State",
+      "capital": "Atlanta",
+      "bird": "Brown Thrasher",
+      "flower": "Cherokee Rose",
+      "population": "10.9 million",
+      "founded": 1788,
+      "stateCode": "GA",
+      "facts": [
+        "Coca-Cola was invented in Atlanta, Georgia in 1886",
+        "Georgia is the largest state east of the Mississippi River",
+        "Georgia produces more peanuts than any other state",
+        "Atlanta is home to the world's busiest airport — Hartsfield-Jackson",
+        "Georgia is the birthplace of Dr. Martin Luther King Jr."
+      ],
+      "landmarks": ["Georgia Aquarium", "Stone Mountain", "Savannah Historic District", "Okefenokee Swamp"],
+      "region": "South"
+    },
+    {
+      "id": "hawaii",
+      "name": "Hawaii",
+      "nickname": "The Aloha State",
+      "capital": "Honolulu",
+      "bird": "Nene (Hawaiian Goose)",
+      "flower": "Pua Aloalo (Yellow Hibiscus)",
+      "population": "1.4 million",
+      "founded": 1959,
+      "stateCode": "HI",
+      "facts": [
+        "Hawaii is the only US state made entirely of islands",
+        "Hawaii is the most isolated population center on Earth",
+        "The Hawaiian alphabet has only 13 letters",
+        "Hawaii is the only US state that grows coffee commercially",
+        "Mauna Kea in Hawaii is the world's tallest mountain when measured from the ocean floor"
+      ],
+      "landmarks": ["Waikiki Beach", "Pearl Harbor Memorial", "Volcanoes National Park", "Na Pali Coast"],
+      "region": "West"
+    },
+    {
+      "id": "idaho",
+      "name": "Idaho",
+      "nickname": "The Gem State",
+      "capital": "Boise",
+      "bird": "Mountain Bluebird",
+      "flower": "Syringa (Mock Orange)",
+      "population": "1.9 million",
+      "founded": 1890,
+      "stateCode": "ID",
+      "facts": [
+        "Idaho produces about one-third of all potatoes grown in the United States",
+        "Idaho has more than 3,100 miles of whitewater rivers — more than any other state",
+        "Craters of the Moon National Monument in Idaho looks like the surface of the moon",
+        "Idaho has the deepest river gorge in North America — Hells Canyon",
+        "The state of Idaho gets its name from a Shoshone phrase meaning 'the sun comes from the mountains'"
+      ],
+      "landmarks": ["Craters of the Moon", "Hells Canyon", "Shoshone Falls", "Sun Valley"],
+      "region": "West"
+    },
+    {
+      "id": "illinois",
+      "name": "Illinois",
+      "nickname": "The Prairie State",
+      "capital": "Springfield",
+      "bird": "Northern Cardinal",
+      "flower": "Violet",
+      "population": "12.6 million",
+      "founded": 1818,
+      "stateCode": "IL",
+      "facts": [
+        "The first McDonald's franchise was opened in Des Plaines, Illinois in 1955",
+        "Chicago, the third largest US city, is in Illinois and sits on Lake Michigan",
+        "Abraham Lincoln, the 16th president, spent most of his life in Illinois",
+        "The first skyscraper in the world was built in Chicago in 1885",
+        "Illinois is the leading producer of soybeans in the United States"
+      ],
+      "landmarks": ["Willis Tower (Sears Tower)", "Millennium Park", "Lincoln Presidential Library", "Shawnee National Forest"],
+      "region": "Midwest"
+    },
+    {
+      "id": "indiana",
+      "name": "Indiana",
+      "nickname": "The Hoosier State",
+      "capital": "Indianapolis",
+      "bird": "Northern Cardinal",
+      "flower": "Peony",
+      "population": "6.8 million",
+      "founded": 1816,
+      "stateCode": "IN",
+      "facts": [
+        "The Indianapolis 500 is the world's largest single-day sporting event",
+        "Indiana is the popcorn capital of the world",
+        "More astronauts have come from Indiana than from any other state",
+        "The first professional baseball game was played in Fort Wayne, Indiana in 1871",
+        "Indiana's steel industry produces more steel than any other state"
+      ],
+      "landmarks": ["Indianapolis Motor Speedway", "Indiana Dunes National Park", "Brown County State Park"],
+      "region": "Midwest"
+    },
+    {
+      "id": "iowa",
+      "name": "Iowa",
+      "nickname": "The Hawkeye State",
+      "capital": "Des Moines",
+      "bird": "Eastern Goldfinch (American Goldfinch)",
+      "flower": "Wild Prairie Rose",
+      "population": "3.2 million",
+      "founded": 1846,
+      "stateCode": "IA",
+      "facts": [
+        "Iowa grows more corn than any other state, earning it the nickname 'Corn State'",
+        "Iowa has the highest literacy rate in the US",
+        "Iowa was the first state to allow women to practice law, in 1869",
+        "Iowa is the only state whose east and west borders are both formed by rivers",
+        "The Iowa caucuses are historically the first major electoral event in presidential elections"
+      ],
+      "landmarks": ["Effigy Mounds National Monument", "Field of Dreams Movie Site", "Pikes Peak State Park"],
+      "region": "Midwest"
+    },
+    {
+      "id": "kansas",
+      "name": "Kansas",
+      "nickname": "The Sunflower State",
+      "capital": "Topeka",
+      "bird": "Western Meadowlark",
+      "flower": "Sunflower",
+      "population": "2.9 million",
+      "founded": 1861,
+      "stateCode": "KS",
+      "facts": [
+        "Kansas is the geographic center of the contiguous 48 states",
+        "Kansas produces more wheat than any other state and is called 'The Breadbasket of America'",
+        "The world's largest collection of helicopters is at the Kansas Aviation Museum",
+        "Dodge City, Kansas was the wildest town in the Wild West during the 1870s",
+        "Kansas is one of the top states for wind energy production"
+      ],
+      "landmarks": ["Flint Hills", "Monument Rocks", "Tallgrass Prairie National Preserve", "Boot Hill Museum"],
+      "region": "Midwest"
+    },
+    {
+      "id": "kentucky",
+      "name": "Kentucky",
+      "nickname": "The Bluegrass State",
+      "capital": "Frankfort",
+      "bird": "Northern Cardinal",
+      "flower": "Goldenrod",
+      "population": "4.5 million",
+      "founded": 1792,
+      "stateCode": "KY",
+      "facts": [
+        "Kentucky is home to Mammoth Cave, the world's longest known cave system",
+        "Over 95% of the world's bourbon whiskey is produced in Kentucky",
+        "The Kentucky Derby, held every May, is the oldest continuously held major sporting event in the US",
+        "Kentucky Fried Chicken (KFC) was founded in Corbin, Kentucky",
+        "Fort Knox, which holds most of the US gold reserves, is in Kentucky"
+      ],
+      "landmarks": ["Mammoth Cave National Park", "Churchill Downs (Kentucky Derby)", "Natural Bridge State Park"],
+      "region": "South"
+    },
+    {
+      "id": "louisiana",
+      "name": "Louisiana",
+      "nickname": "The Pelican State",
+      "capital": "Baton Rouge",
+      "bird": "Brown Pelican",
+      "flower": "Magnolia",
+      "population": "4.6 million",
+      "founded": 1812,
+      "stateCode": "LA",
+      "facts": [
+        "Louisiana is the only state that still uses the Napoleonic Code in its legal system",
+        "New Orleans is the jazz music capital of the world",
+        "Mardi Gras has been celebrated in New Orleans since 1699",
+        "Louisiana is the most below-sea-level state — New Orleans is up to 7 feet below sea level",
+        "Louisiana has more plant and animal species per square mile than most other states"
+      ],
+      "landmarks": ["French Quarter New Orleans", "Oak Alley Plantation", "Atchafalaya Basin", "Lafayette"],
+      "region": "South"
+    },
+    {
+      "id": "maine",
+      "name": "Maine",
+      "nickname": "The Pine Tree State",
+      "capital": "Augusta",
+      "bird": "Black-capped Chickadee",
+      "flower": "White Pine Cone and Tassel",
+      "population": "1.4 million",
+      "founded": 1820,
+      "stateCode": "ME",
+      "facts": [
+        "Maine is the easternmost state in the US",
+        "Maine produces 99% of all wild blueberries in the United States",
+        "Maine has more shoreline than California despite being much smaller",
+        "Maine is the only US state that borders just one other state",
+        "Maine produces over 90% of the US lobster supply"
+      ],
+      "landmarks": ["Acadia National Park", "Pemaquid Point Lighthouse", "Old Orchard Beach", "Bar Harbor"],
+      "region": "Northeast"
+    },
+    {
+      "id": "maryland",
+      "name": "Maryland",
+      "nickname": "The Old Line State",
+      "capital": "Annapolis",
+      "bird": "Baltimore Oriole",
+      "flower": "Black-eyed Susan",
+      "population": "6.2 million",
+      "founded": 1788,
+      "stateCode": "MD",
+      "facts": [
+        "Maryland is the birthplace of the US Naval Academy, located in Annapolis",
+        "The National Anthem, The Star-Spangled Banner, was written by Francis Scott Key during the Battle of Fort McHenry in Maryland",
+        "Maryland is known as 'America in Miniature' because it has diverse landscapes",
+        "Maryland produces more blue crabs than any other state",
+        "The Chesapeake Bay, the largest estuary in the US, borders Maryland"
+      ],
+      "landmarks": ["Fort McHenry", "Chesapeake Bay", "Assateague Island", "Antietam Battlefield"],
+      "region": "Northeast"
+    },
+    {
+      "id": "massachusetts",
+      "name": "Massachusetts",
+      "nickname": "The Bay State",
+      "capital": "Boston",
+      "bird": "Black-capped Chickadee",
+      "flower": "Mayflower",
+      "population": "7 million",
+      "founded": 1788,
+      "stateCode": "MA",
+      "facts": [
+        "Massachusetts is home to Harvard, the oldest university in the US, founded in 1636",
+        "Basketball and volleyball were both invented in Massachusetts",
+        "The first subway system in the US opened in Boston in 1897",
+        "The Pilgrims landed at Plymouth Rock, Massachusetts in 1620",
+        "Massachusetts was the first state to legalize same-sex marriage in the US"
+      ],
+      "landmarks": ["Freedom Trail Boston", "Plymouth Rock", "Cape Cod", "Salem Witch Museum"],
+      "region": "Northeast"
+    },
+    {
+      "id": "michigan",
+      "name": "Michigan",
+      "nickname": "The Great Lakes State",
+      "capital": "Lansing",
+      "bird": "American Robin",
+      "flower": "Apple Blossom",
+      "population": "10 million",
+      "founded": 1837,
+      "stateCode": "MI",
+      "facts": [
+        "Michigan is the only state that consists of two separate peninsulas",
+        "Detroit is the auto capital of the world — home to Ford, GM, and Chrysler",
+        "Michigan has the longest freshwater shoreline of any state",
+        "Kellogg's and Post cereals were both founded in Battle Creek, Michigan",
+        "Michigan has more lighthouses than any other state"
+      ],
+      "landmarks": ["Mackinac Island", "Pictured Rocks National Lakeshore", "Sleeping Bear Dunes", "Isle Royale"],
+      "region": "Midwest"
+    },
+    {
+      "id": "minnesota",
+      "name": "Minnesota",
+      "nickname": "The Land of 10,000 Lakes",
+      "capital": "Saint Paul",
+      "bird": "Common Loon",
+      "flower": "Pink and White Lady's Slipper",
+      "population": "5.7 million",
+      "founded": 1858,
+      "stateCode": "MN",
+      "facts": [
+        "Minnesota actually has over 11,000 lakes — more than any other state except Alaska",
+        "Mall of America in Bloomington is the largest shopping mall in the US",
+        "Minnesota is the birthplace of both Target and Best Buy",
+        "The Mississippi River begins as a tiny stream in Lake Itasca, Minnesota",
+        "Post-it Notes were invented by 3M, a company based in Minnesota"
+      ],
+      "landmarks": ["Boundary Waters Canoe Area", "Mall of America", "Minnehaha Falls", "Voyageurs National Park"],
+      "region": "Midwest"
+    },
+    {
+      "id": "mississippi",
+      "name": "Mississippi",
+      "nickname": "The Magnolia State",
+      "capital": "Jackson",
+      "bird": "Northern Mockingbird",
+      "flower": "Magnolia",
+      "population": "2.9 million",
+      "founded": 1817,
+      "stateCode": "MS",
+      "facts": [
+        "Mississippi is named after the Mississippi River, which forms its western border",
+        "The teddy bear was named after President Theodore Roosevelt following a bear-hunting trip in Mississippi",
+        "Mississippi was the last state to ratify the 13th Amendment abolishing slavery — in 1995",
+        "The blues music genre originated in the Mississippi Delta",
+        "Mississippi has the most churches per capita of any US state"
+      ],
+      "landmarks": ["Natchez Trace Parkway", "Vicksburg National Military Park", "Gulf Islands National Seashore"],
+      "region": "South"
+    },
+    {
+      "id": "missouri",
+      "name": "Missouri",
+      "nickname": "The Show Me State",
+      "capital": "Jefferson City",
+      "bird": "Eastern Bluebird",
+      "flower": "White Hawthorn Blossom",
+      "population": "6.2 million",
+      "founded": 1821,
+      "stateCode": "MO",
+      "facts": [
+        "The Gateway Arch in St. Louis is the tallest man-made monument in the US",
+        "Missouri is the starting point of both the Lewis and Clark Expedition and the Pony Express",
+        "Kansas City, Missouri has more barbecue restaurants per capita than any other US city",
+        "Missouri is the birthplace of Mark Twain and Harry S. Truman",
+        "The ice cream cone was invented at the 1904 St. Louis World's Fair"
+      ],
+      "landmarks": ["Gateway Arch", "Ozark National Scenic Riverways", "Silver Dollar City", "Mark Twain Home"],
+      "region": "Midwest"
+    },
+    {
+      "id": "montana",
+      "name": "Montana",
+      "nickname": "Big Sky Country",
+      "capital": "Helena",
+      "bird": "Western Meadowlark",
+      "flower": "Bitterroot",
+      "population": "1.1 million",
+      "founded": 1889,
+      "stateCode": "MT",
+      "facts": [
+        "Montana is the fourth largest state but has one of the smallest populations",
+        "Montana has three times more cattle than people",
+        "Glacier National Park in Montana straddles the US-Canada border",
+        "Montana has the largest grizzly bear population outside of Alaska",
+        "Montana has only one area code for the entire state"
+      ],
+      "landmarks": ["Glacier National Park", "Yellowstone National Park (northern part)", "Little Bighorn Battlefield", "Beartooth Highway"],
+      "region": "West"
+    },
+    {
+      "id": "nebraska",
+      "name": "Nebraska",
+      "nickname": "The Cornhusker State",
+      "capital": "Lincoln",
+      "bird": "Western Meadowlark",
+      "flower": "Goldenrod",
+      "population": "2 million",
+      "founded": 1867,
+      "stateCode": "NE",
+      "facts": [
+        "Nebraska is the only state with a unicameral (single-chamber) legislature",
+        "Nebraska has more miles of river than any other state",
+        "Warren Buffett, one of the world's wealthiest people, was born and lives in Omaha, Nebraska",
+        "Nebraska is the top state for Runza (a type of meat pastry) consumption in the US",
+        "Chimney Rock in Nebraska was the most famous landmark on the Oregon Trail"
+      ],
+      "landmarks": ["Chimney Rock", "Scotts Bluff National Monument", "Agate Fossil Beds", "Henry Doorly Zoo Omaha"],
+      "region": "Midwest"
+    },
+    {
+      "id": "nevada",
+      "name": "Nevada",
+      "nickname": "The Silver State",
+      "capital": "Carson City",
+      "bird": "Mountain Bluebird",
+      "flower": "Sagebrush",
+      "population": "3.2 million",
+      "founded": 1864,
+      "stateCode": "NV",
+      "facts": [
+        "Las Vegas, Nevada is the entertainment capital of the world",
+        "Nevada is the driest state in the US — most of it is desert",
+        "Nevada produces more gold than any other state",
+        "Nevada was the first state to allow casino gambling, in 1931",
+        "Area 51, the secretive US Air Force base, is in Nevada"
+      ],
+      "landmarks": ["Las Vegas Strip", "Hoover Dam", "Valley of Fire State Park", "Great Basin National Park"],
+      "region": "West"
+    },
+    {
+      "id": "new-hampshire",
+      "name": "New Hampshire",
+      "nickname": "The Granite State",
+      "capital": "Concord",
+      "bird": "Purple Finch",
+      "flower": "Purple Lilac",
+      "population": "1.4 million",
+      "founded": 1788,
+      "stateCode": "NH",
+      "facts": [
+        "New Hampshire is the first state to hold presidential primaries every four years",
+        "Mount Washington in New Hampshire once recorded the world's highest surface wind speed — 231 mph",
+        "New Hampshire has no state income tax and no state sales tax",
+        "New Hampshire's state motto is 'Live Free or Die', the most striking motto of any US state",
+        "New Hampshire was one of the original 13 colonies"
+      ],
+      "landmarks": ["Mount Washington", "White Mountain National Forest", "Lake Winnipesaukee", "The Flume Gorge"],
+      "region": "Northeast"
+    },
+    {
+      "id": "new-jersey",
+      "name": "New Jersey",
+      "nickname": "The Garden State",
+      "capital": "Trenton",
+      "bird": "Eastern Goldfinch (American Goldfinch)",
+      "flower": "Common Blue Violet",
+      "population": "9.3 million",
+      "founded": 1787,
+      "stateCode": "NJ",
+      "facts": [
+        "New Jersey is the most densely populated state in the US",
+        "Thomas Edison invented the light bulb at his laboratory in Menlo Park, New Jersey",
+        "New Jersey has more diners than any other state in the world",
+        "Bruce Springsteen, Frank Sinatra, and Bon Jovi all come from New Jersey",
+        "New Jersey has the most shopping malls per square mile of any US state"
+      ],
+      "landmarks": ["Cape May", "Liberty State Park", "Princeton University", "Jersey Shore Boardwalks"],
+      "region": "Northeast"
+    },
+    {
+      "id": "new-mexico",
+      "name": "New Mexico",
+      "nickname": "The Land of Enchantment",
+      "capital": "Santa Fe",
+      "bird": "Greater Roadrunner",
+      "flower": "Yucca",
+      "population": "2.1 million",
+      "founded": 1912,
+      "stateCode": "NM",
+      "facts": [
+        "New Mexico has more PhDs per capita than any other state",
+        "The first atomic bomb was tested in New Mexico at the Trinity Site in 1945",
+        "Santa Fe is the oldest state capital in the US, founded around 1610",
+        "New Mexico's Carlsbad Caverns holds the largest natural limestone cave in North America",
+        "New Mexico has the largest number of hot-air balloon festivals in the US"
+      ],
+      "landmarks": ["White Sands National Park", "Carlsbad Caverns", "Albuquerque International Balloon Fiesta", "Taos Pueblo"],
+      "region": "West"
+    },
+    {
+      "id": "new-york",
+      "name": "New York",
+      "nickname": "The Empire State",
+      "capital": "Albany",
+      "bird": "Eastern Bluebird",
+      "flower": "Rose",
+      "population": "20.2 million",
+      "founded": 1788,
+      "stateCode": "NY",
+      "facts": [
+        "New York City is home to more than 800 languages, making it the most linguistically diverse city in the world",
+        "The Statue of Liberty was a gift from France and stands on Liberty Island in New York Harbor",
+        "New York City's subway system is the largest in the Western Hemisphere",
+        "New York Stock Exchange on Wall Street is the world's largest stock exchange by market cap",
+        "New York City's Central Park is larger than the country of Monaco"
+      ],
+      "landmarks": ["Statue of Liberty", "Times Square", "Niagara Falls", "Empire State Building"],
+      "region": "Northeast"
+    },
+    {
+      "id": "north-carolina",
+      "name": "North Carolina",
+      "nickname": "The Tar Heel State",
+      "capital": "Raleigh",
+      "bird": "Northern Cardinal",
+      "flower": "Dogwood",
+      "population": "10.7 million",
+      "founded": 1789,
+      "stateCode": "NC",
+      "facts": [
+        "The Wright Brothers made the first successful powered airplane flight at Kitty Hawk, North Carolina",
+        "North Carolina is the nation's top producer of sweet potatoes",
+        "North Carolina is home to the highest peak east of the Mississippi — Mount Mitchell",
+        "Pepsi-Cola was invented in New Bern, North Carolina in 1898",
+        "The Great Smoky Mountains, the most visited national park in the US, is partly in North Carolina"
+      ],
+      "landmarks": ["Great Smoky Mountains", "Blue Ridge Parkway", "Wright Brothers National Memorial", "Cape Hatteras"],
+      "region": "South"
+    },
+    {
+      "id": "north-dakota",
+      "name": "North Dakota",
+      "nickname": "The Peace Garden State",
+      "capital": "Bismarck",
+      "bird": "Western Meadowlark",
+      "flower": "Wild Prairie Rose",
+      "population": "780,000",
+      "founded": 1889,
+      "stateCode": "ND",
+      "facts": [
+        "North Dakota is the least visited state in the US",
+        "North Dakota leads the US in production of sunflowers, canola, and flaxseed",
+        "North Dakota sits atop one of the world's largest oil reserves",
+        "The geographic center of North America is in Rugby, North Dakota",
+        "North Dakota has more wildlife refuges than any other state in the contiguous US"
+      ],
+      "landmarks": ["Theodore Roosevelt National Park", "Badlands", "International Peace Garden", "Fort Union Trading Post"],
+      "region": "Midwest"
+    },
+    {
+      "id": "ohio",
+      "name": "Ohio",
+      "nickname": "The Buckeye State",
+      "capital": "Columbus",
+      "bird": "Northern Cardinal",
+      "flower": "Scarlet Carnation",
+      "population": "11.8 million",
+      "founded": 1803,
+      "stateCode": "OH",
+      "facts": [
+        "Ohio has produced more US presidents than any other state — 8 in total",
+        "Neil Armstrong, the first man to walk on the moon, was from Wapakoneta, Ohio",
+        "The first professional baseball team, the Cincinnati Red Stockings, was formed in Ohio in 1869",
+        "Ohio is the birthplace of aviation — Wilbur and Orville Wright were from Dayton",
+        "Rock and Roll Hall of Fame is in Cleveland, Ohio"
+      ],
+      "landmarks": ["Rock and Roll Hall of Fame", "Cuyahoga Valley National Park", "Cedar Point", "National Air Force Museum"],
+      "region": "Midwest"
+    },
+    {
+      "id": "oklahoma",
+      "name": "Oklahoma",
+      "nickname": "The Sooner State",
+      "capital": "Oklahoma City",
+      "bird": "Scissor-tailed Flycatcher",
+      "flower": "Oklahoma Rose (Mistletoe)",
+      "population": "4 million",
+      "founded": 1907,
+      "stateCode": "OK",
+      "facts": [
+        "Oklahoma has more man-made lakes than any other state",
+        "Oklahoma experiences more tornadoes per square mile than any other state",
+        "Oklahoma City is one of the few state capitals to have oil wells on its capitol grounds",
+        "The parking meter was invented in Oklahoma City in 1935",
+        "Oklahoma has 39 tribal nations — more than any other state"
+      ],
+      "landmarks": ["Oklahoma City National Memorial", "Wichita Mountains Wildlife Refuge", "Tallgrass Prairie Preserve"],
+      "region": "South"
+    },
+    {
+      "id": "oregon",
+      "name": "Oregon",
+      "nickname": "The Beaver State",
+      "capital": "Salem",
+      "bird": "Western Meadowlark",
+      "flower": "Oregon Grape",
+      "population": "4.3 million",
+      "founded": 1859,
+      "stateCode": "OR",
+      "facts": [
+        "Crater Lake in Oregon is the deepest lake in the US, formed in an ancient volcano",
+        "Oregon is the only state with a different design on each side of its flag",
+        "Portland, Oregon has the most microbreweries per capita of any city in the world",
+        "Oregon produces more Christmas trees than any other state",
+        "The Oregon Trail, used by about 500,000 settlers, ended in Oregon's Willamette Valley"
+      ],
+      "landmarks": ["Crater Lake National Park", "Columbia River Gorge", "Multnomah Falls", "Oregon Coast"],
+      "region": "West"
+    },
+    {
+      "id": "pennsylvania",
+      "name": "Pennsylvania",
+      "nickname": "The Keystone State",
+      "capital": "Harrisburg",
+      "bird": "Ruffed Grouse",
+      "flower": "Mountain Laurel",
+      "population": "13 million",
+      "founded": 1787,
+      "stateCode": "PA",
+      "facts": [
+        "The Declaration of Independence and the US Constitution were both signed in Philadelphia",
+        "Pennsylvania has the largest rural population of any state",
+        "Punxsutawney Phil, the famous groundhog who predicts the weather, is from Pennsylvania",
+        "The first commercial oil well in the US was drilled in Titusville, Pennsylvania in 1859",
+        "Pennsylvania is the top producer of mushrooms in the US"
+      ],
+      "landmarks": ["Independence Hall Philadelphia", "Liberty Bell", "Gettysburg Battlefield", "Fallingwater House"],
+      "region": "Northeast"
+    },
+    {
+      "id": "rhode-island",
+      "name": "Rhode Island",
+      "nickname": "The Ocean State",
+      "capital": "Providence",
+      "bird": "Rhode Island Red Chicken",
+      "flower": "Violet",
+      "population": "1.1 million",
+      "founded": 1790,
+      "stateCode": "RI",
+      "facts": [
+        "Rhode Island is the smallest state in the US — it's 37 miles wide and 48 miles long",
+        "Rhode Island has the longest official state name: 'State of Rhode Island and Providence Plantations'",
+        "The first circus in the US was held in Newport, Rhode Island in 1774",
+        "Rhode Island was the last of the original 13 colonies to ratify the Constitution",
+        "The first American-built steam engine was made in Pawtucket, Rhode Island"
+      ],
+      "landmarks": ["The Breakers Mansion Newport", "Roger Williams Park", "Block Island", "Cliff Walk Newport"],
+      "region": "Northeast"
+    },
+    {
+      "id": "south-carolina",
+      "name": "South Carolina",
+      "nickname": "The Palmetto State",
+      "capital": "Columbia",
+      "bird": "Carolina Wren",
+      "flower": "Yellow Jessamine",
+      "population": "5.3 million",
+      "founded": 1788,
+      "stateCode": "SC",
+      "facts": [
+        "The first battle of the Civil War took place at Fort Sumter in Charleston, South Carolina",
+        "South Carolina is the top peach-producing state on the East Coast",
+        "The Angel Oak tree on Johns Island is estimated to be 400-500 years old",
+        "South Carolina produces more peaches than Georgia",
+        "Myrtle Beach in South Carolina has over 100 golf courses — one of the top golf destinations in the US"
+      ],
+      "landmarks": ["Fort Sumter", "Congaree National Park", "Myrtle Beach", "Hilton Head Island"],
+      "region": "South"
+    },
+    {
+      "id": "south-dakota",
+      "name": "South Dakota",
+      "nickname": "The Mount Rushmore State",
+      "capital": "Pierre",
+      "bird": "Chinese Ring-necked Pheasant",
+      "flower": "Pasque Flower",
+      "population": "909,000",
+      "founded": 1889,
+      "stateCode": "SD",
+      "facts": [
+        "Mount Rushmore, carved into the Black Hills, features four US presidents",
+        "South Dakota is home to Wind Cave, one of the world's longest cave systems",
+        "The Crazy Horse Memorial in South Dakota will be larger than Mount Rushmore when complete",
+        "Wall Drug in South Dakota is one of the most famous roadside attractions in the US",
+        "Badlands National Park in South Dakota has the world's richest fossil beds"
+      ],
+      "landmarks": ["Mount Rushmore", "Badlands National Park", "Wind Cave National Park", "Crazy Horse Memorial"],
+      "region": "Midwest"
+    },
+    {
+      "id": "tennessee",
+      "name": "Tennessee",
+      "nickname": "The Volunteer State",
+      "capital": "Nashville",
+      "bird": "Northern Mockingbird",
+      "flower": "Iris",
+      "population": "7 million",
+      "founded": 1796,
+      "stateCode": "TN",
+      "facts": [
+        "Nashville, Tennessee is the country music capital of the world",
+        "Tennessee borders more states than any other — eight in total",
+        "Memphis, Tennessee is where Elvis Presley lived — Graceland is there",
+        "The Great Smoky Mountains, the most visited US national park, is in Tennessee",
+        "Tennessee was one of the last states to secede during the Civil War and the first to be readmitted"
+      ],
+      "landmarks": ["Great Smoky Mountains", "Country Music Hall of Fame Nashville", "Graceland Memphis", "Dollywood"],
+      "region": "South"
+    },
+    {
+      "id": "texas",
+      "name": "Texas",
+      "nickname": "The Lone Star State",
+      "capital": "Austin",
+      "bird": "Northern Mockingbird",
+      "flower": "Bluebonnet",
+      "population": "30 million",
+      "founded": 1845,
+      "stateCode": "TX",
+      "facts": [
+        "Texas is the second largest state in the US by both area and population",
+        "Texas was an independent nation — the Republic of Texas — for 10 years before joining the US",
+        "Texas produces more oil than any other US state",
+        "Texas is the only state that was once an independent country and has the right to fly its flag at the same height as the US flag",
+        "The King Ranch in Texas is larger than the state of Rhode Island"
+      ],
+      "landmarks": ["The Alamo", "Big Bend National Park", "San Antonio River Walk", "Space Center Houston"],
+      "region": "South"
+    },
+    {
+      "id": "utah",
+      "name": "Utah",
+      "nickname": "The Beehive State",
+      "capital": "Salt Lake City",
+      "bird": "California Gull",
+      "flower": "Sego Lily",
+      "population": "3.4 million",
+      "founded": 1896,
+      "stateCode": "UT",
+      "facts": [
+        "Utah has more national parks than almost any other state — Zion, Bryce Canyon, Arches, Capitol Reef, and Canyonlands",
+        "The Great Salt Lake is the largest saltwater lake in the Western Hemisphere",
+        "Utah has the highest literacy rate in the US",
+        "The transcontinental railroad was completed at Promontory Summit, Utah in 1869",
+        "Utah hosted the 2002 Winter Olympics in Salt Lake City"
+      ],
+      "landmarks": ["Zion National Park", "Bryce Canyon", "Arches National Park", "Monument Valley"],
+      "region": "West"
+    },
+    {
+      "id": "vermont",
+      "name": "Vermont",
+      "nickname": "The Green Mountain State",
+      "capital": "Montpelier",
+      "bird": "Hermit Thrush",
+      "flower": "Red Clover",
+      "population": "643,000",
+      "founded": 1791,
+      "stateCode": "VT",
+      "facts": [
+        "Vermont produces more maple syrup per person than any other US state",
+        "Montpelier is the smallest US state capital city by population",
+        "Vermont was the first state admitted to the Union after the original 13 colonies",
+        "Vermont is the second least populated state in the US",
+        "Ben & Jerry's Ice Cream was founded in Burlington, Vermont"
+      ],
+      "landmarks": ["Green Mountain National Forest", "Stowe Mountain Resort", "Shelburne Museum", "Lake Champlain"],
+      "region": "Northeast"
+    },
+    {
+      "id": "virginia",
+      "name": "Virginia",
+      "nickname": "The Old Dominion",
+      "capital": "Richmond",
+      "bird": "Northern Cardinal",
+      "flower": "American Dogwood",
+      "population": "8.7 million",
+      "founded": 1788,
+      "stateCode": "VA",
+      "facts": [
+        "Virginia is called the 'Mother of Presidents' — 8 US presidents were born there",
+        "The Pentagon, the world's largest office building, is in Arlington, Virginia",
+        "Virginia Beach, Virginia is the most populous city in the state",
+        "More Civil War battles were fought in Virginia than in any other state",
+        "Jamestown, Virginia was the first permanent English settlement in North America, founded in 1607"
+      ],
+      "landmarks": ["Colonial Williamsburg", "Monticello", "Shenandoah National Park", "Arlington National Cemetery"],
+      "region": "South"
+    },
+    {
+      "id": "washington",
+      "name": "Washington",
+      "nickname": "The Evergreen State",
+      "capital": "Olympia",
+      "bird": "Willow Goldfinch (American Goldfinch)",
+      "flower": "Coast Rhododendron",
+      "population": "7.8 million",
+      "founded": 1889,
+      "stateCode": "WA",
+      "facts": [
+        "Washington is the only state named after a US president",
+        "Microsoft, Amazon, and Starbucks all started in Washington State",
+        "Mount Rainier in Washington is the most glaciated peak in the contiguous US",
+        "Washington produces more apples than any other state",
+        "Seattle's Pike Place Market is one of the oldest continuously operating farmers markets in the US"
+      ],
+      "landmarks": ["Mount Rainier National Park", "Olympic National Park", "Space Needle Seattle", "Pike Place Market"],
+      "region": "West"
+    },
+    {
+      "id": "west-virginia",
+      "name": "West Virginia",
+      "nickname": "The Mountain State",
+      "capital": "Charleston",
+      "bird": "Northern Cardinal",
+      "flower": "Rhododendron",
+      "population": "1.8 million",
+      "founded": 1863,
+      "stateCode": "WV",
+      "facts": [
+        "West Virginia is the only state that was formed by seceding from another state (Virginia) during the Civil War",
+        "West Virginia has the highest mean elevation east of the Mississippi River",
+        "The New River in West Virginia is one of the oldest rivers in the world despite its name",
+        "West Virginia is the leading US producer of coal",
+        "More than 75% of West Virginia is covered by forest"
+      ],
+      "landmarks": ["New River Gorge National Park", "Harpers Ferry National Historical Park", "Blackwater Falls State Park"],
+      "region": "South"
+    },
+    {
+      "id": "wisconsin",
+      "name": "Wisconsin",
+      "nickname": "The Badger State",
+      "capital": "Madison",
+      "bird": "American Robin",
+      "flower": "Wood Violet",
+      "population": "5.9 million",
+      "founded": 1848,
+      "stateCode": "WI",
+      "facts": [
+        "Wisconsin produces more cheese than any other state — about 3 billion pounds per year",
+        "Wisconsin is home to the world's largest music festival — Summerfest in Milwaukee",
+        "The Republican Party was founded in Ripon, Wisconsin in 1854",
+        "Wisconsin has more dairy cows per square mile than any other state",
+        "The typewriter was invented in Milwaukee, Wisconsin in 1868"
+      ],
+      "landmarks": ["Apostle Islands National Lakeshore", "House on the Rock", "Cave of the Mounds", "Door County"],
+      "region": "Midwest"
+    },
+    {
+      "id": "wyoming",
+      "name": "Wyoming",
+      "nickname": "The Equality State",
+      "capital": "Cheyenne",
+      "bird": "Western Meadowlark",
+      "flower": "Indian Paintbrush",
+      "population": "576,000",
+      "founded": 1890,
+      "stateCode": "WY",
+      "facts": [
+        "Wyoming is the least populated state in the US",
+        "Wyoming was the first state to give women the right to vote, in 1869",
+        "Yellowstone, the world's first national park, is mostly in Wyoming",
+        "Wyoming has more geysers than any other place on Earth",
+        "Wyoming is the eighth largest state but has fewer people than many cities"
+      ],
+      "landmarks": ["Yellowstone National Park", "Grand Teton National Park", "Devils Tower", "Jackson Hole"],
+      "region": "West"
+    }
+  ]
+}

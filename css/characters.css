@@ -1,0 +1,239 @@
+/* ═══════════════════════════════════════════════════════════════
+   BridgeLearn V15 — Premium 3D Character System
+   CSS-driven soft 3D characters with Pixar-inspired warmth
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Character stage ─────────────────────────────────────────── */
+.char-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.char-wrap {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.18));
+}
+
+.char-wrap.char-lg { width: 220px; height: 220px; }
+.char-wrap.char-sm { width: 100px; height: 100px; }
+.char-wrap.char-xs { width: 64px;  height: 64px; }
+
+/* ── Shadow beneath character ────────────────────────────────── */
+.char-shadow {
+  width: 80px; height: 16px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.2) 0%, transparent 70%);
+  margin: -8px auto 0;
+  animation: shadowPulse 3s ease-in-out infinite;
+}
+
+/* ── Base SVG character ──────────────────────────────────────── */
+.char-svg {
+  width: 100%; height: 100%;
+  overflow: visible;
+}
+
+/* ── Idle breathing animation ────────────────────────────────── */
+.char-body-group {
+  transform-origin: 50% 80%;
+  animation: breathe 3.5s ease-in-out infinite;
+}
+
+.char-head-group {
+  transform-origin: 50% 50%;
+  animation: headBob 3.5s ease-in-out infinite;
+}
+
+/* ── Blink animation ─────────────────────────────────────────── */
+.char-eyelid-l,
+.char-eyelid-r {
+  transform-origin: 50% 0%;
+  animation: blink 4s ease-in-out infinite;
+}
+.char-eyelid-r { animation-delay: 0.05s; }
+
+/* ── Hand wave animation ─────────────────────────────────────── */
+.char-arm-right { transform-origin: 15% 15%; }
+
+.char-wrap.anim-wave .char-arm-right {
+  animation: waveArm 0.5s ease-in-out 4;
+}
+
+/* ── Happy bounce ────────────────────────────────────────────── */
+.char-wrap.anim-celebrate {
+  animation: celebrateBounce 0.4s ease-in-out 6;
+}
+
+/* ── Think pose ──────────────────────────────────────────────── */
+.char-wrap.anim-think .char-head-group {
+  animation: thinkTilt 2s ease-in-out infinite;
+}
+.char-wrap.anim-think .char-arm-right {
+  transform: rotate(-45deg) translateY(-10px);
+  transition: transform 0.5s ease;
+}
+
+/* ── Speak animation ─────────────────────────────────────────── */
+.char-mouth {
+  transform-origin: 50% 50%;
+}
+.char-wrap.anim-speak .char-mouth {
+  animation: speakMouth 0.3s ease-in-out infinite alternate;
+}
+
+/* ── Wrong answer — supportive ───────────────────────────────── */
+.char-wrap.anim-support .char-head-group {
+  animation: supportShake 0.5s ease-in-out;
+}
+
+/* ── Correct answer — celebrate ──────────────────────────────── */
+.char-wrap.anim-correct {
+  animation: correctPop 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+
+/* ── Keyframes ───────────────────────────────────────────────── */
+@keyframes breathe {
+  0%, 100% { transform: scaleY(1)   translateY(0); }
+  50%       { transform: scaleY(1.02) translateY(-3px); }
+}
+@keyframes headBob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%       { transform: translateY(-2px) rotate(1deg); }
+  75%       { transform: translateY(-1px) rotate(-0.5deg); }
+}
+@keyframes blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95%            { transform: scaleY(0.05); }
+}
+@keyframes waveArm {
+  0%, 100% { transform: rotate(0deg); }
+  25%       { transform: rotate(-25deg); }
+  75%       { transform: rotate(15deg); }
+}
+@keyframes celebrateBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  40%       { transform: translateY(-20px) scale(1.05); }
+  60%       { transform: translateY(-15px) scale(1.02); }
+}
+@keyframes thinkTilt {
+  0%, 100% { transform: rotate(0deg); }
+  50%       { transform: rotate(-8deg) translateX(4px); }
+}
+@keyframes speakMouth {
+  from { transform: scaleY(1); }
+  to   { transform: scaleY(0.4); }
+}
+@keyframes supportShake {
+  0%, 100% { transform: rotate(0deg); }
+  20%       { transform: rotate(-5deg); }
+  40%       { transform: rotate(5deg); }
+  60%       { transform: rotate(-3deg); }
+  80%       { transform: rotate(3deg); }
+}
+@keyframes correctPop {
+  0%   { transform: scale(0.8) rotate(-5deg); opacity:0.5; }
+  60%  { transform: scale(1.15) rotate(3deg); opacity:1; }
+  100% { transform: scale(1) rotate(0deg); opacity:1; }
+}
+@keyframes shadowPulse {
+  0%, 100% { transform: scale(1);   opacity:1; }
+  50%       { transform: scale(0.95); opacity:0.7; }
+}
+@keyframes floatIn {
+  from { transform: translateY(30px); opacity:0; }
+  to   { transform: translateY(0);    opacity:1; }
+}
+
+/* ── Character emotion bubbles ───────────────────────────────── */
+.char-bubble {
+  position: absolute;
+  top: -10px; right: -10px;
+  background: white;
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  animation: bubblePop 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  z-index: 10;
+}
+@keyframes bubblePop {
+  from { transform: scale(0); }
+  to   { transform: scale(1); }
+}
+
+/* ── Tutor screen character ──────────────────────────────────── */
+.tutor-char-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0;
+  gap: 0.25rem;
+}
+.tutor-char-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.02em;
+}
+.tutor-char-badge {
+  font-size: 0.65rem;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 0.1rem 0.5rem;
+  border-radius: 99px;
+}
+
+/* ── Celebration overlay character ──────────────────────────── */
+.celebrate-char {
+  animation: floatIn 0.4s ease, celebrateBounce 0.4s ease-in-out 0.4s 4;
+}
+
+/* ── Responsive adjustments ──────────────────────────────────── */
+@media (max-width: 360px) {
+  .char-wrap { width: 130px; height: 130px; }
+  .char-wrap.char-lg { width: 180px; height: 180px; }
+}
+
+/* ── Confetti system ─────────────────────────────────────────── */
+.confetti-container {
+  position: fixed; inset:0;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+.confetti-bit {
+  position: absolute;
+  top: -10px;
+  border-radius: 3px;
+  animation: confettiFall linear forwards;
+  opacity: 0.9;
+}
+@keyframes confettiFall {
+  0%   { transform: translateY(-10px) rotate(0deg)   scale(1);   opacity:1; }
+  80%  { opacity: 0.9; }
+  100% { transform: translateY(110vh) rotate(720deg) scale(0.5); opacity:0; }
+}
+
+/* ── Sparkle burst on correct answer ────────────────────────── */
+.sparkle {
+  position: absolute;
+  pointer-events: none;
+  animation: sparkleBurst 0.6s ease-out forwards;
+}
+.sparkle::before, .sparkle::after {
+  content: '★';
+  position: absolute;
+  font-size: 1.2rem;
+  color: #ffd700;
+}
+@keyframes sparkleBurst {
+  0%   { transform: scale(0) rotate(0deg);   opacity:1; }
+  100% { transform: scale(2) rotate(180deg); opacity:0; }
+}
