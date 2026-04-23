@@ -407,28 +407,24 @@ const BLApp = (() => {
     const list = BL.$('topic-list');
     if (!list) return;
     const done = BLProg.getTopicsComplete(subject.id);
-    const topics = (subject.topics || []).filter(t => {
-      // Age-group filter
-      if (t.age_group && !t.age_group.split(',').some(ag => ag.trim() === profile.ageGroup)) return false;
-      return true;
-    });
+    // Show all topics — no age locking, show age tag as metadata
+    const topics = subject.topics || [];
 
     if (!topics.length) {
-      list.innerHTML = '<div class="empty-state"><div class="empty-icon">📖</div><p>No topics available for your age group yet.</p></div>';
+      list.innerHTML = '<div class="empty-state"><div class="empty-icon">📖</div><p>No topics available yet.</p></div>';
       return;
     }
 
-    list.innerHTML = topics.map((t, i) => {
-      const isDone   = done.includes(t.id);
-      const isLocked = i > 0 && !done.includes(topics[i-1]?.id) && !isDone;
-      return `<div class="topic-row ${isLocked?'locked':''}"
-        onclick="${isLocked ? '' : `BLApp.openTopic('${subject.id}','${t.id}')`}">
-        <div class="tr-icon">${t.emoji || t.icon || (isDone ? '✅' : isLocked ? '🔒' : '📖')}</div>
+    list.innerHTML = topics.map((t) => {
+      const isDone = done.includes(t.id);
+      const ageTag = t.ageGroup || t.age_group || '';
+      return `<div class="topic-row" onclick="BLApp.openTopic('${subject.id}','${t.id}')">
+        <div class="tr-icon">${t.emoji || t.icon || (isDone ? '✅' : '📖')}</div>
         <div class="tr-info">
           <div class="tr-title">${t.title}</div>
-          <div class="tr-meta">${t.age_group || 'All ages'}${t.duration ? ' · ' + t.duration + ' min' : ''}</div>
+          <div class="tr-meta">${ageTag ? 'Ages ' + ageTag : 'All ages'}${t.duration ? ' · ' + t.duration + ' min' : ''}</div>
         </div>
-        <div class="tr-status">${isDone ? '✅' : isLocked ? '🔒' : '›'}</div>
+        <div class="tr-status">${isDone ? '✅' : '›'}</div>
       </div>`;
     }).join('');
   }
@@ -467,7 +463,7 @@ const BLApp = (() => {
         <div class="vocab-grid">
           ${topic.vocabulary.map(v => `<div class="vocab-card">
             <div class="vocab-word">${v.word}</div>
-            <div class="vocab-def">${v.definition}</div>
+            <div class="vocab-def">${v.def || v.definition || ''}</div>
           </div>`).join('')}
         </div></div>`;
     }
@@ -482,6 +478,17 @@ const BLApp = (() => {
     // Mark complete + update AI
     BLProg.completeLesson(subject.id, topic.id);
     BLAI.setContext({ subjectId: subject.id, topicId: topic.id });
+
+    // Track recent activity
+    const acts = BL.tryJSON(localStorage.getItem('bl15_recent_activity'), []);
+    acts.unshift({ icon: topic.emoji || subject.emoji || '📖', title: `Completed: ${topic.title}`, time: 'Just now', xp: '+20 XP', ts: Date.now() });
+    localStorage.setItem('bl15_recent_activity', JSON.stringify(acts.slice(0, 20)));
+
+    // Update weekly XP chart
+    const weekXP = BL.tryJSON(localStorage.getItem('bl15_weekly_xp'), Array(7).fill(0));
+    const dayIdx = (new Date().getDay() + 6) % 7;
+    weekXP[dayIdx] = (weekXP[dayIdx] || 0) + 20;
+    localStorage.setItem('bl15_weekly_xp', JSON.stringify(weekXP));
 
     // Render lesson tutor
     const tutor = BLChars.tutorForSubject(subject.id);
@@ -517,8 +524,15 @@ const BLApp = (() => {
 
   function startQuizCategory(catId, isBattle = false) {
     let pool = catId === 'all' ? data.quiz : data.quiz.filter(q => (q.subjectId||q.subject) === catId);
-    // Age-filter
-    pool = pool.filter(q => !q.ageGroup || !profile.ageGroup || q.ageGroup === profile.ageGroup || q.ageGroup === 'all');
+    // Age-filter: include current age group + one below for wider question pool
+    const AGE_ORDER = ['3-5','6-8','9-12','13-15','16-18'];
+    const ageIdx = AGE_ORDER.indexOf(profile.ageGroup);
+    const validGroups = new Set(ageIdx >= 0
+      ? AGE_ORDER.slice(Math.max(0, ageIdx - 1), ageIdx + 2)
+      : AGE_ORDER);
+    pool = pool.filter(q => !q.ageGroup || !profile.ageGroup || validGroups.has(q.ageGroup));
+    // If still no questions, show all
+    if (!pool.length) pool = catId === 'all' ? [...data.quiz] : data.quiz.filter(q => (q.subjectId||q.subject) === catId);
     pool = BL.shuffle(pool).slice(0, isBattle ? 10 : 15);
     if (!pool.length) { BL.toast('ℹ️','No questions','No quiz questions for this topic yet.'); return; }
     beginQuiz(pool, isBattle);
@@ -564,10 +578,14 @@ const BLApp = (() => {
   function selectAnswer(idx) {
     if (state.quizAnswered) return;
     state.quizAnswered = true;
+    clearInterval(state.quizTimer);
     clearTimeout(state.quizTimer);
 
-    const q       = state.quizQ[state.quizIdx];
-    const correct = q.correct;
+    const q = state.quizQ[state.quizIdx];
+    // Support both string answer (quiz.json) and index-based answer
+    const correct = (q.options && q.answer !== undefined)
+      ? q.options.indexOf(q.answer)
+      : (typeof q.correct === 'number' ? q.correct : -1);
     const isRight = idx === correct;
 
     if (isRight) {
@@ -595,12 +613,17 @@ const BLApp = (() => {
 
   function startBattleTimer() {
     let left = 12;
-    BL.setHTML('quiz-timer', left + 's');
-    BL.$('quiz-timer').classList.remove('urgent');
+    const timerEl = BL.$('quiz-timer');
+    if (!timerEl) return;
+    timerEl.textContent = left + 's';
+    timerEl.classList.remove('urgent');
+    clearInterval(state.quizTimer);
     state.quizTimer = setInterval(() => {
       left--;
-      BL.setHTML('quiz-timer', left + 's');
-      if (left <= 4) BL.$('quiz-timer')?.classList.add('urgent');
+      if (timerEl) {
+        timerEl.textContent = left + 's';
+        if (left <= 4) timerEl.classList.add('urgent');
+      }
       if (left <= 0) {
         clearInterval(state.quizTimer);
         if (!state.quizAnswered) selectAnswer(-1); // timeout = wrong
@@ -615,6 +638,23 @@ const BLApp = (() => {
     const isPerfect = pct === 100;
 
     BLProg.recordQuizScore(state.currentSubject?.id || 'general', 'quiz', score, total);
+
+    // Save quiz history for Progress screen
+    const qh = BL.tryJSON(localStorage.getItem('bl15_quiz_history'), []);
+    qh.unshift({ subjectId: state.currentSubject?.id || 'mixed', score, total, pct, ts: Date.now() });
+    localStorage.setItem('bl15_quiz_history', JSON.stringify(qh.slice(0, 50)));
+
+    // Save recent activity
+    const subName = state.currentSubject?.name || 'Mixed';
+    const qActs = BL.tryJSON(localStorage.getItem('bl15_recent_activity'), []);
+    qActs.unshift({ icon: '🧪', title: `Quiz: ${subName} — ${score}/${total}`, time: 'Just now', xp: `+${score * 10} XP`, ts: Date.now() });
+    localStorage.setItem('bl15_recent_activity', JSON.stringify(qActs.slice(0, 20)));
+
+    // Update weekly XP
+    const weekXP = BL.tryJSON(localStorage.getItem('bl15_weekly_xp'), Array(7).fill(0));
+    const dayIdx = (new Date().getDay() + 6) % 7;
+    weekXP[dayIdx] = (weekXP[dayIdx] || 0) + score * 10;
+    localStorage.setItem('bl15_weekly_xp', JSON.stringify(weekXP));
 
     const emoji = pct >= 90 ? '🏆' : pct >= 70 ? '🎉' : pct >= 50 ? '👍' : '💪';
     const msg   = pct >= 90 ? 'Outstanding! You\'re a quiz champion!' :

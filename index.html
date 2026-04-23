@@ -16,9 +16,9 @@
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
   <link rel="icon" type="image/png" href="assets/icons/icon-192.png" />
 
-  <link rel="stylesheet" href="css/themes.css?v=19" />
-  <link rel="stylesheet" href="css/characters.css?v=19" />
-  <link rel="stylesheet" href="css/main.css?v=19" />
+  <link rel="stylesheet" href="css/themes.css?v=21" />
+  <link rel="stylesheet" href="css/characters.css?v=21" />
+  <link rel="stylesheet" href="css/main.css?v=21" />
   <style>
     /* Critical layout fixes */
     #app-shell, .app-shell { width:100%; min-height:100vh; max-width:480px; margin:0 auto; position:relative; background:var(--bg-app); }
@@ -1182,6 +1182,9 @@
         </section>
 
         <section class="profile-section">
+          <button class="btn btn--secondary btn--full" onclick="BLParent.enterParentMode()" style="margin-bottom:0.6rem">
+            👨‍👩‍👧 Parent Mode
+          </button>
           <button class="btn btn--danger btn--full" onclick="BLApp.doLogout()">Sign Out</button>
         </section>
 
@@ -1526,6 +1529,7 @@
         </div>
 
         <div class="settings-admin-link">
+          <button onclick="BLApp.closeSheet('settings-sheet'); BLParent.enterParentMode()">👨‍👩‍👧 Parent Mode</button>
           <button onclick="BLApp.closeSheet('settings-sheet'); BLApp.openAdminLogin()">Admin Access</button>
         </div>
 
@@ -1555,18 +1559,18 @@
   <!-- ═══════════════════════════════════════════
        SCRIPTS (ordered)
   ═══════════════════════════════════════════ -->
-  <script src="js/utils.js?v=19"></script>
-  <script src="js/characters.js?v=19"></script>
-  <script src="js/storage.js?v=19"></script>
-  <script src="js/auth.js?v=19"></script>
-  <script src="js/voice.js?v=19"></script>
-  <script src="js/ai.js?v=19"></script>
-  <script src="js/gamification.js?v=19"></script>
-  <script src="js/languages.js?v=19"></script>
-  <script src="js/progression.js?v=19"></script>
-  <script src="js/games.js?v=19"></script>
-  <script src="js/parent.js?v=19"></script>
-  <script src="js/app.js?v=19"></script>
+  <script src="js/utils.js?v=21"></script>
+  <script src="js/characters.js?v=21"></script>
+  <script src="js/storage.js?v=21"></script>
+  <script src="js/auth.js?v=21"></script>
+  <script src="js/voice.js?v=21"></script>
+  <script src="js/ai.js?v=21"></script>
+  <script src="js/gamification.js?v=21"></script>
+  <script src="js/languages.js?v=21"></script>
+  <script src="js/progression.js?v=21"></script>
+  <script src="js/games.js?v=21"></script>
+  <script src="js/parent.js?v=21"></script>
+  <script src="js/app.js?v=21"></script>
 
 </body>
 </html>

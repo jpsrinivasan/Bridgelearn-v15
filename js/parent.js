@@ -20,7 +20,10 @@ const BLParent = (() => {
   }
 
   function tryJSON(str, fallback) {
-    try { return JSON.parse(str); } catch (_) { return fallback; }
+    try {
+      const r = JSON.parse(str);
+      return (r === null || r === undefined) ? fallback : r;
+    } catch (_) { return fallback; }
   }
 
   function uuid() {

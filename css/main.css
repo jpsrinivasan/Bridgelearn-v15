@@ -2509,3 +2509,106 @@ a { color: var(--accent); text-decoration: none; }
 .qa-btn:hover { border-color: var(--accent); transform: translateY(-1px); }
 .qa-icon { font-size: 1.4rem; }
 .qa-lbl { font-size: 0.62rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.03em; }
+
+/* ═══════════════════════════════════════════════════════════
+   PARENT MODE
+═══════════════════════════════════════════════════════════ */
+#bl-parent-overlay {
+  position: fixed; inset: 0; z-index: 8000;
+  background: rgba(0,0,0,0.75);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+}
+.pd-pin-modal {
+  background: var(--bg-card, #fff);
+  border-radius: 24px;
+  padding: 2rem 1.5rem;
+  width: 100%; max-width: 340px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  text-align: center;
+}
+.pd-pin-modal h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary, #1a1a2e); }
+.pd-pin-hint { font-size: 0.88rem; color: var(--text-secondary, #666); margin-bottom: 1.2rem; }
+.pd-pin-input {
+  width: 100%; text-align: center; font-size: 1.8rem; letter-spacing: 0.5em;
+  border: 2px solid var(--border, #e0e0e0); border-radius: 14px;
+  padding: 0.75rem; background: var(--bg-app, #f5f5f5);
+  color: var(--text-primary, #1a1a2e); outline: none;
+  margin-bottom: 0.75rem;
+}
+.pd-pin-input:focus { border-color: var(--accent, #6c63ff); }
+.pd-pin-error { color: #f44336; font-size: 0.82rem; margin-bottom: 0.5rem; font-weight: 600; }
+.pd-form-btns { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.75rem; }
+.pd-btn-primary {
+  background: var(--accent, #6c63ff); color: #fff; border: none;
+  border-radius: 12px; padding: 0.7rem 1.5rem; font-size: 0.9rem;
+  font-weight: 700; cursor: pointer; transition: opacity 0.15s;
+}
+.pd-btn-primary:hover { opacity: 0.88; }
+.pd-btn-ghost {
+  background: transparent; color: var(--text-secondary, #888); border: 1.5px solid var(--border, #e0e0e0);
+  border-radius: 12px; padding: 0.7rem 1.2rem; font-size: 0.88rem;
+  font-weight: 600; cursor: pointer;
+}
+
+/* Parent dashboard panel */
+#bl-parent-dashboard {
+  position: fixed; inset: 0; z-index: 7000;
+  background: var(--bg-app, #f5f7fa);
+  overflow-y: auto; padding: 1rem 1rem 5rem;
+}
+.parent-dash { max-width: 480px; margin: 0 auto; }
+.parent-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; }
+.parent-header h2 { font-size: 1.3rem; font-weight: 800; }
+.pd-exit-btn {
+  background: var(--bg-card); border: 1.5px solid var(--border);
+  border-radius: 10px; padding: 0.5rem 1rem; font-size: 0.85rem;
+  font-weight: 700; cursor: pointer; color: var(--text-primary);
+}
+.pd-section { background: var(--bg-card, #fff); border-radius: 18px; padding: 1.1rem; margin-bottom: 1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+.pd-section-title { font-size: 0.95rem; font-weight: 800; margin-bottom: 0.85rem; color: var(--text-primary); }
+.pd-stat-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.5rem; }
+.pd-stat { background: var(--bg-app, #f5f7fa); border-radius: 12px; padding: 0.75rem 0.4rem; text-align: center; }
+.pd-stat-n { display: block; font-size: 1.4rem; font-weight: 800; color: var(--accent, #6c63ff); }
+.pd-stat-l { font-size: 0.65rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+.pd-empty { font-size: 0.85rem; color: var(--text-secondary); font-style: italic; }
+
+/* Subject bars */
+.pd-bar-row { margin-bottom: 0.8rem; }
+.pd-bar-label { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.25rem; }
+.pd-bar-track { background: var(--bg-app, #eee); border-radius: 999px; height: 10px; overflow: hidden; }
+.pd-bar-fill { height: 100%; border-radius: 999px; transition: width 0.5s ease; }
+.pd-bar-pct { font-size: 0.75rem; color: var(--text-secondary); text-align: right; margin-top: 0.15rem; }
+.pd-bar-meta { font-size: 0.72rem; color: var(--text-muted, #999); }
+
+/* Heatmap */
+.pd-heatmap { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.pd-heat-cell { width: 40px; height: 40px; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: 700; }
+.pd-heat-0 { background: var(--bg-app, #eee); }
+.pd-heat-1 { background: #c6e9f5; color: #1a6e90; }
+.pd-heat-2 { background: #74c7e8; color: #0d4d6b; }
+.pd-heat-3 { background: #2196f3; color: #fff; }
+.pd-heat-day { font-size: 0.6rem; }
+.pd-heat-xp { font-size: 0.65rem; }
+.pd-heat-legend { display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; color: var(--text-secondary); margin-top: 0.5rem; flex-wrap: wrap; }
+
+/* Screen time meter */
+.pd-screen-meter { }
+.pd-screen-track { background: var(--bg-app, #eee); border-radius: 999px; height: 14px; overflow: hidden; margin-bottom: 0.4rem; }
+.pd-screen-fill { height: 100%; border-radius: 999px; transition: width 0.5s; }
+.pd-screen-label { font-size: 0.82rem; color: var(--text-secondary); }
+
+/* Child chips */
+.pd-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.6rem; }
+.pd-chip { background: var(--bg-app); border: 1.5px solid var(--border); border-radius: 20px; padding: 0.4rem 0.9rem; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+.pd-chip-active { background: var(--accent, #6c63ff); color: #fff; border-color: var(--accent, #6c63ff); }
+.pd-add-btn { background: transparent; color: var(--accent); border: none; font-size: 0.85rem; font-weight: 700; cursor: pointer; padding: 0.3rem 0; }
+
+/* Settings rows */
+.pd-section-settings { }
+.pd-setting-row { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.75rem; }
+.pd-setting-row label { font-size: 0.85rem; color: var(--text-primary); flex: 1; }
+.pd-input { border: 1.5px solid var(--border); border-radius: 10px; padding: 0.5rem 0.75rem; font-size: 0.9rem; background: var(--bg-app); color: var(--text-primary); width: 100%; }
+.pd-input-sm { width: 80px; text-align: center; }
+.pd-add-form { background: var(--bg-app); border-radius: 14px; padding: 1rem; margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.pd-report h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.75rem; }
