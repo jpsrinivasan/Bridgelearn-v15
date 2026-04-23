@@ -8,6 +8,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="BridgeLearn" />
   <meta name="description" content="BridgeLearn — Premium kids education app for ages 3–18" />
+  <script>document.write('<base href="' + window.location.href.replace(/\/[^\/]*$/, '/') + '">');</script>
 
   <title>BridgeLearn</title>
 
@@ -15,9 +16,9 @@
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
   <link rel="icon" type="image/png" href="assets/icons/icon-192.png" />
 
-  <link rel="stylesheet" href="css/themes.css?v=15" />
-  <link rel="stylesheet" href="css/characters.css?v=15" />
-  <link rel="stylesheet" href="css/main.css?v=15" />
+  <link rel="stylesheet" href="css/themes.css?v=19" />
+  <link rel="stylesheet" href="css/characters.css?v=19" />
+  <link rel="stylesheet" href="css/main.css?v=19" />
   <style>
     /* Critical layout fixes */
     #app-shell, .app-shell { width:100%; min-height:100vh; max-width:480px; margin:0 auto; position:relative; background:var(--bg-app); }
@@ -482,6 +483,25 @@
             <button class="subject-card subject-card--safety" onclick="BLApp.openSafety()">
               <span class="subject-card__icon">🛡️</span>
               <span class="subject-card__name">Safety</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Quick Access -->
+        <section class="dash-section">
+          <h2 class="dash-section__title">⚡ QUICK ACCESS</h2>
+          <div class="quick-access-row">
+            <button class="qa-btn" onclick="BLApp.openAssignments()">
+              <span class="qa-icon">📋</span><span class="qa-lbl">Assignments</span>
+            </button>
+            <button class="qa-btn" onclick="BLApp.openProgress()">
+              <span class="qa-icon">📈</span><span class="qa-lbl">Progress</span>
+            </button>
+            <button class="qa-btn" onclick="BLApp.openMessages()">
+              <span class="qa-icon">💬</span><span class="qa-lbl">Messages</span>
+            </button>
+            <button class="qa-btn" onclick="BLApp.openParent()">
+              <span class="qa-icon">👨‍👩‍👦</span><span class="qa-lbl">Parent</span>
             </button>
           </div>
         </section>
@@ -1168,6 +1188,129 @@
         <div class="bottom-spacer"></div>
       </div>
 
+      <!-- ═══════════════════════════════════════════
+           ASSIGNMENTS
+      ═══════════════════════════════════════════ -->
+      <div id="screen-assignments" class="screen screen-assignments">
+        <div class="screen-topbar">
+          <button class="btn-back" onclick="BL.goBack()" aria-label="Back">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <span class="screen-topbar__title">📋 Assignments</span>
+          <div class="screen-topbar__spacer"></div>
+        </div>
+        <div class="assignments-body">
+          <div class="assign-tabs">
+            <button class="assign-tab active" onclick="BLApp.filterAssignments('active',this)">Active</button>
+            <button class="assign-tab" onclick="BLApp.filterAssignments('completed',this)">Completed</button>
+            <button class="assign-tab" onclick="BLApp.filterAssignments('all',this)">All</button>
+          </div>
+          <div id="assignments-list" class="assignments-list"></div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           PROGRESS / ANALYTICS
+      ═══════════════════════════════════════════ -->
+      <div id="screen-progress" class="screen screen-progress">
+        <div class="screen-topbar">
+          <button class="btn-back" onclick="BL.goBack()" aria-label="Back">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <span class="screen-topbar__title">📈 My Progress</span>
+          <div class="screen-topbar__spacer"></div>
+        </div>
+        <div class="progress-body">
+          <div class="prog-overview">
+            <div class="prog-stat-card prog-stat-card--xp"><div class="psc-icon">⚡</div><div class="psc-val" id="prog-total-xp">0</div><div class="psc-lbl">Total XP</div></div>
+            <div class="prog-stat-card prog-stat-card--lessons"><div class="psc-icon">📖</div><div class="psc-val" id="prog-lessons">0</div><div class="psc-lbl">Lessons Done</div></div>
+            <div class="prog-stat-card prog-stat-card--streak"><div class="psc-icon">🔥</div><div class="psc-val" id="prog-streak">0</div><div class="psc-lbl">Day Streak</div></div>
+            <div class="prog-stat-card prog-stat-card--quiz"><div class="psc-icon">🧪</div><div class="psc-val" id="prog-quiz-avg">0%</div><div class="psc-lbl">Quiz Avg</div></div>
+          </div>
+          <div class="prog-section"><h3 class="prog-section-title">📅 This Week</h3><div class="weekly-chart" id="weekly-chart"></div></div>
+          <div class="prog-section"><h3 class="prog-section-title">📚 Subject Progress</h3><div id="subject-progress-list" class="subject-progress-list"></div></div>
+          <div class="prog-section"><h3 class="prog-section-title">⏱ Recent Activity</h3><div id="recent-activity-list" class="recent-activity-list"></div></div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════
+           MESSAGES
+      ═══════════════════════════════════════════ -->
+      <div id="screen-messages" class="screen screen-messages">
+        <div class="screen-topbar">
+          <button class="btn-back" onclick="BL.goBack()" aria-label="Back">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <span class="screen-topbar__title">💬 Messages</span>
+          <div class="screen-topbar__spacer"></div>
+        </div>
+        <div class="messages-body">
+          <div id="messages-list" class="messages-list"></div>
+        </div>
+      </div>
+
+      <!-- ADMIN LOGIN -->
+      <div id="screen-admin-login" class="screen screen-admin-login">
+        <div class="admin-login-wrap">
+          <div class="admin-logo">🔐</div>
+          <h2 class="admin-login-title">Admin Access</h2>
+          <p class="admin-login-sub">BridgeLearn Management</p>
+          <div class="form-group">
+            <label class="form-label">Admin Password</label>
+            <input type="password" id="admin-password" class="form-input" placeholder="Enter admin password" />
+          </div>
+          <div id="admin-login-error" class="admin-error hidden">Incorrect password</div>
+          <button class="btn btn--primary btn--full" onclick="BLApp.adminLogin()">Login</button>
+          <button class="btn btn--ghost btn--full" onclick="BL.goBack()">← Back</button>
+        </div>
+      </div>
+
+      <!-- ADMIN PANEL -->
+      <div id="screen-admin" class="screen screen-admin">
+        <div class="admin-topbar">
+          <button class="btn-back" onclick="BLApp.adminLogout()">← Exit Admin</button>
+          <span class="admin-topbar-title">⚙️ Admin Panel</span>
+        </div>
+        <div class="admin-body">
+          <div class="admin-section">
+            <h3 class="admin-section-title">🤖 AI Configuration</h3>
+            <div class="form-group">
+              <label class="form-label">AI Provider</label>
+              <select id="admin-ai-provider" class="form-input">
+                <option value="none">None (Offline mode)</option>
+                <option value="claude">Anthropic Claude</option>
+                <option value="openai">OpenAI GPT</option>
+                <option value="custom">Custom Endpoint</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">API Key</label>
+              <input type="password" id="admin-api-key" class="form-input" placeholder="sk-ant-... or sk-..." />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Custom Endpoint URL (optional)</label>
+              <input type="url" id="admin-endpoint" class="form-input" placeholder="https://api.example.com/v1" />
+            </div>
+            <button class="btn btn--primary" onclick="BLApp.adminSaveAI()">Save AI Config</button>
+          </div>
+          <div class="admin-section">
+            <h3 class="admin-section-title">📊 App Statistics</h3>
+            <div class="admin-stats-grid">
+              <div class="admin-stat"><span id="admin-stat-subjects" class="admin-stat-val">18</span><span class="admin-stat-lbl">Subjects</span></div>
+              <div class="admin-stat"><span id="admin-stat-topics" class="admin-stat-val">55</span><span class="admin-stat-lbl">Topics</span></div>
+              <div class="admin-stat"><span id="admin-stat-quizzes" class="admin-stat-val">111</span><span class="admin-stat-lbl">Quiz Q's</span></div>
+              <div class="admin-stat"><span id="admin-stat-langs" class="admin-stat-val">6</span><span class="admin-stat-lbl">Languages</span></div>
+            </div>
+          </div>
+          <div class="admin-section">
+            <h3 class="admin-section-title">🔧 Maintenance</h3>
+            <button class="btn btn--secondary" onclick="BLApp.adminClearCache()">Clear App Cache</button>
+            <button class="btn btn--secondary" onclick="BLApp.adminResetProgress()">Reset All Progress</button>
+          </div>
+          <div id="admin-save-msg" class="admin-save-msg hidden">✅ Saved!</div>
+        </div>
+      </div>
+
     </main>
     <!-- ─── END SCREENS CONTAINER ─── -->
 
@@ -1375,27 +1518,15 @@
         </div>
 
         <div class="settings-section">
-          <h3 class="settings-section__title">AI Configuration</h3>
-          <div class="form-group">
-            <label class="form-label" for="settings-ai-url">Custom AI Endpoint URL</label>
-            <input id="settings-ai-url" class="form-input" type="url" placeholder="https://api.example.com/v1" />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="settings-claude-key">Claude API Key</label>
-            <input id="settings-claude-key" class="form-input" type="password" placeholder="sk-ant-…" autocomplete="off" />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="settings-openai-key">OpenAI API Key</label>
-            <input id="settings-openai-key" class="form-input" type="password" placeholder="sk-…" autocomplete="off" />
-          </div>
-        </div>
-
-        <div class="settings-section">
           <button class="btn btn--primary btn--full" onclick="BLApp.saveSettings()">Save Settings</button>
         </div>
 
         <div class="settings-section">
           <button class="btn btn--danger btn--full" onclick="BLApp.doLogout()">Sign Out</button>
+        </div>
+
+        <div class="settings-admin-link">
+          <button onclick="BLApp.closeSheet('settings-sheet'); BLApp.openAdminLogin()">Admin Access</button>
         </div>
 
       </div>
@@ -1419,21 +1550,23 @@
     </div>
   </div>
 
+
+
   <!-- ═══════════════════════════════════════════
        SCRIPTS (ordered)
   ═══════════════════════════════════════════ -->
-  <script src="js/utils.js?v=15"></script>
-  <script src="js/characters.js?v=15"></script>
-  <script src="js/storage.js?v=15"></script>
-  <script src="js/auth.js?v=15"></script>
-  <script src="js/voice.js?v=15"></script>
-  <script src="js/ai.js?v=15"></script>
-  <script src="js/gamification.js?v=15"></script>
-  <script src="js/languages.js?v=15"></script>
-  <script src="js/progression.js?v=15"></script>
-  <script src="js/games.js?v=15"></script>
-  <script src="js/parent.js?v=15"></script>
-  <script src="js/app.js?v=15"></script>
+  <script src="js/utils.js?v=19"></script>
+  <script src="js/characters.js?v=19"></script>
+  <script src="js/storage.js?v=19"></script>
+  <script src="js/auth.js?v=19"></script>
+  <script src="js/voice.js?v=19"></script>
+  <script src="js/ai.js?v=19"></script>
+  <script src="js/gamification.js?v=19"></script>
+  <script src="js/languages.js?v=19"></script>
+  <script src="js/progression.js?v=19"></script>
+  <script src="js/games.js?v=19"></script>
+  <script src="js/parent.js?v=19"></script>
+  <script src="js/app.js?v=19"></script>
 
 </body>
 </html>

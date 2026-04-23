@@ -2406,3 +2406,106 @@ a { color: var(--accent); text-decoration: none; }
 
 /* Dashboard screen layout */
 .screen-dashboard { padding-bottom: 80px; overflow-y: auto; }
+
+/* ── Admin Login ─────────────────────────────────────────── */
+.screen-admin-login { align-items: center; justify-content: center; padding: 2rem; }
+.admin-login-wrap { width: 100%; max-width: 340px; text-align: center; }
+.admin-logo { font-size: 3rem; margin-bottom: 1rem; }
+.admin-login-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.25rem; }
+.admin-login-sub { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 2rem; }
+.admin-error { color: var(--wrong); font-size: 0.85rem; margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(245,87,108,0.1); border-radius: 8px; }
+
+/* ── Admin Panel ─────────────────────────────────────────── */
+.screen-admin { padding-bottom: 2rem; }
+.admin-topbar { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; background: #1a1a2e; color: #fff; }
+.admin-topbar-title { font-size: 1rem; font-weight: 700; }
+.admin-body { padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 1.25rem; }
+.admin-section { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 16px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.admin-section-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
+.admin-stats-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.75rem; }
+.admin-stat { background: var(--bg-app); border-radius: 12px; padding: 0.75rem; text-align: center; }
+.admin-stat-val { display: block; font-size: 1.6rem; font-weight: 900; color: var(--accent); }
+.admin-stat-lbl { font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+.admin-save-msg { color: var(--correct); font-size: 0.9rem; text-align: center; padding: 0.5rem; }
+
+/* ── Settings sheet - admin link ─────────────────────────── */
+.settings-admin-link { text-align: center; margin-top: 0.5rem; }
+.settings-admin-link button { background: none; border: none; color: var(--text-secondary); font-size: 0.75rem; cursor: pointer; opacity: 0.5; }
+.settings-admin-link button:hover { opacity: 1; }
+
+/* ── Assignments screen ──────────────────────────────────── */
+.screen-assignments { padding-bottom: 80px; }
+.assignments-body { padding: 1rem; }
+.assign-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; background: var(--bg-card); border-radius: 12px; padding: 0.25rem; border: 1px solid var(--border); }
+.assign-tab { flex: 1; padding: 0.5rem; border: none; background: none; border-radius: 10px; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); cursor: pointer; transition: all 0.2s; }
+.assign-tab.active { background: var(--accent); color: #fff; }
+.assignments-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.assign-card { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 16px; padding: 1rem; display: flex; gap: 0.85rem; align-items: flex-start; }
+.assign-card.completed { opacity: 0.65; }
+.assign-card.overdue { border-color: var(--wrong); }
+.assign-icon { font-size: 2rem; flex-shrink: 0; }
+.assign-info { flex: 1; }
+.assign-title { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.2rem; }
+.assign-subject { font-size: 0.78rem; color: var(--accent); font-weight: 600; margin-bottom: 0.2rem; }
+.assign-due { font-size: 0.75rem; color: var(--text-secondary); }
+.assign-due.overdue { color: var(--wrong); font-weight: 600; }
+.assign-badge { font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 8px; align-self: flex-start; flex-shrink: 0; }
+.assign-badge.active { background: rgba(108,99,255,0.1); color: var(--accent); }
+.assign-badge.completed { background: rgba(67,233,123,0.15); color: var(--correct); }
+.assign-badge.overdue { background: rgba(245,87,108,0.1); color: var(--wrong); }
+
+/* ── Progress screen ─────────────────────────────────────── */
+.screen-progress { padding-bottom: 80px; }
+.progress-body { padding: 1rem; display: flex; flex-direction: column; gap: 1.25rem; }
+.prog-overview { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.75rem; }
+.prog-stat-card { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 16px; padding: 1rem; text-align: center; }
+.prog-stat-card--xp { border-color: #a78bfa; }
+.prog-stat-card--lessons { border-color: #43e97b; }
+.prog-stat-card--streak { border-color: #f5576c; }
+.prog-stat-card--quiz { border-color: #4facfe; }
+.psc-icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+.psc-val { font-size: 1.6rem; font-weight: 900; color: var(--accent); line-height: 1; }
+.psc-lbl { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.2rem; }
+.prog-section { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 16px; padding: 1rem; }
+.prog-section-title { font-size: 0.88rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.85rem; }
+.weekly-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 80px; gap: 0.35rem; }
+.week-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.25rem; height: 100%; justify-content: flex-end; }
+.week-bar { width: 100%; background: var(--accent); border-radius: 4px 4px 0 0; min-height: 4px; transition: height 0.6s ease; opacity: 0.8; }
+.week-bar.today { opacity: 1; background: linear-gradient(180deg, #a78bfa, var(--accent)); }
+.week-day { font-size: 0.62rem; color: var(--text-secondary); font-weight: 600; }
+.subj-prog-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+.subj-prog-row:last-child { border-bottom: none; }
+.subj-prog-icon { font-size: 1.2rem; width: 1.6rem; text-align: center; }
+.subj-prog-info { flex: 1; }
+.subj-prog-name { font-size: 0.85rem; font-weight: 600; }
+.subj-prog-bar-wrap { height: 4px; background: var(--border); border-radius: 999px; overflow: hidden; margin-top: 0.2rem; }
+.subj-prog-fill { height: 100%; background: var(--accent); border-radius: 999px; }
+.subj-prog-pct { font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; min-width: 2.5rem; text-align: right; }
+.activity-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+.activity-item:last-child { border-bottom: none; }
+.activity-icon { font-size: 1.3rem; }
+.activity-info { flex: 1; }
+.activity-title { font-size: 0.85rem; font-weight: 600; }
+.activity-time { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.1rem; }
+.activity-xp { font-size: 0.78rem; font-weight: 700; color: var(--accent); }
+
+/* ── Messages screen ─────────────────────────────────────── */
+.screen-messages { padding-bottom: 80px; }
+.messages-body { padding: 1rem; }
+.messages-list { display: flex; flex-direction: column; gap: 0.65rem; }
+.msg-item { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 16px; padding: 1rem; display: flex; gap: 0.85rem; align-items: flex-start; cursor: pointer; transition: all 0.15s; }
+.msg-item:hover { border-color: var(--accent); }
+.msg-item.unread { border-left: 3px solid var(--accent); }
+.msg-avatar { font-size: 2rem; flex-shrink: 0; }
+.msg-info { flex: 1; min-width: 0; }
+.msg-sender { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.15rem; display: flex; justify-content: space-between; }
+.msg-time { font-size: 0.72rem; color: var(--text-secondary); font-weight: 400; }
+.msg-preview { font-size: 0.8rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.msg-unread-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; flex-shrink: 0; margin-top: 0.3rem; }
+
+/* ── Quick access row ────────────────────────────────────── */
+.quick-access-row { display: flex; gap: 0.5rem; }
+.qa-btn { flex: 1; background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px; padding: 0.75rem 0.4rem; display: flex; flex-direction: column; align-items: center; gap: 0.35rem; cursor: pointer; transition: all 0.2s; }
+.qa-btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+.qa-icon { font-size: 1.4rem; }
+.qa-lbl { font-size: 0.62rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.03em; }

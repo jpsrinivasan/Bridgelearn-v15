@@ -96,7 +96,8 @@ const BLStorage = (() => {
   async function loadData(filename) {
     if (dataCache[filename]) return dataCache[filename];
     try {
-      const data = await BL.fetchJSON(`/data/${filename}.json`);
+      const base = document.querySelector('base')?.href || (window.location.pathname.replace(/\/[^/]*$/, '/'));
+      const data = await BL.fetchJSON(`${base}data/${filename}.json`);
       dataCache[filename] = data;
       return data;
     } catch (e) {

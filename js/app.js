@@ -1045,20 +1045,75 @@ const BLApp = (() => {
      ════════════════════════════════════════════════════════════ */
   function openSettings() {
     BL.setHTML('settings-email', BLAuth.getUser()?.email || 'Guest mode');
-    const apiKey = localStorage.getItem('bl15_claude_key') || '';
-    if (BL.$('settings-api-key')) BL.$('settings-api-key').value = apiKey ? '••••••••' : '';
     openSheet('settings-sheet');
   }
 
   async function saveSettings() {
-    const key = BL.$('settings-api-key')?.value.trim();
-    if (key && !key.startsWith('••')) BLAI.updateConfig({ claudeKey: key });
     profile.muteAudio    = BL.$('toggle-mute')?.checked    || false;
     profile.voiceEnabled = BL.$('toggle-voice')?.checked   ?? true;
     BLVoice.setMuted(profile.muteAudio);
     BLStorage.saveProfile(profile);
     BL.toast('✅','Settings saved','');
     closeSheet('settings-sheet');
+  }
+
+  function openAdminLogin() {
+    BL.$('admin-password').value = '';
+    BL.remClass('admin-login-error', 'hidden'); // reset
+    BL.addClass('admin-login-error', 'hidden');
+    BL.showScreen('admin-login');
+  }
+
+  function adminLogin() {
+    const pw = BL.$('admin-password')?.value;
+    const stored = localStorage.getItem('bl15_admin_pw') || 'admin123';
+    if (pw === stored) {
+      BL.showScreen('admin');
+      adminLoadConfig();
+    } else {
+      BL.remClass('admin-login-error', 'hidden');
+    }
+  }
+
+  function adminLogout() {
+    BL.showScreen('dashboard');
+  }
+
+  function adminLoadConfig() {
+    const key = localStorage.getItem('bl15_claude_key') || localStorage.getItem('bl15_openai_key') || '';
+    const provider = localStorage.getItem('bl15_ai_provider') || 'none';
+    const endpoint = localStorage.getItem('bl15_endpoint') || '';
+    if (BL.$('admin-ai-provider')) BL.$('admin-ai-provider').value = provider;
+    if (BL.$('admin-api-key')) BL.$('admin-api-key').value = key ? '••••••••' : '';
+    if (BL.$('admin-endpoint')) BL.$('admin-endpoint').value = endpoint;
+  }
+
+  function adminSaveAI() {
+    const provider = BL.$('admin-ai-provider')?.value || 'none';
+    const key = BL.$('admin-api-key')?.value.trim();
+    const endpoint = BL.$('admin-endpoint')?.value.trim();
+    localStorage.setItem('bl15_ai_provider', provider);
+    if (key && !key.startsWith('••')) {
+      if (provider === 'claude') localStorage.setItem('bl15_claude_key', key);
+      if (provider === 'openai') localStorage.setItem('bl15_openai_key', key);
+    }
+    if (endpoint) localStorage.setItem('bl15_endpoint', endpoint);
+    BLAI.updateConfig({ provider, claudeKey: provider==='claude'?key:'', openaiKey: provider==='openai'?key:'', backendUrl: endpoint });
+    BL.remClass('admin-save-msg', 'hidden');
+    setTimeout(() => BL.addClass('admin-save-msg', 'hidden'), 2000);
+    BL.toast('✅', 'AI Config Saved', '');
+  }
+
+  function adminClearCache() {
+    Object.keys(localStorage).filter(k => k.startsWith('bl15_cache_')).forEach(k => localStorage.removeItem(k));
+    BL.toast('🧹', 'Cache cleared', '');
+  }
+
+  function adminResetProgress() {
+    if (confirm('Reset ALL progress? This cannot be undone.')) {
+      BLStorage.saveProgress({});
+      BL.toast('🔄', 'Progress reset', '');
+    }
   }
 
   async function testAIConnection() {
@@ -1091,6 +1146,137 @@ const BLApp = (() => {
     });
   }
 
+  /* ── Assignments ─────────────────────────── */
+  const MOCK_ASSIGNMENTS = [
+    { id:1, title:'Complete 5 Math lessons', subject:'Mathematics', icon:'🔢', due:'2026-04-25', status:'active' },
+    { id:2, title:'Take the Science Quiz', subject:'Science', icon:'🔬', due:'2026-04-24', status:'active' },
+    { id:3, title:'Read English Story 3', subject:'English', icon:'📚', due:'2026-04-20', status:'overdue' },
+    { id:4, title:'Finish Coding Module 1', subject:'Coding', icon:'💻', due:'2026-04-18', status:'completed' },
+    { id:5, title:'Geography: Study 10 Countries', subject:'Geography', icon:'🌍', due:'2026-04-30', status:'active' },
+    { id:6, title:'History Quiz: Ancient World', subject:'History', icon:'🏛️', due:'2026-04-17', status:'completed' },
+  ];
+
+  function openAssignments() {
+    renderAssignments('active');
+    BL.showScreen('assignments');
+  }
+
+  function filterAssignments(filter, btn) {
+    document.querySelectorAll('.assign-tab').forEach(t => t.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    renderAssignments(filter);
+  }
+
+  function renderAssignments(filter = 'active') {
+    const el = BL.$('assignments-list');
+    if (!el) return;
+    let list = MOCK_ASSIGNMENTS;
+    if (filter !== 'all') list = list.filter(a => a.status === filter);
+    if (!list.length) { el.innerHTML = '<div class="empty-state"><div class="es-icon">📋</div><div class="es-msg">No assignments here!</div></div>'; return; }
+    el.innerHTML = list.map(a => `
+      <div class="assign-card ${a.status}">
+        <div class="assign-icon">${a.icon}</div>
+        <div class="assign-info">
+          <div class="assign-title">${a.title}</div>
+          <div class="assign-subject">${a.subject}</div>
+          <div class="assign-due ${a.status==='overdue'?'overdue':''}">Due: ${a.due}</div>
+        </div>
+        <div class="assign-badge ${a.status}">${a.status}</div>
+      </div>`).join('');
+  }
+
+  /* ── Progress / Analytics ────────────────── */
+  function openProgress() {
+    const g = BLGam.getStats();
+    const overall = BLProg.getOverallStats(data.subjects || []);
+    BL.setHTML('prog-total-xp', BL.fmtNum(g.xp));
+    BL.setHTML('prog-streak', g.streak);
+    BL.setHTML('prog-lessons', overall.totalComplete || 0);
+    const qHistory = BL.tryJSON(localStorage.getItem('bl15_quiz_history'), []);
+    const avgScore = qHistory.length ? Math.round(qHistory.reduce((s,q) => s + (q.pct||0), 0) / qHistory.length) : 0;
+    BL.setHTML('prog-quiz-avg', avgScore + '%');
+    renderWeeklyChart();
+    renderSubjectProgress();
+    renderRecentActivity();
+    BL.showScreen('progress');
+  }
+
+  function renderWeeklyChart() {
+    const el = BL.$('weekly-chart');
+    if (!el) return;
+    const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+    const todayIdx = (new Date().getDay() + 6) % 7;
+    const weekData = BL.tryJSON(localStorage.getItem('bl15_weekly_xp'), Array(7).fill(0));
+    const max = Math.max(...weekData, 1);
+    el.innerHTML = days.map((d,i) => {
+      const h = Math.round((weekData[i] / max) * 70);
+      return `<div class="week-bar-wrap">
+        <div class="week-bar ${i===todayIdx?'today':''}" style="height:${Math.max(h,4)}px"></div>
+        <div class="week-day">${d}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function renderSubjectProgress() {
+    const el = BL.$('subject-progress-list');
+    if (!el || !data.subjects?.length) return;
+    el.innerHTML = data.subjects.slice(0,8).map(s => {
+      const pct = BLProg.getSubjectPct(s.id, s.topics?.length);
+      return `<div class="subj-prog-row">
+        <div class="subj-prog-icon">${s.emoji||s.icon||'📚'}</div>
+        <div class="subj-prog-info">
+          <div class="subj-prog-name">${s.name}</div>
+          <div class="subj-prog-bar-wrap"><div class="subj-prog-fill" style="width:${pct}%"></div></div>
+        </div>
+        <div class="subj-prog-pct">${pct}%</div>
+      </div>`;
+    }).join('');
+  }
+
+  function renderRecentActivity() {
+    const el = BL.$('recent-activity-list');
+    if (!el) return;
+    const stored = BL.tryJSON(localStorage.getItem('bl15_recent_activity'), []);
+    const acts = stored.length ? stored : [
+      { icon:'📖', title:'Completed: Counting to 10', time:'2 hours ago', xp:'+20 XP' },
+      { icon:'🧪', title:'Quiz: Math Sprint — 8/10', time:'Yesterday', xp:'+50 XP' },
+      { icon:'🌍', title:'Explored: 5 Countries', time:'2 days ago', xp:'+15 XP' },
+      { icon:'🎮', title:'Game: Math Sprint ⚡', time:'2 days ago', xp:'+30 XP' },
+    ];
+    el.innerHTML = acts.map(a => `
+      <div class="activity-item">
+        <div class="activity-icon">${a.icon}</div>
+        <div class="activity-info">
+          <div class="activity-title">${a.title}</div>
+          <div class="activity-time">${a.time}</div>
+        </div>
+        <div class="activity-xp">${a.xp}</div>
+      </div>`).join('');
+  }
+
+  /* ── Messages ────────────────────────────── */
+  const MOCK_MESSAGES = [
+    { id:1, sender:'🧑‍🏫 Ms. Johnson', preview:'Great job on the Math quiz today! You scored 9/10...', time:'2h ago', unread:true },
+    { id:2, sender:'🤖 AI Tutor Maya', preview:'I noticed you haven\'t practiced Science this week. Want to...', time:'Yesterday', unread:true },
+    { id:3, sender:'👨‍👩‍👦 Parent: Dad', preview:'How was school today? I saw you completed 3 lessons!', time:'Yesterday', unread:false },
+    { id:4, sender:'🏅 BridgeLearn', preview:'You earned a new badge: Knowledge Seeker! Keep going...', time:'2 days ago', unread:false },
+    { id:5, sender:'🧑‍🏫 Mr. Patel', preview:'Your assignment on Ancient History is due tomorrow.', time:'3 days ago', unread:false },
+  ];
+
+  function openMessages() {
+    const el = BL.$('messages-list');
+    if (el) el.innerHTML = MOCK_MESSAGES.map(m => `
+      <div class="msg-item ${m.unread?'unread':''}" onclick="BL.toast('💬','${m.sender}','${m.preview.slice(0,40)}...')">
+        <div class="msg-avatar">${m.sender.slice(0,2)}</div>
+        <div class="msg-info">
+          <div class="msg-sender">${m.sender.slice(2).trim()} <span class="msg-time">${m.time}</span></div>
+          <div class="msg-preview">${m.preview}</div>
+        </div>
+        ${m.unread ? '<div class="msg-unread-dot"></div>' : ''}
+      </div>`).join('');
+    BL.showScreen('messages');
+  }
+
   /* ════════════════════════════════════════════════════════════
      EXPOSE PUBLIC API
      ════════════════════════════════════════════════════════════ */
@@ -1120,8 +1306,12 @@ const BLApp = (() => {
     openSafety, openCareers, openCareerDetail,
     // Profile
     openProfile, changeTheme,
+    // Assignments / Progress / Messages
+    openAssignments, filterAssignments, openProgress, openMessages,
     // Settings
     openSettings, saveSettings, testAIConnection,
+    // Admin
+    openAdminLogin, adminLogin, adminLogout, adminSaveAI, adminClearCache, adminResetProgress,
     // Sheets
     openSheet, closeSheet, closeAllSheets,
     // Utils
