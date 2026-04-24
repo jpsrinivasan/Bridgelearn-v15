@@ -543,6 +543,22 @@ const BLApp = (() => {
                    'lesson-char', 80, 'idle');
 
     BL.showScreen('lesson');
+
+    // Nova speaks the intro when lesson opens
+    if (!BLVoice.isMuted() && topic.intro) {
+      setTimeout(() => {
+        const greet = `Hello ${profile.name || 'friend'}! Let's learn about ${topic.title}. ${topic.intro}`;
+        BLVoice.speak(greet, 'en', 0.88, 1.05);
+      }, 600);
+    }
+  }
+
+  function readLessonAloud() {
+    const topic = state.currentTopic;
+    if (!topic) return;
+    const text = [topic.intro, topic.content, ...(topic.key_facts||[])].filter(Boolean).join('. ');
+    BLVoice.speak(text, 'en', 0.85, 1.0);
+    BL.toast('🔊', 'Reading lesson aloud…', '');
   }
 
   /* ════════════════════════════════════════════════════════════
@@ -646,9 +662,12 @@ const BLApp = (() => {
 
     document.querySelectorAll('.quiz-opt').forEach((btn, i) => {
       btn.classList.add('disabled');
-      if (i === correct) btn.classList.add('correct');
-      if (i === idx && !isRight) btn.classList.add('wrong');
+      if (i === correct) { btn.classList.add('correct'); btn.classList.add('correct-anim'); }
+      if (i === idx && !isRight) { btn.classList.add('wrong'); btn.classList.add('wrong-anim'); }
     });
+    // Animate score pop
+    const scoreEl = BL.$('quiz-score');
+    if (scoreEl && isRight) { scoreEl.classList.add('pop'); setTimeout(() => scoreEl.classList.remove('pop'), 400); }
 
     if (q.explanation) {
       BL.setHTML('quiz-explain', q.explanation);
@@ -1454,7 +1473,7 @@ const BLApp = (() => {
     openLanguages, selectLanguage, selectLangMode, selectLangLevel,
     sendLangMessage, startVoiceInput,
     // AI Tutor
-    openAITutor, sendTutorMessage, clearTutorChat,
+    openAITutor, sendTutorMessage, clearTutorChat, readLessonAloud,
     // Countries / States / World
     openCountries, filterCountries, openCountryDetail,
     openStates, filterStates, openStateDetail,

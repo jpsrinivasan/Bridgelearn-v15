@@ -16,9 +16,9 @@
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
   <link rel="icon" type="image/png" href="assets/icons/icon-192.png" />
 
-  <link rel="stylesheet" href="css/themes.css?v=27" />
-  <link rel="stylesheet" href="css/characters.css?v=27" />
-  <link rel="stylesheet" href="css/main.css?v=27" />
+  <link rel="stylesheet" href="css/themes.css?v=28" />
+  <link rel="stylesheet" href="css/characters.css?v=28" />
+  <link rel="stylesheet" href="css/main.css?v=28" />
   <style>
     /* Critical layout fixes */
     #app-shell, .app-shell { width:100%; min-height:100vh; max-width:480px; margin:0 auto; position:relative; background:var(--bg-app); }
@@ -521,7 +521,8 @@
 
         <div class="lesson-nav-row">
           <button class="btn btn--outline" onclick="BL.showScreen('subject')">← Back</button>
-          <button class="btn btn--primary" onclick="BLApp.openAITutor()">Ask Tutor 🤖</button>
+          <button class="btn btn--ghost" onclick="BLApp.readLessonAloud()" title="Read Aloud">🔊 Read</button>
+          <button class="btn btn--primary" onclick="BLApp.openAITutor()">Ask Nova 🤖</button>
         </div>
 
         <div class="bottom-spacer"></div>
@@ -1266,6 +1267,8 @@
 
   <div class="world-hero">
     <img src="images/world-hero.png" class="world-hero-img" alt="Explore the World" />
+    <!-- Three.js rotating globe overlay -->
+    <canvas id="globe-canvas" class="globe-canvas"></canvas>
     <div class="world-hero-overlay">
       <div class="world-hero-text">
         <h1 class="world-hero-title">Explore the<br><span class="world-hero-highlight">World!</span></h1>
@@ -1537,18 +1540,21 @@
   <!-- ═══════════════════════════════════════════
        SCRIPTS (ordered)
   ═══════════════════════════════════════════ -->
-  <script src="js/utils.js?v=27"></script>
-  <script src="js/characters.js?v=27"></script>
-  <script src="js/storage.js?v=27"></script>
-  <script src="js/auth.js?v=27"></script>
-  <script src="js/voice.js?v=27"></script>
-  <script src="js/ai.js?v=27"></script>
-  <script src="js/gamification.js?v=27"></script>
-  <script src="js/languages.js?v=27"></script>
-  <script src="js/progression.js?v=27"></script>
-  <script src="js/games.js?v=27"></script>
-  <script src="js/parent.js?v=27"></script>
-  <script src="js/app.js?v=27"></script>
+  <script src="js/utils.js?v=28"></script>
+  <script src="js/characters.js?v=28"></script>
+  <script src="js/storage.js?v=28"></script>
+  <script src="js/auth.js?v=28"></script>
+  <script src="js/voice.js?v=28"></script>
+  <script src="js/ai.js?v=28"></script>
+  <script src="js/gamification.js?v=28"></script>
+  <script src="js/languages.js?v=28"></script>
+  <script src="js/progression.js?v=28"></script>
+  <script src="js/games.js?v=28"></script>
+  <script src="js/parent.js?v=28"></script>
+  <script src="js/app.js?v=28"></script>
+  <!-- Three.js rotating globe -->
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"}}</script>
+  <script type="module" src="js/globe.js?v=28"></script>
 
 </body>
 </html>

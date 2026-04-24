@@ -2954,3 +2954,55 @@ body {
 .wsc-bar { height: 5px; background: var(--border); border-radius: 5px; overflow: hidden; margin-bottom: 0.4rem; }
 .wsc-fill { height: 100%; background: linear-gradient(90deg, #6c63ff, #f9a825); border-radius: 5px; transition: width 0.5s; }
 .wsc-emojis { font-size: 1.1rem; letter-spacing: 0.1em; }
+
+/* ═══════════════════════════════════════════════════
+   THREE.JS GLOBE CANVAS
+═══════════════════════════════════════════════════ */
+.globe-canvas {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 20px rgba(79,195,247,0.4), 0 0 40px rgba(108,99,255,0.2);
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════
+   LESSON READ-ALOUD BUTTON
+═══════════════════════════════════════════════════ */
+.lesson-nav-row {
+  display: flex; gap: 0.5rem; padding: 1rem; flex-wrap: wrap;
+}
+.lesson-nav-row .btn {
+  flex: 1; min-width: 80px;
+}
+
+/* ═══════════════════════════════════════════════════
+   NOVA SPEAKING ANIMATION
+═══════════════════════════════════════════════════ */
+@keyframes nova-speak {
+  0%,100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.05) rotate(-2deg); }
+  75% { transform: scale(1.05) rotate(2deg); }
+}
+.nova-speaking { animation: nova-speak 0.4s ease-in-out infinite; }
+
+/* Quiz answer animations */
+@keyframes correct-flash {
+  0% { background: inherit; }
+  30% { background: linear-gradient(135deg,#43e97b,#38f9d7); transform: scale(1.04); }
+  100% { background: inherit; transform: scale(1); }
+}
+@keyframes wrong-flash {
+  0% { background: inherit; }
+  30% { background: linear-gradient(135deg,#f5576c,#f093fb); transform: scale(0.97); }
+  100% { background: inherit; transform: scale(1); }
+}
+.quiz-opt.correct-anim { animation: correct-flash 0.6s ease forwards; }
+.quiz-opt.wrong-anim   { animation: wrong-flash 0.6s ease forwards; }
+
+/* Neon glow on correct answer */
+.quiz-opt.correct {
+  box-shadow: 0 0 0 3px #43e97b, 0 0 20px rgba(67,233,123,0.4) !important;
+}
