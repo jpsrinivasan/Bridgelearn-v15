@@ -3,7 +3,53 @@
    5 themes: light · dark · colorful · warm · ocean
    ═══════════════════════════════════════════════════════════════ */
 
-:root, [data-theme="light"] {
+/* ── SPACE THEME (default) ───────────────────────────────────── */
+:root {
+  --bg-app:       #0a0e1a;
+  --bg-card:      #141830;
+  --bg-nav:       #0d1124;
+  --bg-input:     #1a1f38;
+  --bg-hero:      linear-gradient(135deg, #6c63ff 0%, #a855f7 100%);
+  --bg-hero-2:    linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+  --bg-hero-3:    linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --bg-hero-4:    linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --bg-hero-lang: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+  --text-primary:   #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted:     #475569;
+  --text-on-hero:   #ffffff;
+
+  --accent:    #6c63ff;
+  --accent-h:  #5a52e0;
+  --accent-2:  #f5576c;
+  --accent-3:  #43e97b;
+  --accent-4:  #f9a825;
+  --accent-5:  #4facfe;
+  --accent-gold: #f9a825;
+
+  --border:      #1e2540;
+  --border-focus: #6c63ff;
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.40);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.50);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.60);
+  --shadow-xl:  0 16px 48px rgba(0,0,0,0.70);
+  --hover-bg:   rgba(108,99,255,0.12);
+
+  --correct:   #43e97b;
+  --wrong:     #f5576c;
+  --warning:   #f9a825;
+  --info:      #4facfe;
+
+  --xp-color:     #6c63ff;
+  --coin-color:   #f9a825;
+  --gem-color:    #a855f7;
+  --star-color:   #fbbf24;
+  --streak-color: #ff6b35;
+  --health-color: #43e97b;
+}
+
+[data-theme="light"] {
   --bg-app:       #f0f4ff;
   --bg-card:      #ffffff;
   --bg-nav:       #ffffff;

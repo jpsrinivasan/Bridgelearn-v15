@@ -16,9 +16,9 @@
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
   <link rel="icon" type="image/png" href="assets/icons/icon-192.png" />
 
-  <link rel="stylesheet" href="css/themes.css?v=23" />
-  <link rel="stylesheet" href="css/characters.css?v=23" />
-  <link rel="stylesheet" href="css/main.css?v=23" />
+  <link rel="stylesheet" href="css/themes.css?v=26" />
+  <link rel="stylesheet" href="css/characters.css?v=26" />
+  <link rel="stylesheet" href="css/main.css?v=26" />
   <style>
     /* Critical layout fixes */
     #app-shell, .app-shell { width:100%; min-height:100vh; max-width:480px; margin:0 auto; position:relative; background:var(--bg-app); }
@@ -61,38 +61,12 @@
            AUTH: WELCOME
       ═══════════════════════════════════════════ -->
       <div id="screen-welcome" class="screen screen-welcome">
-  <!-- Floating decorative elements -->
-  <div class="welcome-stars"></div>
-  <div class="welcome-floats">
-    <div class="wf wf-1">🚀</div>
-    <div class="wf wf-2">📚</div>
-    <div class="wf wf-3">🌍</div>
-    <div class="wf wf-4">⭐</div>
-    <div class="wf wf-5">🎮</div>
-    <div class="wf wf-6">🔬</div>
-  </div>
+  <!-- Full 3D background image -->
+  <img src="images/welcome-bg.png" class="welcome-3d-bg" alt="BridgeLearn World" />
+  <!-- Bottom gradient overlay for readability -->
+  <div class="welcome-bottom-overlay"></div>
 
-  <!-- Logo -->
-  <div class="welcome-logo">
-    <span class="logo-bridge">Bridge</span><span class="logo-learn">Learn</span>
-    <div class="logo-star">⭐</div>
-  </div>
-  <div class="welcome-tagline">Learn • Explore • Grow</div>
-  <div class="welcome-badge">🤖 AI-Powered Learning for a Smarter Tomorrow</div>
-
-  <!-- Hero character area -->
-  <div class="welcome-hero-area">
-    <div class="welcome-char-main">🧒</div>
-    <div class="welcome-char-left">👧</div>
-    <div class="welcome-char-right">🧑‍💻</div>
-    <div class="welcome-math-tag">MATH<br>2+2=4</div>
-    <div class="welcome-sci-tag">🔬 SCIENCE</div>
-    <div class="welcome-games-tag">🎮 GAMES</div>
-    <div class="welcome-quiz-tag">❓ QUIZ</div>
-    <div class="welcome-robot">🤖</div>
-  </div>
-
-  <!-- Actions -->
+  <!-- Actions pinned to bottom -->
   <div class="welcome-actions">
     <button class="btn-start-learning" onclick="BLApp.doGuestLogin()">
       Start Learning <span>→</span>
@@ -382,36 +356,38 @@
     </div>
   </div>
 
-  <!-- Hero Section -->
+  <!-- Hero Section — full 3D background -->
   <div class="dash-hero">
-    <div class="dash-hero-left">
-      <div id="dash-greeting" class="dash-greeting">Good morning!</div>
-      <div class="dash-hero-sub">Ready for another amazing<br>learning adventure?</div>
-      <button class="btn-lets-start" onclick="BLApp.openSubject(BLApp.data.subjects[0]?.id)">Let's Start 🚀</button>
-    </div>
-    <div class="dash-hero-center">
-      <div id="dash-char-container" class="dash-hero-char">🧒‍🚀</div>
-    </div>
-    <div class="dash-hero-right">
-      <div class="dash-goal-card">
-        <div class="goal-circle">
-          <svg viewBox="0 0 56 56" class="goal-svg">
-            <circle cx="28" cy="28" r="24" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="5"/>
-            <circle id="dash-goal-ring" cx="28" cy="28" r="24" fill="none" stroke="#f9a825" stroke-width="5" stroke-linecap="round"
-              stroke-dasharray="150.8" stroke-dashoffset="150.8" transform="rotate(-90 28 28)"/>
-          </svg>
-          <div class="goal-pct" id="dash-goal-pct">0%</div>
-        </div>
-        <div class="goal-label">Today's Goal</div>
-        <div id="dash-goal-text" class="goal-sub">0/3 Lessons</div>
+    <img src="images/dash-hero.png" class="dash-hero-bg" alt="" />
+    <div class="dash-hero-overlay">
+      <!-- Left: greeting + button -->
+      <div class="dash-hero-left">
+        <div id="dash-greeting" class="dash-greeting">Good morning!</div>
+        <div class="dash-hero-sub">Ready for another amazing<br>learning adventure?</div>
+        <button class="btn-lets-start" onclick="BLApp.openSubject(BLApp.data.subjects[0]?.id)">Let's Start 🚀</button>
       </div>
-      <div class="dash-reward-card">
-        <div class="reward-icon">🎁</div>
-        <div class="reward-info">
-          <div class="reward-label">Next Reward</div>
-          <div class="reward-name">Gems Chest</div>
-          <div class="reward-bar"><div id="dash-xp-fill" class="reward-fill"></div></div>
-          <div id="dash-xp-text" class="reward-count">0/500 XP</div>
+      <!-- Right: goal ring + reward -->
+      <div class="dash-hero-right">
+        <div class="dash-goal-card">
+          <div class="goal-circle">
+            <svg viewBox="0 0 56 56" class="goal-svg">
+              <circle cx="28" cy="28" r="24" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="5"/>
+              <circle id="dash-goal-ring" cx="28" cy="28" r="24" fill="none" stroke="#f9a825" stroke-width="5" stroke-linecap="round"
+                stroke-dasharray="150.8" stroke-dashoffset="150.8" transform="rotate(-90 28 28)"/>
+            </svg>
+            <div class="goal-pct" id="dash-goal-pct">0%</div>
+          </div>
+          <div class="goal-label">Today's Goal</div>
+          <div id="dash-goal-text" class="goal-sub">0/3 Lessons</div>
+        </div>
+        <div class="dash-reward-card">
+          <div class="reward-icon">🎁</div>
+          <div class="reward-info">
+            <div class="reward-label">Next Reward</div>
+            <div class="reward-name">Gems Chest</div>
+            <div class="reward-bar"><div id="dash-xp-fill" class="reward-fill"></div></div>
+            <div id="dash-xp-text" class="reward-count">0/500 XP</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1289,18 +1265,17 @@
   </div>
 
   <div class="world-hero">
-    <div class="world-hero-text">
-      <h1 class="world-hero-title">Explore the<br><span class="world-hero-highlight">World!</span></h1>
-      <p class="world-hero-desc">Learn about countries,<br>cultures, languages<br>and so much more!</p>
-    </div>
-    <div class="world-globe-area">
-      <div class="world-globe">🌍</div>
-      <div class="world-robot">🤖<div class="world-robot-bubble">Where do you want to explore today?</div></div>
-    </div>
-    <div class="world-stats">
-      <div class="ws-item"><span class="ws-num">195</span><span class="ws-lab">🌍 Countries</span></div>
-      <div class="ws-item"><span class="ws-num">50+</span><span class="ws-lab">💬 Languages</span></div>
-      <div class="ws-item"><span class="ws-num">100+</span><span class="ws-lab">👥 Cultures</span></div>
+    <img src="images/world-hero.png" class="world-hero-img" alt="Explore the World" />
+    <div class="world-hero-overlay">
+      <div class="world-hero-text">
+        <h1 class="world-hero-title">Explore the<br><span class="world-hero-highlight">World!</span></h1>
+        <p class="world-hero-desc">Learn about countries,<br>cultures, languages<br>and so much more!</p>
+      </div>
+      <div class="world-stats">
+        <div class="ws-item"><span class="ws-num">195</span><span class="ws-lab">🌍 Countries</span></div>
+        <div class="ws-item"><span class="ws-num">50+</span><span class="ws-lab">💬 Languages</span></div>
+        <div class="ws-item"><span class="ws-num">100+</span><span class="ws-lab">👥 Cultures</span></div>
+      </div>
     </div>
   </div>
 
@@ -1562,18 +1537,18 @@
   <!-- ═══════════════════════════════════════════
        SCRIPTS (ordered)
   ═══════════════════════════════════════════ -->
-  <script src="js/utils.js?v=23"></script>
-  <script src="js/characters.js?v=23"></script>
-  <script src="js/storage.js?v=23"></script>
-  <script src="js/auth.js?v=23"></script>
-  <script src="js/voice.js?v=23"></script>
-  <script src="js/ai.js?v=23"></script>
-  <script src="js/gamification.js?v=23"></script>
-  <script src="js/languages.js?v=23"></script>
-  <script src="js/progression.js?v=23"></script>
-  <script src="js/games.js?v=23"></script>
-  <script src="js/parent.js?v=23"></script>
-  <script src="js/app.js?v=23"></script>
+  <script src="js/utils.js?v=26"></script>
+  <script src="js/characters.js?v=26"></script>
+  <script src="js/storage.js?v=26"></script>
+  <script src="js/auth.js?v=26"></script>
+  <script src="js/voice.js?v=26"></script>
+  <script src="js/ai.js?v=26"></script>
+  <script src="js/gamification.js?v=26"></script>
+  <script src="js/languages.js?v=26"></script>
+  <script src="js/progression.js?v=26"></script>
+  <script src="js/games.js?v=26"></script>
+  <script src="js/parent.js?v=26"></script>
+  <script src="js/app.js?v=26"></script>
 
 </body>
 </html>

@@ -6,7 +6,7 @@ const BLApp = (() => {
   /* ── State ───────────────────────────────────────────────────── */
   let profile = {
     name:'', age:10, country:'USA', avatar:'🦁',
-    theme:'light', ageGroup:'9-12', setupDone:false,
+    theme:'dark', ageGroup:'9-12', setupDone:false,
     parentPin:'', isParent:false, isTeacher:false,
     tutorChar:'maya', voiceEnabled:true, muteAudio:false,
   };
@@ -29,9 +29,8 @@ const BLApp = (() => {
     // Load config from window.BL_CONFIG or meta tags
     loadRuntimeConfig();
 
-    // Apply saved theme
-    const savedProfile = BL.tryJSON(localStorage.getItem('bl15_profile'), null);
-    if (savedProfile?.theme) applyTheme(savedProfile.theme);
+    // Always apply dark theme (space theme default)
+    applyTheme('dark');
 
     // Load all JSON data
     showLoadingState(true);
@@ -92,7 +91,7 @@ const BLApp = (() => {
     } else {
       profile.name = user.name || user.displayName || 'Learner';
     }
-    applyTheme(profile.theme || 'light');
+    applyTheme(profile.theme || 'dark');
     BLAI.init({ ...profile });
     BLVoice.setMuted(profile.muteAudio);
 
@@ -237,7 +236,7 @@ const BLApp = (() => {
 
   function finishSetup() {
     profile.setupDone = true;
-    applyTheme(profile.theme || 'light');
+    applyTheme(profile.theme || 'dark');
     BLStorage.saveProfile(profile);
     BLAI.init({ ...profile });
     BL.celebrate(
@@ -259,22 +258,31 @@ const BLApp = (() => {
     const greet = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
 
     BL.setHTML('dash-greeting', `${greet}!`);
-    BL.setHTML('dash-name', `${profile.avatar || '🌟'} ${profile.name}`);
+    BL.setHTML('dash-name', profile.name || 'Learner');
 
-    // XP bar
-    BL.setHTML('dash-level', `${g.level.emoji} ${g.level.name}`);
-    BL.setHTML('dash-xp-text', `${BL.fmtNum(g.xp)} / ${BL.fmtNum(g.nextLevel?.minXP || g.xp)} XP`);
+    // XP bar / reward
+    BL.setHTML('dash-level', `Level ${Math.max(1, Math.floor((g.xp||0)/500)+1)}`);
+    BL.setHTML('dash-xp-text', `${BL.fmtNum(g.xp)} / ${BL.fmtNum(g.nextLevel?.minXP || 500)} XP`);
     BL.setStyle('dash-xp-fill', 'width', `${g.levelPct}%`);
 
-    // Stats
-    BL.setHTML('dash-coins',  `🪙 ${BL.fmtNum(g.coins)}`);
-    BL.setHTML('dash-streak', `🔥 ${g.streak}`);
-    BL.setHTML('dash-badges', `🏅 ${g.badges.length}`);
+    // Update new header elements
+    BL.setHTML('dash-gems', BL.fmtNum(g.coins));
+    BL.setHTML('dash-coins', BL.fmtNum(Math.floor(g.xp / 10)));
+    const dashAvatar = BL.$('dash-avatar-img');
+    if (dashAvatar) dashAvatar.textContent = profile.avatar || '🧒';
+    BL.setHTML('dash-tutor-name', profile.name || 'there');
 
     // Daily goal
     const goal = BLProg.getDailyGoal();
-    BL.setHTML('dash-goal-text', `${goal.current}/${goal.target} lessons today`);
-    BL.setStyle('dash-goal-fill', 'width', `${goal.pct}%`);
+    BL.setHTML('dash-goal-text', `${goal.current}/${goal.target} Lessons`);
+
+    // Goal circle (SVG)
+    const goalRing = BL.$('dash-goal-ring');
+    if (goalRing) {
+      const circumference = 150.8;
+      goalRing.style.strokeDashoffset = circumference - (goal.pct / 100) * circumference;
+    }
+    BL.setHTML('dash-goal-pct', goal.pct + '%');
 
     // Continue card
     renderContinueCard();
@@ -322,48 +330,87 @@ const BLApp = (() => {
 
   function renderSubjectGrid() {
     const grid = BL.$('subject-grid');
-    if (!grid || !data.subjects.length) {
-      if (grid) grid.innerHTML = '<div class="empty-state"><div class="empty-icon">📚</div><p>Loading subjects…</p></div>';
-      return;
-    }
-    const COLORS = {
-      math:'#6c63ff', science:'#43e97b', english:'#f5576c', reading:'#f093fb',
-      writing:'#4facfe', spelling:'#f9a825', grammar:'#56ccf2', history:'#ff6b35',
-      geography:'#43e97b', civics:'#667eea', coding:'#4facfe', technology:'#00cec9',
-      'ai-basics':'#a29bfe', robotics:'#fd79a8', space:'#2d3436', money:'#f9a825',
-      health:'#00b894', safety:'#e17055', art:'#fd79a8', music:'#a29bfe',
-      chess:'#2d3436', agriculture:'#55efc4', languages:'#667eea', default:'#6c63ff',
+    if (!grid || !data.subjects.length) return;
+    const SUBJECT_GRADIENTS = {
+      math:          'linear-gradient(135deg,#6c63ff,#a855f7)',
+      science:       'linear-gradient(135deg,#06b6d4,#0ea5e9)',
+      english:       'linear-gradient(135deg,#f5576c,#f093fb)',
+      history:       'linear-gradient(135deg,#f9a825,#f97316)',
+      geography:     'linear-gradient(135deg,#43e97b,#0ea5e9)',
+      coding:        'linear-gradient(135deg,#4facfe,#667eea)',
+      art:           'linear-gradient(135deg,#f093fb,#f5576c)',
+      music:         'linear-gradient(135deg,#a855f7,#6c63ff)',
+      civics:        'linear-gradient(135deg,#ff6b35,#f5576c)',
+      health:        'linear-gradient(135deg,#43e97b,#0d9488)',
+      environment:   'linear-gradient(135deg,#22c55e,#43e97b)',
+      'ai-basics':   'linear-gradient(135deg,#0ea5e9,#6c63ff)',
+      'life-skills': 'linear-gradient(135deg,#f9a825,#43e97b)',
+      hindi:         'linear-gradient(135deg,#ff9800,#f5576c)',
+      tamil:         'linear-gradient(135deg,#e91e63,#a855f7)',
+      'social-studies': 'linear-gradient(135deg,#3f51b5,#0ea5e9)',
+      'indian-studies': 'linear-gradient(135deg,#ff5722,#f9a825)',
+      'sports-pe':   'linear-gradient(135deg,#009688,#43e97b)',
     };
-    // Filter age-appropriate + country-appropriate subjects
     const visible = data.subjects.filter(s => {
-      // Country filter: Hindi/Tamil default only for India
       if (['hindi','tamil'].includes(s.id) && !BL.isCountry(profile.country,'india')) return false;
       return true;
     });
     grid.innerHTML = visible.map(s => {
-      const color = COLORS[s.id] || COLORS.default;
-      const pct   = BLProg.getSubjectPct(s.id, s.topics?.length);
-      return `<div class="subject-card card-lift" style="--subject-color:${color}" onclick="BLApp.openSubject('${s.id}')" data-subject="${s.id}">
-        <div class="s-icon">${s.emoji || s.icon || '📚'}</div>
-        <div class="s-name">${s.name}</div>
-        <div class="s-bar"><div class="s-fill" style="width:${pct}%"></div></div>
+      const grad = SUBJECT_GRADIENTS[s.id] || 'linear-gradient(135deg,#6c63ff,#a855f7)';
+      const pct  = BLProg.getSubjectPct(s.id, s.topics?.length);
+      const lvl  = Math.max(1, Math.floor(pct / 10));
+      return `<div class="subj-card-new" onclick="BLApp.openSubject('${s.id}')">
+        <div class="scn-bg" style="background:${grad}"></div>
+        <div class="scn-star">⭐</div>
+        <div class="scn-emoji">${s.emoji || '📚'}</div>
+        <div class="scn-name">${s.name}</div>
+        <div class="scn-level">Level ${lvl}</div>
+        <div class="scn-bar-wrap"><div class="scn-bar-fill" style="width:${pct}%"></div></div>
       </div>`;
     }).join('');
   }
 
   function renderDailyQuests() {
     const el = BL.$('daily-quests');
-    if (!el) return;
-    const quests = BLGam.getDailyQuests();
-    el.innerHTML = quests.map(q => `
-      <div class="topic-row ${q.done?'opacity-50':''}">
-        <div class="tr-icon">${q.done ? '✅' : '🎯'}</div>
-        <div class="tr-info">
-          <div class="tr-title">${q.desc}</div>
-          <div class="tr-meta">${q.progress}/${q.target} · +${q.reward.xp}XP · +${q.reward.coins}🪙</div>
-        </div>
-        ${q.done ? '' : '<div class="tr-status" style="font-size:0.7rem;background:var(--accent);color:#fff;padding:0.15rem 0.4rem;border-radius:6px">+${q.reward.xp}XP</div>'}
-      </div>`).join('');
+    if (el) {
+      const quests = BLGam.getDailyQuests();
+      el.innerHTML = quests.map(q => `
+        <div class="topic-row ${q.done?'opacity-50':''}">
+          <div class="tr-icon">${q.done ? '✅' : '🎯'}</div>
+          <div class="tr-info">
+            <div class="tr-title">${q.desc}</div>
+            <div class="tr-meta">${q.progress}/${q.target} · +${q.reward.xp}XP · +${q.reward.coins}🪙</div>
+          </div>
+          ${q.done ? '' : `<div class="tr-status" style="font-size:0.7rem;background:var(--accent);color:#fff;padding:0.15rem 0.4rem;border-radius:6px">+${q.reward.xp}XP</div>`}
+        </div>`).join('');
+    }
+
+    // Render mini weekly bars
+    const wChart = BL.$('weekly-chart');
+    if (wChart) {
+      const weekXP = BL.tryJSON(localStorage.getItem('bl15_weekly_xp'), Array(7).fill(0));
+      const max = Math.max(...weekXP, 1);
+      const todayIdx = (new Date().getDay() + 6) % 7;
+      wChart.innerHTML = weekXP.map((v,i) => {
+        const h = Math.max(4, Math.round((v/max)*40));
+        return `<div class="wm-bar ${i===todayIdx?'today':''}" style="height:${h}px"></div>`;
+      }).join('');
+      const todayPct = max > 0 ? Math.round((weekXP[todayIdx]/max)*100) : 0;
+      BL.setHTML('dash-weekly-pct', todayPct + '%');
+    }
+
+    // Render mini badges
+    const badgesMini = BL.$('dash-badges-mini');
+    if (badgesMini) {
+      const g = BLGam.getStats();
+      const allB = BLGam.getAllBadges().slice(0,3);
+      const earned = g.badges;
+      badgesMini.innerHTML = allB.map(b => `<div class="bm-badge ${earned.includes(b.id)?'':'opacity-40'}">${b.emoji}</div>`).join('');
+    }
+
+    // Update streak display
+    const g = BLGam.getStats();
+    BL.setHTML('dash-streak', g.streak);
   }
 
   function renderRecommended() {
@@ -1049,13 +1096,82 @@ const BLApp = (() => {
     BL.toast(icon, name, (msg||`${name} — an exciting career in ${field}!`).slice(0, 100), 'toast-accent');
   }
 
+  /* ════════════════════════════════════════════════════════════
+     WORLD EXPLORER
+     ════════════════════════════════════════════════════════════ */
+  function openWorld() {
+    // Update currency in world screen
+    const g = BLGam.getStats();
+    BL.setHTML('world-gems', BL.fmtNum(g.coins));
+    BL.setHTML('world-coins', BL.fmtNum(Math.floor(g.xp/10)));
+    BL.setHTML('world-level', g.level?.name?.replace(/\D/g,'') || '1');
+
+    // Country scroll
+    const cScroll = BL.$('world-country-scroll');
+    if (cScroll && data.countries.length) {
+      const featured = data.countries.slice(0, 15);
+      cScroll.innerHTML = featured.map(c => `
+        <div class="wc-card" onclick="BLApp.openCountryDetail('${c.code}')">
+          <div class="wc-flag">${c.flag || '🌍'}</div>
+          <div class="wc-name">${c.name}</div>
+          <button class="wc-btn" onclick="event.stopPropagation();BLApp.openCountryDetail('${c.code}')">Explore</button>
+        </div>`).join('');
+    }
+
+    // Language scroll
+    const lScroll = BL.$('world-lang-scroll');
+    const LANGS = [
+      { code:'es', name:'Spanish', emoji:'👧', greeting:'¡Hola!', color:'linear-gradient(135deg,#f9a825,#f97316)', lessons:100 },
+      { code:'fr', name:'French',  emoji:'👦', greeting:'Bonjour!', color:'linear-gradient(135deg,#3f51b5,#5c6bc0)', lessons:90 },
+      { code:'zh', name:'Mandarin',emoji:'👧', greeting:'你好！', color:'linear-gradient(135deg,#f44336,#e91e63)', lessons:80 },
+      { code:'ar', name:'Arabic',  emoji:'🧕', greeting:'مرحبا',  color:'linear-gradient(135deg,#009688,#4caf50)', lessons:70 },
+      { code:'de', name:'German',  emoji:'🧒', greeting:'Hallo!', color:'linear-gradient(135deg,#607d8b,#455a64)', lessons:60 },
+      { code:'ja', name:'Japanese',emoji:'👦', greeting:'こんにちは', color:'linear-gradient(135deg,#e91e63,#f44336)', lessons:75 },
+      { code:'hi', name:'Hindi',   emoji:'👩', greeting:'नमस्ते', color:'linear-gradient(135deg,#ff9800,#ff5722)', lessons:65 },
+      { code:'pt', name:'Portuguese',emoji:'👦',greeting:'Olá!', color:'linear-gradient(135deg,#4caf50,#009688)', lessons:55 },
+    ];
+    if (lScroll) {
+      lScroll.innerHTML = LANGS.map(l => `
+        <div class="wl-card" style="background:${l.color}" onclick="BLApp.selectLanguage('${l.code}')">
+          <div class="wl-greeting">${l.greeting}</div>
+          <div class="wl-emoji">${l.emoji}</div>
+          <div class="wl-name">${l.name}</div>
+          <div class="wl-lessons">${l.lessons} Lessons</div>
+        </div>`).join('');
+    }
+
+    // Stamps
+    const visited = Object.keys(BL.tryJSON(localStorage.getItem('bl15_progress'),{})).filter(k => k.startsWith('country_')).length;
+    BL.setHTML('world-stamps', visited + ' / 195');
+    const stampsEl = BL.$('world-stamps-fill');
+    if (stampsEl) stampsEl.style.width = (visited/195*100) + '%';
+
+    BL.showScreen('world');
+  }
+
+  const FUN_FACTS = [
+    'The Great Wall of China stretches over 13,000 miles!',
+    'India has the world\'s highest post office at 15,500 ft in Hikkim village!',
+    'Japan has over 6,800 islands in its territory!',
+    'Brazil contains about 60% of the Amazon rainforest!',
+    'Australia is the only country that is also a continent!',
+    'The Sahara Desert is almost as large as the entire United States!',
+    'Russia has 11 time zones — more than any other country!',
+    'Vatican City is the smallest country in the world — just 44 hectares!',
+  ];
+  let funFactIdx = 0;
+  function loadNextFunFact() {
+    funFactIdx = (funFactIdx + 1) % FUN_FACTS.length;
+    BL.setHTML('world-fun-fact', FUN_FACTS[funFactIdx]);
+  }
+
   /* ── Nav helper ────────────────────────────────────────────── */
   function navTo(tab) {
     const map = {
       home: () => { renderDashboard(); BL.showScreen('dashboard'); },
       quiz: () => openQuizSelect(),
       games: () => openGames(),
-      lang: () => openLanguages(),
+      lang: () => openWorld(),
       profile: () => openProfile(),
     };
     (map[tab] || map.home)();
@@ -1167,8 +1283,8 @@ const BLApp = (() => {
      THEME
      ════════════════════════════════════════════════════════════ */
   function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme || 'light');
-    profile.theme = theme;
+    document.documentElement.setAttribute('data-theme', theme || 'dark');
+    profile.theme = theme || 'dark';
   }
 
   function changeTheme(theme) {
@@ -1339,9 +1455,10 @@ const BLApp = (() => {
     sendLangMessage, startVoiceInput,
     // AI Tutor
     openAITutor, sendTutorMessage, clearTutorChat,
-    // Countries / States
+    // Countries / States / World
     openCountries, filterCountries, openCountryDetail,
     openStates, filterStates, openStateDetail,
+    openWorld, loadNextFunFact,
     // Safety / Careers
     openSafety, openCareers, openCareerDetail,
     // Profile
