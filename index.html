@@ -16,9 +16,9 @@
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
   <link rel="icon" type="image/png" href="assets/icons/icon-192.png" />
 
-  <link rel="stylesheet" href="css/themes.css?v=26" />
-  <link rel="stylesheet" href="css/characters.css?v=26" />
-  <link rel="stylesheet" href="css/main.css?v=26" />
+  <link rel="stylesheet" href="css/themes.css?v=27" />
+  <link rel="stylesheet" href="css/characters.css?v=27" />
+  <link rel="stylesheet" href="css/main.css?v=27" />
   <style>
     /* Critical layout fixes */
     #app-shell, .app-shell { width:100%; min-height:100vh; max-width:480px; margin:0 auto; position:relative; background:var(--bg-app); }
@@ -60,14 +60,14 @@
       <!-- ═══════════════════════════════════════════
            AUTH: WELCOME
       ═══════════════════════════════════════════ -->
-      <div id="screen-welcome" class="screen screen-welcome">
-  <!-- Full 3D background image -->
+      <div id="screen-welcome" class="screen screen-welcome" onclick="BLApp.doGuestLogin()">
+  <!-- Full 3D background image — tap anywhere to enter -->
   <img src="images/welcome-bg.png" class="welcome-3d-bg" alt="BridgeLearn World" />
   <!-- Bottom gradient overlay for readability -->
   <div class="welcome-bottom-overlay"></div>
 
   <!-- Actions pinned to bottom -->
-  <div class="welcome-actions">
+  <div class="welcome-actions" onclick="event.stopPropagation()">
     <button class="btn-start-learning" onclick="BLApp.doGuestLogin()">
       Start Learning <span>→</span>
     </button>
@@ -1537,18 +1537,18 @@
   <!-- ═══════════════════════════════════════════
        SCRIPTS (ordered)
   ═══════════════════════════════════════════ -->
-  <script src="js/utils.js?v=26"></script>
-  <script src="js/characters.js?v=26"></script>
-  <script src="js/storage.js?v=26"></script>
-  <script src="js/auth.js?v=26"></script>
-  <script src="js/voice.js?v=26"></script>
-  <script src="js/ai.js?v=26"></script>
-  <script src="js/gamification.js?v=26"></script>
-  <script src="js/languages.js?v=26"></script>
-  <script src="js/progression.js?v=26"></script>
-  <script src="js/games.js?v=26"></script>
-  <script src="js/parent.js?v=26"></script>
-  <script src="js/app.js?v=26"></script>
+  <script src="js/utils.js?v=27"></script>
+  <script src="js/characters.js?v=27"></script>
+  <script src="js/storage.js?v=27"></script>
+  <script src="js/auth.js?v=27"></script>
+  <script src="js/voice.js?v=27"></script>
+  <script src="js/ai.js?v=27"></script>
+  <script src="js/gamification.js?v=27"></script>
+  <script src="js/languages.js?v=27"></script>
+  <script src="js/progression.js?v=27"></script>
+  <script src="js/games.js?v=27"></script>
+  <script src="js/parent.js?v=27"></script>
+  <script src="js/app.js?v=27"></script>
 
 </body>
 </html>
