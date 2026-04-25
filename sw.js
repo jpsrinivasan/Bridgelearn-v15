@@ -1,6 +1,6 @@
 /* BridgeLearn V15 — Service Worker */
-const CACHE_NAME   = 'bl15-v1';
-const DATA_CACHE   = 'bl15-data-v1';
+const CACHE_NAME   = 'bl15-v31';
+const DATA_CACHE   = 'bl15-data-v31';
 
 const SHELL_FILES = [
   '/',

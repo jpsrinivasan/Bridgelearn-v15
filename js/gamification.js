@@ -136,6 +136,7 @@ const BLGam = (() => {
     const today     = BL.today();
     const yesterday = BL.yesterday();
     if (s.lastActive === today) return s.streak;
+    const isFirstEver = !s.lastActive; // true on very first session
     if (s.lastActive === yesterday) s.streak++;
     else s.streak = 1;
     s.lastActive = today;
@@ -143,10 +144,12 @@ const BLGam = (() => {
     checkBadge(s, 'streak_3', s.streak >= 3);
     checkBadge(s, 'streak_7', s.streak >= 7);
     checkBadge(s, 'streak_30', s.streak >= 30);
-    // Check early bird / night owl
-    const h = new Date().getHours();
-    if (h >= 21) checkBadge(s, 'night_owl', true);
-    if (h < 7)   checkBadge(s, 'early_bird', true);
+    // Only award time-based badges after first session (so welcome boot is silent)
+    if (!isFirstEver) {
+      const h = new Date().getHours();
+      if (h >= 21) checkBadge(s, 'night_owl', true);
+      if (h < 7)   checkBadge(s, 'early_bird', true);
+    }
     return s.streak;
   }
 

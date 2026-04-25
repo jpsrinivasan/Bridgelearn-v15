@@ -141,8 +141,15 @@ const BLAuth = (() => {
   function checkLocalSession() {
     if (!BLAuth._fb) {
       const saved = BL.tryJSON(localStorage.getItem('bl15_local_user'), null);
-      if (saved) { currentUser = saved; if (onAuthCb) setTimeout(() => onAuthCb(saved), 0); }
-      else if (onAuthCb) setTimeout(() => onAuthCb(null), 0);
+      // Only auto-login real accounts (not guest), and only if setupDone
+      const profile = BL.tryJSON(localStorage.getItem('bl15_profile'), null);
+      if (saved && !saved.isGuest && profile?.setupDone) {
+        currentUser = saved;
+        if (onAuthCb) setTimeout(() => onAuthCb(saved), 0);
+      } else {
+        // Always show welcome for guests / fresh installs
+        if (onAuthCb) setTimeout(() => onAuthCb(null), 0);
+      }
     }
   }
 

@@ -1279,6 +1279,21 @@ const BLApp = (() => {
     if (BL.$('admin-ai-provider')) BL.$('admin-ai-provider').value = provider;
     if (BL.$('admin-api-key')) BL.$('admin-api-key').value = key ? '••••••••' : '';
     if (BL.$('admin-endpoint')) BL.$('admin-endpoint').value = endpoint;
+
+    // Update real data counts from loaded JSON
+    const subjectCount  = data.subjects.length;
+    const topicCount    = data.subjects.reduce((a, s) => a + (s.topics ? s.topics.length : 0), 0);
+    const quizCount     = data.quiz.length;
+    const langCount     = data.languages ? Object.keys(data.languages).length : 0;
+
+    const ss = BL.$('admin-stat-subjects');
+    const st = BL.$('admin-stat-topics');
+    const sq = BL.$('admin-stat-quizzes');
+    const sl = BL.$('admin-stat-langs');
+    if (ss) ss.textContent = subjectCount;
+    if (st) st.textContent = topicCount;
+    if (sq) sq.textContent = quizCount;
+    if (sl) sl.textContent = langCount;
   }
 
   function adminSaveAI() {
