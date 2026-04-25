@@ -147,24 +147,92 @@ Rules:
     return d.choices?.[0]?.message?.content || '';
   }
 
-  /* ── Offline fallback responses ─────────────────────────────── */
+  /* ── Smart offline responses — topic-keyword-aware ──────────── */
+  const SMART_RESPONSES = [
+    // Math
+    { keys:['add','plus','sum','total'], r:"Adding numbers combines groups together! 🔢 Line up the digits by place value, add each column right to left, and carry when a column exceeds 9. Try writing it out step by step — which numbers are you adding?" },
+    { keys:['subtract','minus','difference','take away'], r:"Subtraction means finding what's left or the gap between two numbers. ➖ Write the larger number on top, work right to left, and borrow from the next column if needed. What are the two numbers you're working with?" },
+    { keys:['multiply','times','product','×'], r:"Multiplication is repeated addition! ✖️ 4×5 means 4 groups of 5 = 5+5+5+5 = 20. The times tables are key — once you know them, multiplication becomes fast. Which times table are you practicing?" },
+    { keys:['divide','division','share','÷'], r:"Division splits a number into equal groups! ➗ Think: how many times does the smaller number fit into the larger one? 20÷4 = 5 because 4 fits into 20 exactly 5 times. What numbers are you dividing?" },
+    { keys:['fraction','numerator','denominator'], r:"A fraction shows part of a whole! 🍕 The bottom number (denominator) = total equal parts. The top number (numerator) = parts you have. So 3/4 means 3 out of 4 equal pieces. What fraction are you working with?" },
+    { keys:['percent','percentage','%'], r:"Percent means 'out of 100'! 💯 To find 25% of 80: multiply 80 × 0.25 = 20. Or: 80 × 25 ÷ 100 = 20. Percentages are used everywhere — sales, test scores, statistics. What percentage problem are you solving?" },
+    { keys:['algebra','equation','solve','variable','x ='], r:"Algebra uses letters to represent unknown numbers! 🔡 To solve 3x + 7 = 22: subtract 7 from both sides → 3x = 15 → divide by 3 → x = 5. Always do the same operation to both sides to keep the equation balanced. What's your equation?" },
+    { keys:['triangle','pythagoras','hypotenuse'], r:"Pythagoras' theorem: in any right triangle, a² + b² = c² where c is the hypotenuse (longest side). 📐 The classic example: 3² + 4² = 9 + 16 = 25 = 5². So the hypotenuse is 5! What are your triangle's measurements?" },
+    { keys:['area','perimeter'], r:"Area = space INSIDE a shape (measured in square units). Perimeter = distance AROUND a shape. 📐 Rectangle: Area = length × width. Perimeter = 2×(length + width). Circle: Area = πr². What shape are you working with?" },
+    { keys:['probability','chance','likely'], r:"Probability = how likely something is to happen, from 0 (impossible) to 1 (certain). 🎲 P(event) = favourable outcomes ÷ total outcomes. Flipping a coin: P(heads) = 1/2 = 50%. What probability problem are you solving?" },
+    // Science
+    { keys:['atom','element','proton','electron','neutron'], r:"Atoms are the tiny building blocks of everything! ⚛️ Each atom has a nucleus (protons + neutrons) surrounded by electrons. Protons are positive (+), electrons negative (−), neutrons neutral. The number of protons = atomic number and identifies the element. What element are you studying?" },
+    { keys:['photosynthesis','chlorophyll','plant food'], r:"Photosynthesis is how plants make food using sunlight! 🌿 The equation: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂. Chlorophyll in leaves absorbs sunlight. Plants take in CO₂ through tiny pores (stomata) and release oxygen — that's why plants are so vital for life! Does that make sense?" },
+    { keys:['gravity','force','newton','mass','weight'], r:"Gravity is a force that attracts objects with mass towards each other! 🍎 Newton's 2nd Law: Force = mass × acceleration (F=ma). Weight = mass × gravitational acceleration (9.8 m/s² on Earth). Heavier objects and lighter objects fall at the same rate in a vacuum! What's your question about forces?" },
+    { keys:['dna','gene','genetics','chromosome','inherit'], r:"DNA is the molecule of life! 🧬 It's a double helix made of 4 bases: A, T, G, C. Genes are sections of DNA that code for proteins and traits. You inherit one copy of each gene from each parent. Dominant traits show even with one copy; recessive traits need two copies. What about genetics confuses you?" },
+    { keys:['evolution','natural selection','darwin','species'], r:"Evolution explains how species change over time through natural selection! 🦎 Darwin's key idea: individuals with traits better suited to their environment survive and reproduce more. Over many generations, advantageous traits become more common. Evidence: fossil record, DNA similarities, observed changes. What aspect of evolution are you exploring?" },
+    { keys:['cell','mitochondria','nucleus','membrane'], r:"The cell is the basic unit of all life! 🔬 Key parts: Nucleus (DNA headquarters), Mitochondria ('powerhouse' — makes ATP energy), Cell membrane (controls what enters/exits), Ribosomes (make proteins). Plant cells also have cell walls and chloroplasts. Which cell part are you asking about?" },
+    { keys:['climate','greenhouse','carbon','warming','pollution'], r:"Climate change is caused by excess greenhouse gases trapping heat! 🌡️ CO₂ from burning fossil fuels is the main driver. Since 1850, Earth has warmed ~1.1°C. Effects: more extreme weather, rising seas, habitat loss. Solutions: renewable energy, energy efficiency, reducing meat consumption. What would you like to understand better?" },
+    // English
+    { keys:['noun','verb','adjective','adverb','grammar'], r:"Parts of speech give every word a job! 📝 NOUN = person/place/thing (dog, London, freedom). VERB = action/state (run, is, feel). ADJECTIVE = describes nouns (big, blue, happy). ADVERB = describes verbs/adjectives (quickly, very, softly). Can you give me an example sentence to analyse?" },
+    { keys:['metaphor','simile','figurative','personification'], r:"Figurative language makes writing come alive! ✨ SIMILE: comparison using 'like/as' — 'brave as a lion'. METAPHOR: states something IS something — 'she is a rock'. PERSONIFICATION: gives human traits to non-humans — 'the wind howled angrily'. Can you spot any in a text you're reading?" },
+    { keys:['essay','paragraph','introduction','conclusion'], r:"A strong essay has 3 parts! 📄 INTRODUCTION: hook + background + thesis (your main argument). BODY PARAGRAPHS: each makes ONE point — use PEE: Point, Evidence (quote), Explain (why it matters). CONCLUSION: restate thesis, summarise, give a final thought. What type of essay are you writing?" },
+    { keys:['shakespeare','hamlet','macbeth','romeo'], r:"Shakespeare's genius lies in his language and themes! 🎭 Key features: iambic pentameter (da-DUM rhythm, 10 syllables), soliloquies (characters reveal thoughts alone), dramatic irony (audience knows more than characters). His themes — ambition, love, jealousy, power — are universal. Which play are you studying?" },
+    { keys:['poem','poetry','rhyme','rhythm','stanza'], r:"Poetry uses carefully chosen words for maximum impact! 🎵 Key features: RHYTHM (musical beat), RHYME SCHEME (e.g., ABAB), IMAGERY (vivid descriptions), STRUCTURE (stanzas, line breaks). When analysing poetry, ask: what's the speaker's mood? What techniques create what effect? Which poem are you working on?" },
+    // History
+    { keys:['world war','ww1','ww2','war','battle'], r:"Wars are turning points in history! ⚔️ WW1 (1914-18): triggered by Franz Ferdinand's assassination, trench warfare, 20M deaths. WW2 (1939-45): Nazi Germany's aggression, Holocaust (6M Jews murdered), atomic bombs on Japan, 70-85M deaths total. Both wars reshaped borders, politics, and society. What specific event are you studying?" },
+    { keys:['ancient','egypt','rome','greece','civiliz'], r:"Ancient civilizations laid the foundations of modern society! 🏛️ Egypt: pharaohs, pyramids, hieroglyphics. Greece: democracy, philosophy, Olympics. Rome: law, roads, Latin language. These civilizations gave us art, architecture, government systems, and knowledge still used today. Which civilization fascinates you?" },
+    { keys:['revolution','independence','freedom'], r:"Revolutions change the course of history! 🎗️ The French Revolution (1789) overthrew the monarchy with 'Liberty, Equality, Fraternity'. The American Revolution (1776) created a new democratic nation. India's independence (1947) showed peaceful protest could defeat empire. What revolution are you studying?" },
+    // Geography
+    { keys:['continent','country','capital','map'], r:"Our world has 7 continents and 195 countries! 🌍 Largest continent: Asia. Smallest: Australia/Oceania. Most populous country: India. Largest by area: Russia. Smallest country: Vatican City (0.44 km²). Capital cities are usually (but not always!) the largest city. Which country or continent are you learning about?" },
+    { keys:['earthquake','volcano','tectonic','plate'], r:"Earth's crust is broken into tectonic plates that constantly move! 🌋 Where plates collide: mountains form or one plate dives under (causing volcanoes). Where plates separate: new ocean floor is created. Where plates slide past each other: earthquakes occur. The 'Ring of Fire' around the Pacific has 90% of earthquakes. Does that help?" },
+    { keys:['climate','biome','rainforest','desert','tundra'], r:"Earth has distinct climate zones based on latitude, altitude, and distance from the sea! 🗺️ TROPICAL (near equator): hot, wet, rainforests. ARID: dry, hot or cold deserts. TEMPERATE: mild seasons. POLAR: freezing year-round. Each biome has plants and animals perfectly adapted to it. Which biome are you studying?" },
+    // Coding
+    { keys:['python','code','program','function','loop'], r:"Python is a brilliant language for beginners! 🐍 Core concepts: variables (name = 'Alice'), loops (for i in range(10): print(i)), functions (def greet(name): return 'Hello '+name), conditionals (if age >= 18: print('adult')). The best way to learn is to build small projects. What are you trying to code?" },
+    { keys:['html','css','website','webpage','javascript'], r:"Every website uses HTML (structure), CSS (style), and JavaScript (interactivity)! 🌐 HTML: <h1>Title</h1>, <p>paragraph</p>, <a href=''>link</a>. CSS: color, font-size, margin. JS: makes things click, animate, and respond. Press F12 in your browser to see any website's code! What are you building?" },
+    { keys:['algorithm','sort','search','binary'], r:"An algorithm is a step-by-step problem-solving procedure! 🔧 Binary search is super efficient: look at the middle item, if too big search left half, if too small search right half — finds any item in a sorted list of 1 million in just 20 steps! What algorithm concept are you learning?" },
+    // Default smart responses
+    { keys:['help','explain','understand','confused','how'], r:"Great question — let's break it down together! 💡 The best way to understand something new is to: 1) Connect it to what you already know, 2) Look for the core idea, 3) Try a simple example first. Tell me more about exactly what you're confused about and I'll help step by step." },
+    { keys:['what is','what are','define','meaning'], r:"Excellent question! 🌟 Definitions help us understand the world clearly. The key is to learn both WHAT something is AND why it matters. Once you understand the definition, try using it in a sentence or finding a real-world example. What term are you looking to understand?" },
+    { keys:['why','reason','cause','because'], r:"Great curiosity — asking 'why' is the heart of all learning! 🔍 In science we look for cause and effect. In history we look at motivations and consequences. In maths we look at proofs and logic. Understanding WHY makes knowledge stick much better than just memorizing facts. What's the 'why' you're trying to figure out?" },
+  ];
+
   const FALLBACKS = {
-    math: ["Math is all about patterns! 🔢 Try breaking the problem into smaller steps. What's the first step you'd take?",
-           "Great math question! Let me think... The key idea here is to work step by step. What do you know so far?"],
-    science: ["Science helps us understand our world! 🔬 Every phenomenon has a cause and effect. What have you observed about this?",
-              "Wonderful scientific thinking! 🌍 Scientists ask questions, test ideas, and discover answers. What's your hypothesis?"],
-    english: ["Reading and writing are superpowers! 📚 The more you practice, the stronger you get. What are you working on today?",
-              "English is full of fascinating patterns! ✏️ Let's explore this together. Can you tell me what you understand so far?"],
-    history: ["History is full of amazing stories! 🏛️ Every event connects to what came before. What time period are you exploring?",
-              "Great historical thinking! 📜 The past shapes our present. What would you like to discover about this event?"],
-    geography: ["The world is endlessly fascinating! 🌍 Every place has unique features and cultures. What region are you studying?",
-                "Geography is everywhere around us! 🗺️ From mountains to oceans, every place has a story. What are you curious about?"],
-    coding: ["Coding is a superpower! 💻 It's all about breaking problems into logical steps. What are you trying to build?",
-             "Great coding question! 🤖 Programming is problem-solving with precise instructions. Let's think it through together."],
-    default: ["That's a great question! 🌟 Let's think it through together. What do you already know about this topic?",
-              "Excellent curiosity! 💡 Asking questions is how we learn best. What part would you like to understand better?",
-              "I love your enthusiasm for learning! 🎉 Let's figure this out. Can you tell me a bit more about what's confusing you?"],
+    math: ["Math is all about patterns! 🔢 Try breaking the problem into smaller steps. Which part is confusing you — the calculation or the concept?",
+           "Great math question! The key is to work step by step and check each part. Can you show me what you've tried so far?"],
+    science: ["Science helps us understand our world! 🔬 Every phenomenon has a cause. What have you observed or read about this topic so far?",
+              "Wonderful scientific thinking! 🌍 Let's explore the evidence together. What part of this topic would you like me to explain?"],
+    english: ["Reading and writing are superpowers! 📚 The more you practise, the stronger you get. What specifically are you working on — comprehension, writing, or grammar?",
+              "English is full of fascinating patterns! ✏️ Can you share the text or question you're working with? I'll help you analyse it."],
+    history: ["History is full of amazing stories! 🏛️ Every event connects to what came before. What time period or event are you exploring — and what do you already know?",
+              "Great historical thinking! 📜 Context is everything in history. Tell me which event you're studying and I'll give you the key facts."],
+    geography: ["The world is endlessly fascinating! 🌍 Geography explains why people live where they do and how places connect. Which country, region, or topic are you exploring?",
+                "Geography is everywhere! 🗺️ From mountains to megacities, every place has a story shaped by physical and human factors. What are you curious about?"],
+    coding: ["Coding is a superpower! 💻 Programming is just giving precise instructions to a computer. What language are you using and what are you trying to make it do?",
+             "Great coding question! 🤖 The key is breaking the problem into tiny steps. Can you show me your code or describe what's not working?"],
+    default: ["That's a great question! 🌟 Let's think it through together. Can you tell me a bit more about what you're studying — subject, topic, or the specific thing that's confusing you?",
+              "Excellent curiosity! 💡 Asking questions is exactly how we learn best. Give me a bit more detail about your question and I'll give you a really helpful answer.",
+              "I'm here to help you learn! 🎉 Tell me your subject and question and I'll explain it clearly, step by step."],
   };
+
+  function getFallback(userText) {
+    if (isLangMode) {
+      const arr = LANG_FALLBACKS[langCtx.langCode] || LANG_FALLBACKS.en;
+      return BL.pick(arr);
+    }
+    const lower = userText.toLowerCase();
+    // Check smart responses first (keyword-aware educational content)
+    for (const sr of SMART_RESPONSES) {
+      if (sr.keys.some(k => lower.includes(k))) return sr.r;
+    }
+    // Then subject-based fallbacks
+    for (const key of Object.keys(FALLBACKS)) {
+      if (key !== 'default' && lower.includes(key)) return BL.pick(FALLBACKS[key]);
+    }
+    // Check current context subject
+    if (context.subjectId) {
+      const subj = context.subjectId.toLowerCase();
+      for (const key of Object.keys(FALLBACKS)) {
+        if (key !== 'default' && subj.includes(key)) return BL.pick(FALLBACKS[key]);
+      }
+    }
+    return BL.pick(FALLBACKS.default);
+  }
 
   const LANG_FALLBACKS = {
     en: ["Great practice! Keep going — you're doing really well. 😊 What else would you like to talk about?"],
@@ -174,18 +242,6 @@ Rules:
     hi: ["बहुत अच्छा! (Very good!) आगे बताइए। 😊"],
     ta: ["மிகவும் நல்லது! (Very good!) இன்னும் பேசுங்க. 😊"],
   };
-
-  function getFallback(userText) {
-    if (isLangMode) {
-      const arr = LANG_FALLBACKS[langCtx.langCode] || LANG_FALLBACKS.en;
-      return BL.pick(arr);
-    }
-    const lower = userText.toLowerCase();
-    for (const key of Object.keys(FALLBACKS)) {
-      if (key !== 'default' && lower.includes(key)) return BL.pick(FALLBACKS[key]);
-    }
-    return BL.pick(FALLBACKS.default);
-  }
 
   /* ── Main send function ─────────────────────────────────────── */
   async function send(userText) {

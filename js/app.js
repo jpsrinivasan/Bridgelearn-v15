@@ -6,7 +6,7 @@ const BLApp = (() => {
   /* ── State ───────────────────────────────────────────────────── */
   let profile = {
     name:'', age:10, country:'USA', avatar:'🦁',
-    theme:'dark', ageGroup:'9-12', setupDone:false,
+    theme:'dark', ageGroup:'9-11', setupDone:false,
     parentPin:'', isParent:false, isTeacher:false,
     tutorChar:'maya', voiceEnabled:true, muteAudio:false,
   };
@@ -588,7 +588,7 @@ const BLApp = (() => {
   function startQuizCategory(catId, isBattle = false) {
     let pool = catId === 'all' ? data.quiz : data.quiz.filter(q => (q.subjectId||q.subject) === catId);
     // Age-filter: include current age group + one below for wider question pool
-    const AGE_ORDER = ['3-5','6-8','9-12','13-15','16-18'];
+    const AGE_ORDER = ['3-5','6-8','9-11','12-14','15-18','9-12','13-15'];
     const ageIdx = AGE_ORDER.indexOf(profile.ageGroup);
     const validGroups = new Set(ageIdx >= 0
       ? AGE_ORDER.slice(Math.max(0, ageIdx - 1), ageIdx + 2)
@@ -646,9 +646,15 @@ const BLApp = (() => {
 
     const q = state.quizQ[state.quizIdx];
     // Support both string answer (quiz.json) and index-based answer
-    const correct = (q.options && q.answer !== undefined)
-      ? q.options.indexOf(q.answer)
-      : (typeof q.correct === 'number' ? q.correct : -1);
+    // answer may be a letter "A"/"B"/"C"/"D" or the actual option text or a 0-based index
+    let correct = -1;
+    if (typeof q.answer === 'string' && /^[A-D]$/.test(q.answer.trim())) {
+      correct = q.answer.trim().charCodeAt(0) - 65; // 'A'→0, 'B'→1, 'C'→2, 'D'→3
+    } else if (typeof q.correct === 'number') {
+      correct = q.correct;
+    } else if (q.options && q.answer !== undefined) {
+      correct = q.options.indexOf(q.answer);
+    }
     const isRight = idx === correct;
 
     if (isRight) {
@@ -952,7 +958,7 @@ const BLApp = (() => {
     const el = BL.$('country-grid');
     if (!el) return;
     el.innerHTML = (countries||[]).map(c => `
-      <div class="explorer-card card-lift" onclick="BLApp.openCountryDetail('${c.code}')">
+      <div class="explorer-card card-lift" onclick="BLApp.openCountryDetail('${c.id||c.code}')">
         <div class="ec-flag">${c.flag||'🌍'}</div>
         <div class="ec-name">${c.name}</div>
         <div class="ec-sub">🏙 ${c.capital||''}</div>
@@ -965,18 +971,21 @@ const BLApp = (() => {
   }
 
   function openCountryDetail(code) {
-    const c = data.countries.find(x => x.code === code);
-    if (!c) return;
+    const c = data.countries.find(x => (x.id||x.code) === code);
+    if (!c) { BL.toast('⚠️','Country not found',''); return; }
     BLGam.recordCountryVisit(code);
-    const sheet = BL.$('country-sheet');
     BL.setHTML('cd-flag',  c.flag || '🌍');
     BL.setHTML('cd-name',  c.name);
-    BL.setHTML('cd-cont',  c.continent || '');
-    BL.setHTML('cd-cap',   c.capital   || '-');
-    BL.setHTML('cd-pop',   c.population|| '-');
-    BL.setHTML('cd-lang',  c.language  || '-');
-    BL.setHTML('cd-curr',  `${c.currency||''} ${c.currency_symbol||''}`);
-    BL.setHTML('cd-facts', (c.fun_facts||[]).map(f=>`<div class="fun-fact">✨ ${f}</div>`).join(''));
+    BL.setHTML('cd-cont',  c.continent || c.region || '');
+    BL.setHTML('cd-cap',   c.capital   || '—');
+    BL.setHTML('cd-pop',   c.population|| '—');
+    BL.setHTML('cd-lang',  c.language  || '—');
+    BL.setHTML('cd-curr',  `${c.currency||'—'} ${c.currency_symbol||''}`.trim());
+    const facts = c.fun_facts || c.facts || [];
+    BL.setHTML('cd-facts', facts.map(f=>`<div class="fun-fact">✨ ${f}</div>`).join('') || '<div class="fun-fact">✨ An amazing country to explore!</div>');
+    // Extra detail
+    if (c.landmarks?.length) BL.setHTML('cd-land', `<b>🏛 Landmarks:</b> ${c.landmarks.join(', ')}`);
+    if (c.food?.length)      BL.setHTML('cd-food', `<b>🍽 Famous Food:</b> ${c.food.join(', ')}`);
     openSheet('country-sheet');
   }
 
@@ -1124,16 +1133,25 @@ const BLApp = (() => {
     BL.setHTML('world-gems', BL.fmtNum(g.coins));
     BL.setHTML('world-coins', BL.fmtNum(Math.floor(g.xp/10)));
     BL.setHTML('world-level', g.level?.name?.replace(/\D/g,'') || '1');
+    // Update real stat counts
+    const totalLessons = data.subjects?.reduce((a,s)=>a+(s.topics?.length||0),0) || 0;
+    const totalQ = data.quiz?.length || 0;
+    const totalC = data.countries?.length || 0;
+    BL.setHTML('ws-lessons-count', totalLessons + '+');
+    BL.setHTML('ws-quiz-count', totalQ + '+');
+    BL.setHTML('ws-countries-count', totalC);
+    BL.setHTML('world-stamps', `0 / ${totalC}`);
 
     // Country scroll
     const cScroll = BL.$('world-country-scroll');
     if (cScroll && data.countries.length) {
       const featured = data.countries.slice(0, 15);
       cScroll.innerHTML = featured.map(c => `
-        <div class="wc-card" onclick="BLApp.openCountryDetail('${c.code}')">
+        <div class="wc-card" onclick="BLApp.openCountryDetail('${c.id||c.code}')">
           <div class="wc-flag">${c.flag || '🌍'}</div>
           <div class="wc-name">${c.name}</div>
-          <button class="wc-btn" onclick="event.stopPropagation();BLApp.openCountryDetail('${c.code}')">Explore</button>
+          <div class="wc-cap">${c.capital||''}</div>
+          <button class="wc-btn" onclick="event.stopPropagation();BLApp.openCountryDetail('${c.id||c.code}')">Explore</button>
         </div>`).join('');
     }
 

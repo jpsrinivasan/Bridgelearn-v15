@@ -96,9 +96,9 @@ const BL = {
     const n = parseInt(age) || 10;
     if (n <= 5)  return '3-5';
     if (n <= 8)  return '6-8';
-    if (n <= 12) return '9-12';
-    if (n <= 15) return '13-15';
-    return '16-18';
+    if (n <= 11) return '9-11';
+    if (n <= 14) return '12-14';
+    return '15-18';
   },
 
   /* ── Country-aware content filter ─────────────────────────── */

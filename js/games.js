@@ -430,12 +430,15 @@ const BLGames = (() => {
     if (!pool.length) pool = FALLBACK;
 
     function normalize(q) {
-      // Support both {question, options, answer} and {q, options, answer}
-      return {
-        text:    q.question || q.q || 'Question',
-        options: q.options  || [],
-        answer:  q.answer   || q.correct || '',
-      };
+      // Support both {question, options, answer:"B"} and fallback {q, options, answer:"text"}
+      const opts = q.options || [];
+      let answer = q.answer || q.correct || '';
+      // Convert letter answer (A/B/C/D) to actual option text
+      if (typeof answer === 'string' && /^[A-D]$/.test(answer.trim())) {
+        const idx = answer.trim().charCodeAt(0) - 65;
+        answer = opts[idx] || answer;
+      }
+      return { text: q.question || q.q || 'Question', options: opts, answer };
     }
 
     function renderQ() {
@@ -725,7 +728,14 @@ const BLGames = (() => {
     ];
 
     let pool = ctx.quiz?.length >= 5
-      ? shuffle(ctx.quiz).slice(0, 10).map(q => ({ q: q.question || q.q, a: q.answer || q.correct }))
+      ? shuffle(ctx.quiz).slice(0, 10).map(q => {
+          const opts = q.options || [];
+          let a = q.answer || q.correct || '';
+          if (typeof a === 'string' && /^[A-D]$/.test(a.trim())) {
+            a = opts[a.trim().charCodeAt(0) - 65] || a;
+          }
+          return { q: q.question || q.q, a };
+        })
       : BUILTIN;
     pool = pool.slice(0, 10);
 
