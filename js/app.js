@@ -645,15 +645,20 @@ const BLApp = (() => {
     clearTimeout(state.quizTimer);
 
     const q = state.quizQ[state.quizIdx];
-    // Support both string answer (quiz.json) and index-based answer
-    // answer may be a letter "A"/"B"/"C"/"D" or the actual option text or a 0-based index
+    const opts = q.options || [];
+    // Resolve correct index — priority: text match > letter index > numeric
     let correct = -1;
-    if (typeof q.answer === 'string' && /^[A-D]$/.test(q.answer.trim())) {
+    // 1. Try direct text match first (handles "5", "Paris", and also "C" when C is an option)
+    if (q.answer !== undefined) {
+      correct = opts.indexOf(String(q.answer));
+    }
+    // 2. If not found as text AND answer is a single letter A-D, use letter→index
+    if (correct === -1 && typeof q.answer === 'string' && /^[A-D]$/.test(q.answer.trim())) {
       correct = q.answer.trim().charCodeAt(0) - 65; // 'A'→0, 'B'→1, 'C'→2, 'D'→3
-    } else if (typeof q.correct === 'number') {
+    }
+    // 3. Numeric correct field
+    if (correct === -1 && typeof q.correct === 'number') {
       correct = q.correct;
-    } else if (q.options && q.answer !== undefined) {
-      correct = q.options.indexOf(q.answer);
     }
     const isRight = idx === correct;
 
@@ -974,18 +979,48 @@ const BLApp = (() => {
     const c = data.countries.find(x => (x.id||x.code) === code);
     if (!c) { BL.toast('⚠️','Country not found',''); return; }
     BLGam.recordCountryVisit(code);
+
+    // Core fields
     BL.setHTML('cd-flag',  c.flag || '🌍');
-    BL.setHTML('cd-name',  c.name);
-    BL.setHTML('cd-cont',  c.continent || c.region || '');
-    BL.setHTML('cd-cap',   c.capital   || '—');
-    BL.setHTML('cd-pop',   c.population|| '—');
-    BL.setHTML('cd-lang',  c.language  || '—');
-    BL.setHTML('cd-curr',  `${c.currency||'—'} ${c.currency_symbol||''}`.trim());
+    BL.setHTML('cd-name',  c.name || '');
+    BL.setHTML('cd-cont',  c.continent || c.region || '—');
+    BL.setHTML('cd-cap',   c.capital    || '—');
+    BL.setHTML('cd-pop',   c.population || '—');
+    BL.setHTML('cd-lang',  c.language   || '—');
+    // currency may include symbol already, e.g. "Indian Rupee (₹)"
+    BL.setHTML('cd-curr',  c.currency   || '—');
+
+    // Fun facts (support both field names)
     const facts = c.fun_facts || c.facts || [];
-    BL.setHTML('cd-facts', facts.map(f=>`<div class="fun-fact">✨ ${f}</div>`).join('') || '<div class="fun-fact">✨ An amazing country to explore!</div>');
-    // Extra detail
-    if (c.landmarks?.length) BL.setHTML('cd-land', `<b>🏛 Landmarks:</b> ${c.landmarks.join(', ')}`);
-    if (c.food?.length)      BL.setHTML('cd-food', `<b>🍽 Famous Food:</b> ${c.food.join(', ')}`);
+    BL.setHTML('cd-facts', facts.length
+      ? facts.map(f => `<div class="fun-fact">✨ ${f}</div>`).join('')
+      : '<div class="fun-fact">✨ An amazing country worth exploring!</div>');
+
+    // Optional sections — show/hide wrapper divs
+    const showSection = (wrapId, contentId, items, formatter) => {
+      const wrap = BL.$(wrapId);
+      if (!wrap) return;
+      if (items?.length) {
+        BL.setHTML(contentId, formatter(items));
+        wrap.style.display = '';
+      } else {
+        wrap.style.display = 'none';
+      }
+    };
+
+    showSection('cd-land-wrap', 'cd-land', c.landmarks,
+      items => items.map(l => `<span class="tag-chip">🏛 ${l}</span>`).join(' '));
+    showSection('cd-food-wrap', 'cd-food', c.food,
+      items => items.map(f => `<span class="tag-chip">🍽 ${f}</span>`).join(' '));
+    showSection('cd-animals-wrap', 'cd-animals', c.animals,
+      items => items.map(a => `<span class="tag-chip">🦁 ${a}</span>`).join(' '));
+
+    const climateWrap = BL.$('cd-climate-wrap');
+    if (climateWrap) {
+      if (c.climate) { BL.setHTML('cd-climate', c.climate); climateWrap.style.display = ''; }
+      else climateWrap.style.display = 'none';
+    }
+
     openSheet('country-sheet');
   }
 
@@ -997,32 +1032,46 @@ const BLApp = (() => {
   function renderStatesList(states) {
     const el = BL.$('states-list');
     if (!el) return;
-    el.innerHTML = (states||[]).map(s => `
-      <div class="state-row" onclick="BLApp.openStateDetail('${s.code}')">
-        <div class="state-code">${s.code}</div>
+    // State data uses 'stateCode' field; fall back to 'code' or 'id'
+    el.innerHTML = (states||[]).map(s => {
+      const sc = s.stateCode || s.code || s.id || '';
+      return `<div class="state-row" onclick="BLApp.openStateDetail('${sc}')">
+        <div class="state-code">${sc}</div>
         <div class="state-name">${s.name}</div>
         <div class="state-cap">${s.capital||''}</div>
-      </div>`).join('') || '<div class="empty-state"><div class="empty-icon">🗺️</div><p>States loading…</p></div>';
+      </div>`;
+    }).join('') || '<div class="empty-state"><div class="empty-icon">🗺️</div><p>States loading…</p></div>';
   }
 
   function filterStates(q) {
-    const f = data.states.filter(s => s.name.toLowerCase().includes(q.toLowerCase()) || s.code.toLowerCase().includes(q.toLowerCase()));
+    const ql = q.toLowerCase();
+    const f = data.states.filter(s =>
+      s.name.toLowerCase().includes(ql) ||
+      (s.stateCode||s.code||'').toLowerCase().includes(ql)
+    );
     renderStatesList(f);
   }
 
   function openStateDetail(code) {
-    const s = data.states.find(x => x.code === code);
+    // Match by stateCode, code, or id
+    const s = data.states.find(x => (x.stateCode||x.code||x.id) === code);
     if (!s) return;
     BLGam.recordStateVisit(code);
-    BL.setHTML('sd-code',  s.code);
-    BL.setHTML('sd-name',  s.name);
-    BL.setHTML('sd-nick',  s.nickname||'-');
-    BL.setHTML('sd-cap',   s.capital||'-');
-    BL.setHTML('sd-bird',  s.bird||'-');
-    BL.setHTML('sd-flower',s.flower||'-');
-    BL.setHTML('sd-pop',   s.population||'-');
-    BL.setHTML('sd-year',  s.year_admitted||'-');
-    BL.setHTML('sd-facts', (s.fun_facts||[]).map(f=>`<div class="fun-fact">✨ ${f}</div>`).join(''));
+    const sc = s.stateCode || s.code || '';
+    BL.setHTML('sd-code',   sc);
+    BL.setHTML('sd-name',   s.name);
+    BL.setHTML('sd-nick',   s.nickname || '—');
+    BL.setHTML('sd-cap',    s.capital  || '—');
+    BL.setHTML('sd-bird',   s.bird     || '—');
+    BL.setHTML('sd-flower', s.flower   || '—');
+    BL.setHTML('sd-pop',    s.population || '—');
+    // Data uses 'founded', not 'year_admitted'
+    BL.setHTML('sd-year',   s.year_admitted || s.founded || '—');
+    // Data uses 'facts', not 'fun_facts'
+    const facts = s.fun_facts || s.facts || [];
+    BL.setHTML('sd-facts', facts.length
+      ? facts.map(f => `<div class="fun-fact">✨ ${f}</div>`).join('')
+      : '<div class="fun-fact">✨ A wonderful US state!</div>');
     openSheet('state-sheet');
   }
 
@@ -1284,7 +1333,9 @@ const BLApp = (() => {
     const subjectCount  = data.subjects.length;
     const topicCount    = data.subjects.reduce((a, s) => a + (s.topics ? s.topics.length : 0), 0);
     const quizCount     = data.quiz.length;
-    const langCount     = data.languages ? Object.keys(data.languages).length : 0;
+    // data.languages is the full JSON object; the array of languages is at .languages
+    const langArr = data.languages?.languages || (Array.isArray(data.languages) ? data.languages : []);
+    const langCount = langArr.length;
 
     const ss = BL.$('admin-stat-subjects');
     const st = BL.$('admin-stat-topics');

@@ -1,70 +1,39 @@
-/* BridgeLearn V15 — Service Worker */
-const CACHE_NAME   = 'bl15-v31';
-const DATA_CACHE   = 'bl15-data-v31';
+/* BridgeLearn V15 — Service Worker  (network-first, version 32) */
+const VERSION    = 'bl15-v32';
+const DATA_CACHE = 'bl15-data-v32';
 
-const SHELL_FILES = [
-  '/',
-  '/index.html',
-  '/css/main.css',
-  '/css/characters.css',
-  '/css/themes.css',
-  '/js/app.js',
-  '/js/auth.js',
-  '/js/ai.js',
-  '/js/voice.js',
-  '/js/gamification.js',
-  '/js/games.js',
-  '/js/languages.js',
-  '/js/characters.js',
-  '/js/progression.js',
-  '/js/parent.js',
-  '/js/storage.js',
-  '/js/utils.js',
-];
-
-const DATA_FILES = [
-  '/data/subjects.json',
-  '/data/quiz.json',
-  '/data/countries.json',
-  '/data/states.json',
-  '/data/languages.json',
-  '/data/achievements.json',
-];
-
-/* ── Install ─────────────────────────────────────────────────── */
-self.addEventListener('install', e => {
-  e.waitUntil(
-    Promise.all([
-      caches.open(CACHE_NAME).then(c => c.addAll(SHELL_FILES).catch(err => console.warn('[SW] Shell cache partial:', err))),
-      caches.open(DATA_CACHE).then(c => c.addAll(DATA_FILES).catch(err => console.warn('[SW] Data cache partial:', err))),
-    ]).then(() => self.skipWaiting())
-  );
+/* ── Install: take over immediately, no pre-caching of shell ───── */
+self.addEventListener('install', () => {
+  self.skipWaiting();
 });
 
-/* ── Activate ─────────────────────────────────────────────────── */
+/* ── Activate: delete ALL old caches, claim all clients ────────── */
 self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys().then(keys => Promise.all(
-      keys.filter(k => k !== CACHE_NAME && k !== DATA_CACHE).map(k => caches.delete(k))
-    )).then(() => self.clients.claim())
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== VERSION && k !== DATA_CACHE).map(k => caches.delete(k)))
+    ).then(() => self.clients.claim())
   );
 });
 
-/* ── Fetch ────────────────────────────────────────────────────── */
+/* ── Fetch: network-first for JS/CSS/HTML, cache-fallback for data */
 self.addEventListener('fetch', e => {
+  if (e.request.method !== 'GET') return;
+
   const url = new URL(e.request.url);
 
-  // Skip non-GET and cross-origin API calls
-  if (e.request.method !== 'GET') return;
-  if (url.origin !== location.origin && !url.href.includes('googleapis') && !url.href.includes('firebase')) return;
+  // Cross-origin (Firebase, CDN) — pass through
+  if (url.origin !== location.origin) return;
 
-  // Data files: network first, cache fallback
+  // Data files: network-first, cache fallback
   if (url.pathname.startsWith('/data/')) {
     e.respondWith(
       fetch(e.request)
         .then(res => {
-          const clone = res.clone();
-          caches.open(DATA_CACHE).then(c => c.put(e.request, clone));
+          if (res.ok) {
+            const clone = res.clone();
+            caches.open(DATA_CACHE).then(c => c.put(e.request, clone));
+          }
           return res;
         })
         .catch(() => caches.match(e.request))
@@ -72,34 +41,22 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  // App shell: cache first
+  // JS, CSS, HTML — ALWAYS network-first so fresh code is served immediately
+  // Falls back to cache only when offline
   e.respondWith(
-    caches.match(e.request).then(cached => {
-      if (cached) return cached;
-      return fetch(e.request).then(res => {
+    fetch(e.request)
+      .then(res => {
         if (res.ok) {
           const clone = res.clone();
-          caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
+          caches.open(VERSION).then(c => c.put(e.request, clone));
         }
         return res;
-      }).catch(() => {
+      })
+      .catch(() => caches.match(e.request).then(cached => {
+        if (cached) return cached;
         if (e.request.headers.get('accept')?.includes('text/html')) {
           return caches.match('/index.html');
         }
-      });
-    })
+      }))
   );
 });
-
-/* ── Background sync for offline progress saves ───────────────── */
-self.addEventListener('sync', e => {
-  if (e.tag === 'sync-progress') {
-    e.waitUntil(syncOfflineProgress());
-  }
-});
-
-async function syncOfflineProgress() {
-  // Will be handled by storage.js when connection returns
-  const clients = await self.clients.matchAll();
-  clients.forEach(c => c.postMessage({ type: 'SYNC_PROGRESS' }));
-}

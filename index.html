@@ -16,9 +16,9 @@
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
   <link rel="icon" type="image/png" href="assets/icons/icon-192.png" />
 
-  <link rel="stylesheet" href="css/themes.css?v=31" />
-  <link rel="stylesheet" href="css/characters.css?v=31" />
-  <link rel="stylesheet" href="css/main.css?v=31" />
+  <link rel="stylesheet" href="css/themes.css?v=32" />
+  <link rel="stylesheet" href="css/characters.css?v=32" />
+  <link rel="stylesheet" href="css/main.css?v=32" />
   <style>
     /* Critical layout fixes */
     #app-shell, .app-shell { width:100%; min-height:100vh; max-width:480px; margin:0 auto; position:relative; background:var(--bg-app); }
@@ -1236,9 +1236,9 @@
           <div class="admin-section">
             <h3 class="admin-section-title">📊 App Statistics</h3>
             <div class="admin-stats-grid">
-              <div class="admin-stat"><span id="admin-stat-subjects" class="admin-stat-val">18</span><span class="admin-stat-lbl">Subjects</span></div>
-              <div class="admin-stat"><span id="admin-stat-topics" class="admin-stat-val">55</span><span class="admin-stat-lbl">Topics</span></div>
-              <div class="admin-stat"><span id="admin-stat-quizzes" class="admin-stat-val">111</span><span class="admin-stat-lbl">Quiz Q's</span></div>
+              <div class="admin-stat"><span id="admin-stat-subjects" class="admin-stat-val">19</span><span class="admin-stat-lbl">Subjects</span></div>
+              <div class="admin-stat"><span id="admin-stat-topics" class="admin-stat-val">124</span><span class="admin-stat-lbl">Topics</span></div>
+              <div class="admin-stat"><span id="admin-stat-quizzes" class="admin-stat-val">503</span><span class="admin-stat-lbl">Quiz Q's</span></div>
               <div class="admin-stat"><span id="admin-stat-langs" class="admin-stat-val">6</span><span class="admin-stat-lbl">Languages</span></div>
             </div>
           </div>
@@ -1397,8 +1397,24 @@
           </div>
         </dl>
         <div class="detail-facts-section">
-          <h3 class="detail-facts-title">Fun Facts</h3>
-          <ul id="cd-facts" class="detail-facts-list"></ul>
+          <h3 class="detail-facts-title">🌟 Fun Facts</h3>
+          <div id="cd-facts" class="detail-facts-list"></div>
+        </div>
+        <div id="cd-land-wrap" class="detail-facts-section" style="display:none">
+          <h3 class="detail-facts-title">🏛 Famous Landmarks</h3>
+          <div id="cd-land" class="detail-extra"></div>
+        </div>
+        <div id="cd-food-wrap" class="detail-facts-section" style="display:none">
+          <h3 class="detail-facts-title">🍽 Famous Food</h3>
+          <div id="cd-food" class="detail-extra"></div>
+        </div>
+        <div id="cd-animals-wrap" class="detail-facts-section" style="display:none">
+          <h3 class="detail-facts-title">🦁 Wildlife</h3>
+          <div id="cd-animals" class="detail-extra"></div>
+        </div>
+        <div id="cd-climate-wrap" class="detail-facts-section" style="display:none">
+          <h3 class="detail-facts-title">🌤 Climate</h3>
+          <div id="cd-climate" class="detail-extra detail-text"></div>
         </div>
       </div>
     </div>
@@ -1536,23 +1552,43 @@
 
 
   <!-- ═══════════════════════════════════════════
+       CACHE NUKE — runs before anything else
+       Unregisters stale SWs and wipes old caches
+  ═══════════════════════════════════════════ -->
+  <script>
+    (async function nukeCaches() {
+      if (!('serviceWorker' in navigator)) return;
+      // Unregister all old service workers that are not the current sw.js
+      const regs = await navigator.serviceWorker.getRegistrations();
+      for (const r of regs) {
+        // Force the waiting SW to skip waiting
+        if (r.waiting) r.waiting.postMessage({ type: 'SKIP_WAITING' });
+      }
+      // Delete all caches except the current data cache
+      const KEEP = ['bl15-v32', 'bl15-data-v32'];
+      const keys = await caches.keys();
+      await Promise.all(keys.filter(k => !KEEP.includes(k)).map(k => caches.delete(k)));
+    })();
+  </script>
+
+  <!-- ═══════════════════════════════════════════
        SCRIPTS (ordered)
   ═══════════════════════════════════════════ -->
-  <script src="js/utils.js?v=31"></script>
-  <script src="js/characters.js?v=31"></script>
-  <script src="js/storage.js?v=31"></script>
-  <script src="js/auth.js?v=31"></script>
-  <script src="js/voice.js?v=31"></script>
-  <script src="js/ai.js?v=31"></script>
-  <script src="js/gamification.js?v=31"></script>
-  <script src="js/languages.js?v=31"></script>
-  <script src="js/progression.js?v=31"></script>
-  <script src="js/games.js?v=31"></script>
-  <script src="js/parent.js?v=31"></script>
-  <script src="js/app.js?v=31"></script>
+  <script src="js/utils.js?v=32"></script>
+  <script src="js/characters.js?v=32"></script>
+  <script src="js/storage.js?v=32"></script>
+  <script src="js/auth.js?v=32"></script>
+  <script src="js/voice.js?v=32"></script>
+  <script src="js/ai.js?v=32"></script>
+  <script src="js/gamification.js?v=32"></script>
+  <script src="js/languages.js?v=32"></script>
+  <script src="js/progression.js?v=32"></script>
+  <script src="js/games.js?v=32"></script>
+  <script src="js/parent.js?v=32"></script>
+  <script src="js/app.js?v=32"></script>
   <!-- Three.js rotating globe -->
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"}}</script>
-  <script type="module" src="js/globe.js?v=31"></script>
+  <script type="module" src="js/globe.js?v=32"></script>
 
 </body>
 </html>
