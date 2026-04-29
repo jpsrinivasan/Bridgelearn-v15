@@ -1,0 +1,12 @@
+# Node.js
+server/node_modules/
+server/data/bridgelearn.db
+server/data/bridgelearn.db-shm
+server/data/bridgelearn.db-wal
+
+# Secrets — NEVER commit
+server/.env
+
+# OS
+.DS_Store
+Thumbs.db

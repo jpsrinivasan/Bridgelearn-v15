@@ -54,9 +54,13 @@ const BLApp = (() => {
       else      BL.showScreen('welcome');
     });
 
-    // Init Firebase or check local session AFTER handler is registered
+    // Init auth — priority: API server > Firebase > local fallback
     const cfg = window.BL_CONFIG || {};
-    if (cfg.FIREBASE_API_KEY) {
+    if (cfg.API_URL) {
+      // Secure server-side auth (most recommended)
+      await BLAuth.apiInit(cfg.API_URL);
+    } else if (cfg.FIREBASE_API_KEY) {
+      // Firebase cloud auth
       await BLAuth.initFirebase({
         apiKey:            cfg.FIREBASE_API_KEY,
         authDomain:        cfg.FIREBASE_AUTH_DOMAIN,
@@ -66,6 +70,7 @@ const BLApp = (() => {
         appId:             cfg.FIREBASE_APP_ID,
       });
     } else {
+      // localStorage fallback (demo / offline only)
       BLAuth.checkLocalSession();
     }
   }
